@@ -102,12 +102,12 @@
       <label for="nbSession">Session n° :</label>
       <input type="text" class="form-control" placeholder="Entrer le numéro de session" id="nbSession" [(ngModel)]="currentSession.nbSession">
     </div>
-    <!-- TODO <div class="form-group">
+    <div class="form-group">
       <label for="program">Programme :</label>
       <select class="form-control" placeholder="Choisir la program" id="program" [(ngModel)]="currentSession.program.id">
         <option value="{{form.id}}" *ngFor="let form of programs()">{{form.id}}</option>
       </select>
-    </div> -->
+    </div>
     <div class="form-group">
       <label for="exercices">Exercices :</label>
       <input type="text" class="form-control" placeholder="Entrer les exercices" id="exercices" [(ngModel)]="currentSession.exercices">

@@ -3,6 +3,7 @@ import {Session} from '../model/session';
 import {Program} from '../model/program';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {SessionHttpService} from './session-http.service';
+import {ProgramHttpService} from '../program/program-http.service';
 
 @Component({
   selector: 'session',
@@ -15,7 +16,7 @@ export class SessionComponent implements OnInit {
   modalSession: Session = null;
 
   constructor(private modalService: NgbModal,
-              private sessionService: SessionHttpService/*TODO ,private programService: ProgramHttpService*/) { }
+              private sessionService: SessionHttpService,private programService: ProgramHttpService) { }
 
   ngOnInit() {
   }
@@ -23,9 +24,9 @@ export class SessionComponent implements OnInit {
     return this.sessionService.findAll();
   }
 
-  /* TODO programs() {
+  programs() {
     return this.programService.findAll();
-  } */
+  }
 
   add() {
     this.currentSession = new Session();

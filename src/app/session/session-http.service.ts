@@ -4,6 +4,7 @@ import {HttpClient} from '@angular/common/http';
 import {Program} from '../model/program';
 import {Observable} from 'rxjs';
 import {Session} from '../model/session';
+import {ProgramHttpService} from '../program/program-http.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class SessionHttpService {
 
   sessions: Array<Session>;
 
-  constructor(private appConfig: AppConfigService, /*TODO private programService: ProgramService,*/ private http: HttpClient) {
+  constructor(private appConfig: AppConfigService, private programService: ProgramHttpService, private http: HttpClient) {
     this.load();
   }
 
@@ -34,9 +35,9 @@ export class SessionHttpService {
 
   save(session: Session) {
     if (session) {
-      /*TODO if (session.program && !session.program.id) {
+      if (session.program && !session.program.id) {
         session.program = null;
-      }*/
+      }
       if (!session.id) {
         this.http.post<Session>(this.appConfig.backEnd + 'session', session).subscribe(resp => {
           this.load();
