@@ -1,1 +1,66 @@
-<p>degree works!</p>
+<div class="card mt-3">
+  <div class="card-header bg-primary text-white">Liste des sports</div>
+  <div class="card-body">
+    <table class="table table-hover">
+      <thead>
+      <tr>
+        <th scope="col">Identifiant</th>
+        <th scope="col">Version</th>
+        <th scope="col">Certifier</th>
+        <th scope="col">UserCertificate</th>
+        <th scope="col">Sport</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let degree of list()">
+        <th scope="row"  style="cursor: pointer">{{degree.id}}</th>
+        <td >{{degree.version}}</td>
+        <td >{{degree.certificate}}</td>
+        <td >{{degree.usercertified}}</td>
+        <td >{{degree.sport}}</td>
+
+        <td>
+          <div class="btn-group btn-group-sm">
+            <button type="button" class="btn btn-info" (click)="edit(degree.id)">
+              <fa name="pencil"></fa>
+            </button>
+            <button type="button" class="btn btn-danger" >
+              <fa name="trash" inverse="true" (click)="delete(degree.id)"></fa>
+            </button>
+          </div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <div class="card-footer">
+      <button type="button" class="btn btn-success btn-lg" (click)="add()" >
+        <fa name="plus"></fa>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="card mt-3" *ngIf="currentDegree">
+  <div class="card-header bg-primary text-white">Edition du Certificat</div>
+  <div class="card-body">
+    <div class="form-group" >
+      <label class="form-check-label">
+        <input class="form-check-input" type="checkbox" [(ngModel)]="currentDegree.certificate"> Certifié
+      </label>
+      <div class="form-group">
+        <label for="sport">Coach:</label>
+        <select class="form-control"  id="sport" [(ngModel)]="currentDegree.sport.id">
+          <option value="{{sport.id}}" *ngFor="let sport of sports()">{{sport.sportName}}</option>
+        </select>
+      </div>
+  </div>
+  <div class="card-footer">
+    <div class="btn-group btn-group-lg">
+      <button type="button" class="btn btn-primary" (click)="save()">
+        <fa name="check"></fa>
+      </button>
+      <button type="button" class="btn btn-warning" (click)="cancel()">
+        <fa name="undo" inverse="true"></fa>
+      </button>
+    </div>
+  </div>
+</div>
