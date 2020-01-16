@@ -1,1 +1,78 @@
-<p>level works!</p>
+<h1> Choix du niveau </h1>
+<table class="table">
+  <tbody>
+    <tr>
+      <div class="card-deck">
+        <div class="card" *ngFor="let level of list()">
+          <a href="https://placeholder.com"><img class="card-img-top"  src="https://via.placeholder.com/150" alt="Image niveau 1"> </a>
+          <div class="card-body">
+            <h5 class="card-title"> {{level.levelName}} </h5>
+            <p class="card-text"> {{level.levelDescription}} </p>
+          </div>
+          <div class="card-footer">
+            <small>  <button type="button" class="btn btn-success btn-block" (click)="next(level.id)"> {{level.levelName}} </button> </small>
+          </div>
+          <div class="card-footer">
+            <!-- TODO: ngif user=admin!-->
+            <div class="btn-group btn-block" role="group"  >
+              <small>  <button type="button" class="btn btn-primary" (click)="edit(level.id)" > <fa name="pencil"></fa> </button> </small>
+              <small>  <button type="button" class="btn btn-danger" (click)="delete(level.id)"> <fa name="trash" inverse="true"></fa> </button> </small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </tr>
+    <tr>
+      <div class="card mt-3">
+      <div>
+        <button type="button" class="btn btn-success btn-lg" (click)="add()">
+          <fa name="plus"></fa>
+        </button>
+      </div>
+      </div>
+    </tr>
+  </tbody>
+</table>
+
+
+
+<div class="card mt-3" *ngIf="currentLevel">
+  <div class="card-header bg-primary text-white">Edition du niveau</div>
+  <div class="card-body">
+    <div class="form-group">
+      <label for="nom">Nom:</label>
+      <input type="text" class="form-control" placeholder="Entrer le nom" id="nom" [(ngModel)]="currentLevel.levelName">
+    </div>
+    <div class="form-group">
+      <label for="desc">Description:</label>
+      <input type="text" class="form-control" placeholder="Renseigner la description du niveau" id="desc" [(ngModel)]="currentLevel.levelDescription">
+    </div>
+<!--
+    <div class="form-group">
+      <label for="sport">Sport:</label>
+      <select class="form-control" placeholder="Entrer le sport" id="sport" [(ngModel)]="currentLevel.sports.sportName">
+        <option value="{{spo}}" *ngFor="let spo of sports()">{{spo}}</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="spec">Spécialisation:</label>
+      <select class="form-control" placeholder="Entrer la spécialisation" id="spec" [(ngModel)]="currentLevel.specialisations.speName">
+        <option value="{{spe}}" *ngFor="let spe of specialisations()">{{spe}}</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="prog">Programme:</label>
+      <select class="form-control" placeholder="Entrer le programme" id="prog" [(ngModel)]="currentLevel.programs.name">
+        <option value="{{progs}}" *ngFor="let progs of programs()">{{progs}}</option>
+      </select>
+    </div>
+    -->
+  </div>
+  <div class="card-footer">
+    <div class="btn-group btn-group-lg">
+      <button type="button" class="btn btn-primary" (click)="save()"> <fa name="check"></fa> </button>
+      <button type="button" class="btn btn-warning" (click)="cancel()"> <fa name="undo" inverse="true"></fa> </button>
+    </div>
+  </div>
+</div>
+

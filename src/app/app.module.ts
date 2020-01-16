@@ -26,6 +26,7 @@ import { UserComponent } from './user/user.component';
     ExerciceComponent,
     InProgressComponent,
     LevelComponent,
+    SportComponent,
     ProgramComponent,
     SessionComponent,
     SpecialisationComponent,
