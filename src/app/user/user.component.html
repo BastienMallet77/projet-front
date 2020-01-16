@@ -1,3 +1,4 @@
+    <div class="card-footer">
 <div >
   <div class="card mt-5">
     <div class="card-header bg-primary text-white">Liste des utilisateurs</div>
@@ -55,68 +56,68 @@
     </div>
   </div>
 </div>
-<div class="container-fluid">
-  <div class="card mt-3" *ngIf="currentUser">
-    <div class="card-header bg-primary text-white">Edition de l'utilisateur</div>
-    <div class="card-body">
-      <div class="form-group">
-        <label for="nom">Nom:</label>
-        <input type="text" class="form-control" placeholder="Entrer le nom" id="nom" [(ngModel)]="currentUser.lastName">
-      </div>
-      <div class="form-group">
-        <label for="prenom">Prénom:</label>
-        <input type="text" class="form-control" placeholder="Entrer le prénom" id="prenom"
-               [(ngModel)]="currentUser.firstName">
-      </div>
-      <div class="form-group">
-        <label for="pseudo">Pseudo:</label>
-        <input type="text" class="form-control" placeholder="Entrer le pseudo" id="pseudo"
-               [(ngModel)]="currentUser.userName">
-      </div>
-      <div class="form-group">
-        <label for="email">E-mail:</label>
-        <input type="email" class="form-control" placeholder="exemple@xxxx.com" id="email"
-               [(ngModel)]="currentUser.email">
-      </div>
-      <div class="form-group">
-        <label for="mdp">Mot de passe:</label>
-        <input type="password" class="form-control" placeholder="Entrer le mot de passe" id="mdp"
-               [(ngModel)]="currentUser.password">
-      </div>
-      <div class="form-group">
-        <label for="dtNaissance">Date de naissance:</label>
-        <input type="date" class="form-control" placeholder="Entrer la date de naissance" id="dtNaissance"
-               [ngModel]="currentUser.birthDate | date:'yyyy-MM-dd'" (ngModelChange)="currentUser.birthDate=$event">
-      </div>
-      <label for="role">Role:</label>
-      <select class="form-control" id="role" [(ngModel)]="currentUser.role">
-        <option value="user">Utilisateur</option>
-        <option value="coach">Coach</option>
-        <option value="admin">Admin</option>
-      </select>
-      <!--    TODO faire matcher le role avec l'enum en base -->
-      <!--    <select class="form-control" placeholder="Entrer la civilité" id="civilite" [(ngModel)]="currentFormateur.civilite">-->
-      <!--      <option value="{{civ}}" *ngFor="let civ of civilites()">{{civ}}</option>-->
-      <!--    </select>-->
-      <div class="form-group form-check">
-        <label class="form-check-label">
-          <input class="form-check-input" type="checkbox" [(ngModel)]="currentUser.commercial"> Newsletter
-        </label>
-      </div>
-      <div class="form-group form-check">
-        <label class="form-check-label">
-          <input class="form-check-input" type="checkbox" [(ngModel)]="currentUser.isDesactivated"> Compte désactivé
-        </label>
-      </div>
-      <div class="card-footer">
-        <div class="btn-group btn-group-lg">
-          <button type="button" class="btn btn-primary" (click)="save()">
-            <fa name="check"></fa>
-          </button>
-          <button type="button" class="btn btn-warning" (click)="cancel()">
-            <fa name="undo" inverse="true"></fa>
-          </button>
-        </div>
+
+<div class="card mt-3" *ngIf="currentUser">
+  <div class="card-header bg-primary text-white">Edition de l'utilisateur</div>
+  <div class="card-body">
+    <div class="form-group">
+      <label for="nom">Nom:</label>
+      <input type="text" class="form-control" placeholder="Entrer le nom" id="nom" [(ngModel)]="currentUser.lastName">
+    </div>
+    <div class="form-group">
+      <label for="prenom">Prénom:</label>
+      <input type="text" class="form-control" placeholder="Entrer le prénom" id="prenom"
+             [(ngModel)]="currentUser.firstName">
+    </div>
+    <div class="form-group">
+      <label for="pseudo">Pseudo:</label>
+      <input type="text" class="form-control" placeholder="Entrer le pseudo" id="pseudo"
+             [(ngModel)]="currentUser.userName">
+    </div>
+    <div class="form-group">
+      <label for="email">E-mail:</label>
+      <input type="email" class="form-control" placeholder="exemple@xxxx.com" id="email"
+             [(ngModel)]="currentUser.email">
+    </div>
+    <div class="form-group">
+      <label for="mdp">Mot de passe:</label>
+      <input type="password" class="form-control" placeholder="Entrer le mot de passe" id="mdp"
+             [(ngModel)]="currentUser.password">
+    </div>
+    <div class="form-group">
+      <label for="dtNaissance">Date de naissance:</label>
+      <input type="date" class="form-control" placeholder="Entrer la date de naissance" id="dtNaissance"
+             [ngModel]="currentUser.birthDate | date:'yyyy-MM-dd'" (ngModelChange)="currentUser.birthDate=$event">
+    </div>
+    <label for="role">Role:</label>
+    <select class="form-control" id="role" [(ngModel)]="currentUser.role">
+      <option value="user">Utilisateur</option>
+      <option value="coach">Coach</option>
+      <option value="admin">Admin</option>
+    </select>
+    <!--    TODO faire matcher le role avec l'enum en base -->
+    <!--    <select class="form-control" placeholder="Entrer la civilité" id="civilite" [(ngModel)]="currentFormateur.civilite">-->
+    <!--      <option value="{{civ}}" *ngFor="let civ of civilites()">{{civ}}</option>-->
+    <!--    </select>-->
+    <div class="form-group form-check">
+      <label class="form-check-label">
+        <input class="form-check-input" type="checkbox" [(ngModel)]="currentUser.commercial"> Newsletter
+      </label>
+    </div>
+    <div class="form-group form-check">
+      <label class="form-check-label">
+        <input class="form-check-input" type="checkbox" [(ngModel)]="currentUser.isDesactivated"> Compte désactivé
+      </label>
+    </div>
+    <div class="card-footer">
+      <div class="btn-group btn-group-lg">
+        <button type="button" class="btn btn-primary" (click)="save()">
+          <fa name="check"></fa>
+        </button>
+        <button type="button" class="btn btn-warning" (click)="cancel()">
+          <fa name="undo" inverse="true"></fa>
+        </button>
       </div>
     </div>
   </div>
+</div>
