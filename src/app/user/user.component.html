@@ -1,1 +1,122 @@
-<p>user works!</p>
+<div class="container-fluid">
+  <div class="card mt-5">
+    <div class="card-header bg-primary text-white">Liste des utilisateurs</div>
+    <div class="card-body">
+      <table class="table table-hover">
+        <thead>
+        <tr>
+          <th scope="col">Identifiant</th>
+          <th scope="col">Version</th>
+          <th scope="col">Nom</th>
+          <th scope="col">Prénom</th>
+          <th scope="col">Pseudo</th>
+          <th scope="col">E-mail</th>
+          <th scope="col">Mot de passe</th>
+          <th scope="col">Date de naissance</th>
+          <th scope="col">Role</th>
+          <th scope="col">Newsletter</th>
+          <th scope="col">Compte desactivté</th>
+          <th scope="col"></th>
+        </tr>
+        </thead>
+        <tr *ngFor="let user of list()">
+          <th scope="row">{{ user.id }}</th>
+          <td scope="row">{{user.version}}</td>
+          <td scope="row">{{user.lastName}}</td>
+          <td scope="row">{{user.firstName}}</td>
+          <td scope="row">{{user.userName}}</td>
+          <td scope="row">{{user.email}}</td>
+          <td scope="row">{{user.password}}</td>
+          <td scope="row">{{user.birthDate | date:'dd/MM/yyyy'}}</td>
+          <td scope="row">{{user.role}}</td>
+          <td scope="row">
+            <fa name="check" size="2x" *ngIf="user.commercial" style="color: green"></fa>
+          </td>
+          <td scope="row">
+            <fa name="check" size="2x" *ngIf="user.isDesactivated" style="color: green"></fa>
+          </td>
+          <td>
+            <div class="btn-group btn-group-sm">
+              <button type="button" class="btn btn-info" (click)="edit(user.id)">
+                <fa name="pencil"></fa>
+              </button>
+              <button type="button" class="btn btn-danger" (click)="delete(user.id)">
+                <fa name="trash" inverse="true"></fa>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </table>
+      <div class="card-footer">
+        <button type="button" class="btn btn-success btn-lg" (click)="add()">
+          <fa name="plus"></fa>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container-fluid">
+  <div class="card mt-3" *ngIf="currentUser">
+    <div class="card-header bg-primary text-white">Edition de l'utilisateur</div>
+    <div class="card-body">
+      <div class="form-group">
+        <label for="nom">Nom:</label>
+        <input type="text" class="form-control" placeholder="Entrer le nom" id="nom" [(ngModel)]="currentUser.lastName">
+      </div>
+      <div class="form-group">
+        <label for="prenom">Prénom:</label>
+        <input type="text" class="form-control" placeholder="Entrer le prénom" id="prenom"
+               [(ngModel)]="currentUser.firstName">
+      </div>
+      <div class="form-group">
+        <label for="pseudo">Pseudo:</label>
+        <input type="text" class="form-control" placeholder="Entrer le pseudo" id="pseudo"
+               [(ngModel)]="currentUser.userName">
+      </div>
+      <div class="form-group">
+        <label for="email">E-mail:</label>
+        <input type="email" class="form-control" placeholder="exemple@xxxx.com" id="email"
+               [(ngModel)]="currentUser.email">
+      </div>
+      <div class="form-group">
+        <label for="mdp">Mot de passe:</label>
+        <input type="password" class="form-control" placeholder="Entrer le mot de passe" id="mdp"
+               [(ngModel)]="currentUser.password">
+      </div>
+      <div class="form-group">
+        <label for="dtNaissance">Date de naissance:</label>
+        <input type="date" class="form-control" placeholder="Entrer la date de naissance" id="dtNaissance"
+               [ngModel]="currentUser.birthDate | date:'yyyy-MM-dd'" (ngModelChange)="currentUser.birthDate=$event">
+      </div>
+      <label for="role">Role:</label>
+      <select class="form-control" id="role" [(ngModel)]="currentUser.role">
+        <option value="user">Utilisateur</option>
+        <option value="coach">Coach</option>
+        <option value="admin">Admin</option>
+      </select>
+      <!--    TODO faire matcher le role avec l'enum en base -->
+      <!--    <select class="form-control" placeholder="Entrer la civilité" id="civilite" [(ngModel)]="currentFormateur.civilite">-->
+      <!--      <option value="{{civ}}" *ngFor="let civ of civilites()">{{civ}}</option>-->
+      <!--    </select>-->
+      <div class="form-group form-check">
+        <label class="form-check-label">
+          <input class="form-check-input" type="checkbox" [(ngModel)]="currentUser.commercial"> Newsletter
+        </label>
+      </div>
+      <div class="form-group form-check">
+        <label class="form-check-label">
+          <input class="form-check-input" type="checkbox" [(ngModel)]="currentUser.isDesactivated"> Compte désactivé
+        </label>
+      </div>
+      <div class="card-footer">
+        <div class="btn-group btn-group-lg">
+          <button type="button" class="btn btn-primary" (click)="save()">
+            <fa name="check"></fa>
+          </button>
+          <button type="button" class="btn btn-warning" (click)="cancel()">
+            <fa name="undo" inverse="true"></fa>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
