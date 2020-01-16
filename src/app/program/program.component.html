@@ -1,1 +1,87 @@
-<p>program works!</p>
+<div>Liste des programmes</div>
+<table class="table table-hover">
+  <thead>
+  <tr>
+    <th scope="col">ID</th>
+    <th scope="col">Version</th>
+    <th scope="col">nom</th>
+    <th scope="col">description</th>
+    <th scope="col">durée</th>
+    <th scope="col">nombre de validation</th>
+    <th scope="col">date de création</th>
+    <th scope="col">est-il validé</th>
+    <th scope="col">est-il terminé</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let program of list()">
+    <th>{{program.id}}</th>
+    <th>{{program.version}}</th>
+    <th>{{program.name}}</th>
+    <th>{{program.description}}</th>
+    <th>{{program.duration}}</th>
+    <th>{{program.creationDate}}</th>
+    <th>{{program.inprogress}}</th>
+    <th>{{program.isValidated}}</th>
+    <th>{{program.isDone}}</th>
+    <th>{{program.nbValidation}}</th>
+    <td>
+      <div class="btn-group btn-group-sm"></div>
+      <button type="button" class="btn btn-info" (click)="edit()">
+        <fa name="pencil"></fa>
+      </button>
+      <button type="button" class="btn btn-danger" (click)="delete()">
+        <fa name="trash" inverse="true"></fa>
+      </button>
+    </td>
+  </tr>
+  </tbody>
+</table>
+<button type="button" class="btn btn-success btn-lg" (click)="add()">
+  <fa name="plus"></fa>
+</button>
+
+<div class="card mt-3" *ngIf="currentProgram">
+  <div class="card-header bg-primary text-white">Edition de l'élève</div>
+  <div class="card-body">
+    <div class="form-group">
+      <label for="name">Nom</label>
+      <input type="text" class="form-control" placeholder="Entrez le nom du programme" id="name" [(ngModel)]="currentProgram.name">
+    </div>
+    <div class="form-group">
+      <label for="description">Description</label>
+      <input type="text" class="form-control" placeholder="Entrez la description du programme" id="description" [(ngModel)]="currentProgram.description">
+    </div>
+    <div class="form-group">
+      <label for="duration">Durée</label>
+      <input type="number" class="form-control" placeholder="Entrez la durée du programme" id="duration" [(ngModel)]="currentProgram.duration">
+    </div>
+    <div class="form-group">
+      <label for="nbValidation">Nombre de conscentement de la part des autres coachs</label>
+      <input type="number" class="form-control" placeholder="Entrez le nombre de fois que le programme à été approuvé par d'autres coachs" id="nbValidation" [(ngModel)]="currentProgram.nbValidation">
+    </div>
+    <div class="form-group">
+      <label for="creationDate">Date de création du programme</label>
+      <input type="date" class="form-control" placeholder="Entrez la date de création du programme" id="creationDate" [ngModel]="currentProgram.creationDate | date:'yyyy-MM-dd'" (ngModelChange)="currentProgram.creationDate=$event">
+    </div>
+    <div class="form-group form-check">
+      <label for="isValidated" class="form-check-label">Le programme a-t'il été validé ?</label>
+      <input type="checkbox" class="form-control" placeholder="Le programme a-t'il été validé" id="isValidated" [(ngModel)]="currentProgram.isValidated">
+    </div>
+    <div class="form-group form-check">
+      <label for="isDone" class="form-check-label">Le programme a-t'il été terminé ?</label>
+      <input type="checkbox" class="form-control" placeholder="Le programme a-t'il été terminé" id="isDone" [(ngModel)]="currentProgram.isDone">
+    </div>
+</div>
+  <div class="card-footer">
+    <div class="btn-group btn-group-lg">
+      <button type="button" class="btn btn-primary" (click)="save()">
+        <fa name="check"></fa>
+      </button>
+      <button type="button" class="btn btn-warning" (click)="cancel()">
+        <fa name="undo" inverse="true"></fa>
+      </button>
+    </div>
+  </div>
+</div>
+
