@@ -1,1 +1,39 @@
-<p>specialisation works!</p>
+<h1> Spécialisations </h1>
+<div class="card mt-3">
+  <div class="card-header bg-primary text-white">Liste des spécialisations</div>
+  <div class="card-body">
+    <table class="table table-hover">
+      <thead>
+      <tr>
+        <th scope="col">Identifiant</th>
+        <th scope="col">Version</th>
+        <th scope="col">Nom</th>
+        <th scope="col">Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let spe of list()">
+        <th scope="row"  style="cursor: pointer">{{spe.id}}</th>
+        <td >{{spe.version}}</td>
+        <td >{{spe.speName}}</td>
+        <td >{{spe.speDescription}}</td>
+        <td>
+          <div class="btn-group btn-group-sm">
+            <button type="button" class="btn btn-info" (click)="edit(spe.id)">
+              <fa name="pencil"></fa>
+            </button>
+            <button type="button" class="btn btn-danger" >
+              <fa name="trash" inverse="true" (click)="delete(spe.id)"></fa>
+            </button>
+          </div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <div class="card-footer">
+      <button type="button" class="btn btn-success btn-lg" (click)="add()" >
+        <fa name="plus"></fa>
+      </button>
+    </div>
+  </div>
+</div>
