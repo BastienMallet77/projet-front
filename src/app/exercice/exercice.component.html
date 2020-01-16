@@ -65,10 +65,10 @@
         <th>Texte</th>
         <td>{{modalExercice.exerciceText}}</td>
       </tr>
-      <!-- TODO <tr>
+      <tr>
         <th>Session</th>
         <td>{{modalExercice.session?.name}}</td>
-      </tr> -->
+      </tr>
       </tbody>
     </table>
   </div>
@@ -86,12 +86,12 @@
       <input type="textarea" class="form-control" placeholder="Entrer le texte de l'excercice" id="exerciceText"
              [(ngModel)]="currentExercice.exerciceText">
     </div>
-    <!-- TODO <div class="form-group">
-      <label for="session">Formateur:</label>
+    <div class="form-group">
+      <label for="session">Session :</label>
       <select class="form-control" placeholder="Choisir la session" id="session" [(ngModel)]="currentExercice.session.id">
         <option value="{{form.id}}" *ngFor="let form of sessions()">{{form.id}}</option>
       </select>
-    </div>-->
+    </div>
   </div>
   <div class="card-footer">
     <div class="btn-group btn-group-lg">

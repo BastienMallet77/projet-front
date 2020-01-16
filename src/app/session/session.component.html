@@ -1,1 +1,126 @@
-<p>session works!</p>
+<div class="card mt-3">
+  <div class="card-header bg-primary text-white">Liste des sessions</div>
+  <div class="card-body">
+    <table class="table table-hover">
+      <thead>
+      <tr>
+        <th scope="col">Identifiant</th>
+        <th scope="col">Version</th>
+        <th scope="col">Nom</th>
+        <th scope="col">Texte</th>
+        <th scope="col">Session n°</th>
+        <th scope="col">Programme</th>
+        <th scope="col">Exercices</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let session of list()">
+        <th scope="row" (click)="detail(content, session.id)" style="cursor: pointer">{{ session.id }}</th>
+        <td (click)="detail(content, session.id)" style="cursor: pointer">{{session.version}}</td>
+        <td (click)="detail(content, session.id)" style="cursor: pointer">{{session.name}}</td>
+        <td (click)="detail(content, session.id)" style="cursor: pointer">{{session.text}}</td>
+        <td (click)="detail(content, session.id)" style="cursor: pointer">{{session.nbSession}}</td>
+        <td (click)="detail(content, session.id)" style="cursor: pointer">{{session.program}}</td>
+        <td (click)="detail(content, session.id)" style="cursor: pointer">{{session.exercices}}</td>
+        <td>
+          <div class="btn-group btn-group-sm">
+            <button type="button" class="btn btn-info" (click)="edit(session.id)">
+              <fa name="pencil"></fa>
+            </button>
+            <button type="button" class="btn btn-danger" (click)="delete(session.id)">
+              <fa name="trash" inverse="true"></fa>
+            </button>
+          </div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <div class="card-footer">
+      <button type="button" class="btn btn-success btn-lg" (click)="add()">
+        <fa name="plus"></fa>
+      </button>
+    </div>
+  </div>
+</div>
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Détail de l'élève</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <table class="table table-sm">
+      <tbody>
+      <tr>
+        <th>Identifiant</th>
+        <td>{{modalSession.id}}</td>
+      </tr>
+      <tr>
+        <th>Version</th>
+        <td>{{modalSession.version}}</td>
+      </tr>
+      <tr>
+        <th>Nom</th>
+        <td>{{modalSession.name}}</td>
+      </tr>
+      <tr>
+        <th>Texte</th>
+        <td>{{modalSession.text}}</td>
+      </tr>
+      <tr>
+        <th>Session n°</th>
+        <td>{{modalSession.nbSession}}</td>
+      </tr>
+      <tr>
+        <th>Programme</th>
+        <td>{{modalSession.program}}</td>
+      </tr>
+      <tr>
+        <th>Exercices</th>
+        <td>{{modalSession.exercices}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</ng-template>
+
+<div class="card mt-3" *ngIf="currentSession">
+  <div class="card-header bg-primary text-white">Edition de la session</div>
+  <div class="card-body">
+    <div class="form-group">
+      <label for="name">Nom :</label>
+      <input type="text" class="form-control" placeholder="Entrer le nom" id="name" [(ngModel)]="currentSession.name">
+    </div>
+    <div class="form-group">
+      <label for="text">Texte :</label>
+      <input type="textarea" class="form-control" placeholder="Entrer le texte de l'excercice" id="text"
+             [(ngModel)]="currentSession.text">
+    </div>
+    <div class="form-group">
+      <label for="nbSession">Session n° :</label>
+      <input type="text" class="form-control" placeholder="Entrer le numéro de session" id="nbSession" [(ngModel)]="currentSession.nbSession">
+    </div>
+    <!-- TODO <div class="form-group">
+      <label for="program">Programme :</label>
+      <select class="form-control" placeholder="Choisir la program" id="program" [(ngModel)]="currentSession.program.id">
+        <option value="{{form.id}}" *ngFor="let form of programs()">{{form.id}}</option>
+      </select>
+    </div> -->
+    <div class="form-group">
+      <label for="exercices">Exercices :</label>
+      <input type="text" class="form-control" placeholder="Entrer les exercices" id="exercices" [(ngModel)]="currentSession.exercices">
+    </div>
+  </div>
+  <div class="card-footer">
+    <div class="btn-group btn-group-lg">
+      <button type="button" class="btn btn-primary" (click)="save()">
+        <fa name="check"></fa>
+      </button>
+      <button type="button" class="btn btn-warning" (click)="cancel()">
+        <fa name="undo" inverse="true"></fa>
+      </button>
+    </div>
+  </div>
+</div>
