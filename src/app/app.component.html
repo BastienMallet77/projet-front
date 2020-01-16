@@ -1,1 +1,18 @@
-<router-outlet></router-outlet>
+<ul class="nav nav-pills">
+  <li class="nav-item">
+    <a class="nav-link" [routerLink]="['/home']" routerLinkActive="active">Accueil</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" [routerLink]="['/board']" routerLinkActive="active">Tableau de bord</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" [routerLink]="['/sport']" routerLinkActive="active">Liste des sports</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" [routerLink]="['/auth']" routerLinkActive="active">Se déconnecter</a>
+  </li>
+</ul>
+
+<div class="container">
+  <router-outlet></router-outlet>
+</div>
