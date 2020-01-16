@@ -1,1 +1,106 @@
-<p>exercice works!</p>
+<div class="card mt-3">
+  <div class="card-header bg-primary text-white">Liste des élèves</div>
+  <div class="card-body">
+    <table class="table table-hover">
+      <thead>
+      <tr>
+        <th scope="col">Identifiant</th>
+        <th scope="col">Version</th>
+        <th scope="col">Nom</th>
+        <th scope="col">Texte</th>
+        <th scope="col">Session</th>>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let exercice of list()">
+        <th scope="row" (click)="detail(content, exercice.id)" style="cursor: pointer">{{ exercice.id }}</th>
+        <td (click)="detail(content, exercice.id)" style="cursor: pointer">{{exercice.version}}</td>
+        <td (click)="detail(content, exercice.id)" style="cursor: pointer">{{exercice.exerciceName}}</td>
+        <td (click)="detail(content, exercice.id)" style="cursor: pointer">{{exercice.exerciceText}}</td>
+        <td (click)="detail(content, exercice.id)" style="cursor: pointer">{{exercice.session}}</td>
+        <td>
+          <div class="btn-group btn-group-sm">
+            <button type="button" class="btn btn-info" (click)="edit(exercice.id)">
+              <fa name="pencil"></fa>
+            </button>
+            <button type="button" class="btn btn-danger" (click)="delete(exercice.id)">
+              <fa name="trash" inverse="true"></fa>
+            </button>
+          </div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <div class="card-footer">
+      <button type="button" class="btn btn-success btn-lg" (click)="add()">
+        <fa name="plus"></fa>
+      </button>
+    </div>
+  </div>
+</div>
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Détail de l'élève</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <table class="table table-sm">
+      <tbody>
+      <tr>
+        <th>Identifiant</th>
+        <td>{{modalExercice.id}}</td>
+      </tr>
+      <tr>
+        <th>Version</th>
+        <td>{{modalExercice.version}}</td>
+      </tr>
+      <tr>
+        <th>Nom</th>
+        <td>{{modalExercice.exerciceName}}</td>
+      </tr>
+      <tr>
+        <th>Texte</th>
+        <td>{{modalExercice.exerciceText}}</td>
+      </tr>
+      <!-- TODO <tr>
+        <th>Session</th>
+        <td>{{modalExercice.session?.name}}</td>
+      </tr> -->
+      </tbody>
+    </table>
+  </div>
+</ng-template>
+
+<div class="card mt-3" *ngIf="currentExercice">
+  <div class="card-header bg-primary text-white">Edition de l'élève</div>
+  <div class="card-body">
+    <div class="form-group">
+      <label for="exerciceName">Nom :</label>
+      <input type="text" class="form-control" placeholder="Entrer le nom" id="exerciceName" [(ngModel)]="currentExercice.exerciceName">
+    </div>
+    <div class="form-group">
+      <label for="exerciceText">Texte :</label>
+      <input type="textarea" class="form-control" placeholder="Entrer le texte de l'excercice" id="exerciceText"
+             [(ngModel)]="currentExercice.exerciceText">
+    </div>
+    <!-- TODO <div class="form-group">
+      <label for="session">Formateur:</label>
+      <select class="form-control" placeholder="Choisir la session" id="session" [(ngModel)]="currentExercice.session.id">
+        <option value="{{form.id}}" *ngFor="let form of sessions()">{{form.id}}</option>
+      </select>
+    </div>-->
+  </div>
+  <div class="card-footer">
+    <div class="btn-group btn-group-lg">
+      <button type="button" class="btn btn-primary" (click)="save()">
+        <fa name="check"></fa>
+      </button>
+      <button type="button" class="btn btn-warning" (click)="cancel()">
+        <fa name="undo" inverse="true"></fa>
+      </button>
+    </div>
+  </div>
+</div>
