@@ -1,1 +1,125 @@
-<p>in-progress works!</p>
+<div class="card mt-3">
+  <div class="card-header bg-primary text-white">Liste des inProgresss</div>
+  <div class="card-body">
+    <table class="table table-hover">
+      <thead>
+      <tr>
+        <th scope="col">Identifiant</th>
+        <th scope="col">Version</th>
+        <th scope="col">Date de début</th>
+        <th scope="col">Date de fin</th>
+        <th scope="col">Progression</th>
+        <th scope="col">Id de l'utilisateur</th>
+        <!--<th scope="col">Programmes en cours</th>-->
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let inProgress of list()">
+        <th>{{ inProgress.id }}</th>
+        <td>{{inProgress.version}}</td>
+        <td>{{inProgress.beginingDate}}</td>
+        <td>{{inProgress.endDate}}</td>
+        <td>{{inProgress.progression}}</td>
+        <td>{{inProgress.userProgressing.id}}</td>
+        <!--<td>{{inProgress.progInProgress}}</td>-->
+        <td>
+          <div class="btn-group btn-group-sm">
+            <button type="button" class="btn btn-info" (click)="edit(inProgress.id)">
+              <fa name="pencil"></fa>
+            </button>
+            <button type="button" class="btn btn-danger" (click)="delete(inProgress.id)">
+              <fa name="trash" inverse="true"></fa>
+            </button>
+          </div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <div class="card-footer">
+      <button type="button" class="btn btn-success btn-lg" (click)="add()">
+        <fa name="plus"></fa>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!--<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Détail de l'inProgress</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <table class="table table-sm">
+      <tbody>
+      <tr>
+        <th>Identifiant</th>
+        <td>{{modalInProgress.id}}</td>
+      </tr>
+      <tr>
+        <th>Version</th>
+        <td>{{modalInProgress.version}}</td>
+      </tr>
+      <tr>
+        <th>Date de début</th>
+        <td>{{modalInProgress.beginingDate}}</td>
+      </tr>
+      <tr>
+        <th>Date de fin</th>
+        <td>{{modalInProgress.endDate}}</td>
+      </tr>
+      <tr>
+        <th>progression</th>
+        <td>{{modalInProgress.progression}}</td>
+      </tr>
+      <tr>
+        <th>Id de l'utilisateur</th>
+        <td>{{modalInProgress.progInProgress.id}}</td>
+      </tr>
+      <tr>
+        <th>Programmes en cours</th>
+        <td>{{modalInProgress.progInProgress}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</ng-template>-->
+
+<div class="card mt-3" *ngIf="currentInProgress">
+  <div class="card-header bg-primary text-white">Edition du inProgress</div>
+  <div class="card-body">
+    <div class="form-group">
+      <label for="beginingDate">Date de début :</label>
+      <input type="date" class="form-control" placeholder="Entrer la date de début" id="beginingDate" [(ngModel)]="currentInProgress.beginingDate">
+    </div>
+    <div class="form-group">
+      <label for="endDate">Date de fin :</label>
+      <input type="date" class="form-control" placeholder="Entrer la date de fin" id="endDate" [(ngModel)]="currentInProgress.endDate">
+    </div>
+    <div class="form-group">
+      <label for="progression">Progression :</label>
+      <input type="number" class="form-control" placeholder="Progression" id="progression" [(ngModel)]="currentInProgress.progression">
+    </div>
+    <div class="form-group">
+      <label for="userProgressing">Id de l'utilisateur :</label>
+      <select class="form-control" placeholder="Choisir l'utilisateur'" id="userProgressing" [(ngModel)]="currentInProgress.userProgressing.userName">
+        <option value="{{form.userName}}" *ngFor="let form of users()">{{form.userName}}</option>
+      </select>
+    </div>
+    <!--<div class="form-group">
+      <label for="programmes">Programmes :</label>
+      <input type="text" class="form-control" placeholder="Entrer les programmes" id="eprogrammes" [(ngModel)]="currentInProgress.progInProgress">
+    </div>-->
+  </div>
+  <div class="card-footer">
+    <div class="btn-group btn-group-lg">
+      <button type="button" class="btn btn-primary" (click)="save()">
+        <fa name="check"></fa>
+      </button>
+      <button type="button" class="btn btn-warning" (click)="cancel()">
+        <fa name="undo" inverse="true"></fa>
+      </button>
+    </div>
+  </div>
+</div>

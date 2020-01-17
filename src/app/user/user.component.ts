@@ -22,9 +22,9 @@ export class UserComponent implements OnInit {
   list(){
     return this.userService.findAll();
   }
-  roles(){
+  /*roles(){
     return this.userService.roles;
-  }
+  }*/
 
   add(){
     this.currentUser = new User();
