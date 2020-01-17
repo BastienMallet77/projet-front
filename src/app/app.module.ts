@@ -17,6 +17,7 @@ import { SessionComponent } from './session/session.component';
 import { SpecialisationComponent } from './specialisation/specialisation.component';
 import { SportComponent } from './sport/sport.component';
 import { UserComponent } from './user/user.component';
+import { DashboardCoachComponent } from './dashboard-coach/dashboard-coach.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { UserComponent } from './user/user.component';
     SessionComponent,
     SpecialisationComponent,
     SportComponent,
-    UserComponent
+    UserComponent,
+    DashboardCoachComponent
   ],
   imports: [
     BrowserModule,
