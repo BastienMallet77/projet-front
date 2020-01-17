@@ -38,7 +38,9 @@ export class ProgramComponent implements OnInit {
 
   save()
   {
+    console.log(this.currentProgram);
     this.programService.save(this.currentProgram);
+    console.log(this.currentProgram);
     this.currentProgram = null;
   }
 
