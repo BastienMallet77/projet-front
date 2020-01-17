@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {SpecialisationHttpService} from "./specialisation-http.service";
 import {Specialisation} from "../model/specialisation";
+import {SportHttpService} from "../sport/sport-http.service";
+import {Sport} from "../model/sport";
+import {Program} from "../model/program";
+import {Level} from "../model/level";
 
 @Component({
   selector: 'specialisation',
@@ -12,9 +16,13 @@ export class SpecialisationComponent implements OnInit {
   currentSpecialisation: Specialisation = null;
   modalSpecialisation: Specialisation = null;
 
-  constructor(private modalService: NgbModal, private specialisationHttpService: SpecialisationHttpService) { }
+  constructor(private modalService: NgbModal, private specialisationHttpService: SpecialisationHttpService, private sportHttpService: SportHttpService) { }
 
   ngOnInit() {
+  }
+
+  sports() {
+    return this.sportHttpService.findAll();
   }
 
   list() {
@@ -23,6 +31,9 @@ export class SpecialisationComponent implements OnInit {
 
   add() {
     this.currentSpecialisation = new Specialisation();
+    this.currentSpecialisation.sport = new Sport();
+    this.currentSpecialisation.levelss = new Array<Level>();
+    this.currentSpecialisation.programss = new Array<Program>();
   }
 
   detail(content, id: number) {
@@ -37,6 +48,11 @@ export class SpecialisationComponent implements OnInit {
   edit(id: number) {
     this.specialisationHttpService.findById(id).subscribe(resp => {
       this.currentSpecialisation = resp;
+
+      if (!this.currentSpecialisation.sport) {
+        this.currentSpecialisation.sport = new Sport();
+      }
+
     }, error => {
       console.log(error);
     });

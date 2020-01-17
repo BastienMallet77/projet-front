@@ -9,20 +9,23 @@
         <th scope="col">Version</th>
         <th scope="col">Nom</th>
         <th scope="col">Description</th>
+        <th scope="col">Sport</th>
+        <th scope="col"></th>
       </tr>
       </thead>
       <tbody>
       <tr *ngFor="let spe of list()">
-        <th scope="row"  style="cursor: pointer">{{spe.id}}</th>
-        <td >{{spe.version}}</td>
-        <td >{{spe.speName}}</td>
-        <td >{{spe.speDescription}}</td>
+        <th scope="row" style="cursor: pointer">{{spe.id}}</th>
+        <td>{{spe.version}}</td>
+        <td>{{spe.speName}}</td>
+        <td>{{spe.speDescription}}</td>
+        <td>{{spe.sport?.sportName}}</td>
         <td>
           <div class="btn-group btn-group-sm">
             <button type="button" class="btn btn-info" (click)="edit(spe.id)">
               <fa name="pencil"></fa>
             </button>
-            <button type="button" class="btn btn-danger" >
+            <button type="button" class="btn btn-danger">
               <fa name="trash" inverse="true" (click)="delete(spe.id)"></fa>
             </button>
           </div>
@@ -31,9 +34,46 @@
       </tbody>
     </table>
     <div class="card-footer">
-      <button type="button" class="btn btn-success btn-lg" (click)="add()" >
+      <button type="button" class="btn btn-success btn-lg" (click)="add()">
         <fa name="plus"></fa>
       </button>
     </div>
   </div>
 </div>
+
+
+<div class="card mt-3" *ngIf="currentSpecialisation">
+  <div class="card-header bg-primary text-white">Edition de la spécialisation</div>
+  <div class="card-body">
+    <div class="form-group">
+      <label for="name">Nom de la spécialisation:</label>
+      <input type="text" class="form-control" placeholder="Nom de la spécialisation" id="name"
+             [(ngModel)]="currentSpecialisation.speName">
+    </div>
+    <div class="form-group">
+      <label for="SportDescription">Description de la spécialisation:</label>
+      <input type="textarea" class="form-control" id="SportDescription" rows="3" [(ngModel)]="currentSpecialisation.speDescription"
+                placeholder="Décrivez la spécialisation">
+    </div>
+
+    <div class="form-group">
+      <label for="sport">Sport:</label>
+      <select class="form-control" placeholder="Entrer le sport" id="sport"
+              [(ngModel)]="currentSpecialisation.sport.id">
+        <option value="{{spo.id}}" *ngFor="let spo of sports()">{{spo.sportName}}</option>
+      </select>
+    </div>
+
+  </div>
+  <div class="card-footer">
+    <div class="btn-group btn-group-lg">
+      <button type="button" class="btn btn-primary" (click)="save()">
+        <fa name="check"></fa>
+      </button>
+      <button type="button" class="btn btn-warning" (click)="cancel()">
+        <fa name="undo" inverse="true"></fa>
+      </button>
+    </div>
+  </div>
+</div>
+

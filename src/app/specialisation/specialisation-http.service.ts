@@ -1,20 +1,22 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {AppConfigService} from "../app-config.service";
 import {HttpClient} from "@angular/common/http";
 import {Level} from "../model/level";
 import {Specialisation} from "../model/specialisation";
 import {Observable} from "rxjs";
+import {Sport} from "../model/sport";
 
 @Injectable({
   providedIn: 'root'
 })
 export class SpecialisationHttpService {
   specialisations: Array<Specialisation>;
+
   constructor(private appConfig: AppConfigService, private http: HttpClient) {
     this.load();
   }
 
-  load()  {
+  load() {
     this.http.get<Array<Specialisation>>(this.appConfig.backEnd + 'specialisation').subscribe(resp => {
         this.specialisations = resp;
       },
@@ -36,6 +38,10 @@ export class SpecialisationHttpService {
 
   save(specialisation: Specialisation) {
     if (specialisation) {
+
+      if (specialisation.sport && !specialisation.sport.id) {
+        specialisation.sport = null;
+      }
       if (!specialisation.id) {
         this.http.post<Specialisation>(this.appConfig.backEnd + 'specialisation', specialisation).subscribe(resp => {
           this.load();
