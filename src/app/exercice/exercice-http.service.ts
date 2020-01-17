@@ -4,6 +4,7 @@ import {AppConfigService} from '../app-config.service';
 import {HttpClient} from '@angular/common/http';
 import {Session} from '../model/session';
 import {Observable} from 'rxjs';
+import {SessionHttpService} from '../session/session-http.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class ExerciceHttpService {
 
   exercices: Array<Exercice>;
 
-  constructor(private appConfig: AppConfigService, /*TODO private sessionService: SessionService,*/ private http: HttpClient) {
+  constructor(private appConfig: AppConfigService, sessionService: SessionHttpService, private http: HttpClient) {
     this.load();
   }
 
@@ -34,9 +35,9 @@ export class ExerciceHttpService {
 
   save(exercice: Exercice) {
     if (exercice) {
-      /*TODO if (exercice.session && !exercice.session.id) {
+      if (exercice.session && !exercice.session.id) {
         exercice.session = null;
-      }*/
+      }
       if (!exercice.id) {
         this.http.post<Exercice>(this.appConfig.backEnd + 'exercice', exercice).subscribe(resp => {
           this.load();

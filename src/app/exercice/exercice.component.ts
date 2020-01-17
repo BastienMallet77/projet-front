@@ -3,6 +3,7 @@ import {Exercice} from '../model/exercice';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {ExerciceHttpService} from './exercice-http.service';
 import {Session} from '../model/session';
+import {SessionHttpService} from '../session/session-http.service';
 
 @Component({
   selector: 'exercice',
@@ -15,7 +16,7 @@ export class ExerciceComponent implements OnInit {
   modalExercice: Exercice = null;
 
   constructor(private modalService: NgbModal,
-              private exerciceService: ExerciceHttpService/*TODO ,private sessionService: SessionHttpService*/) { }
+              private exerciceService: ExerciceHttpService, private sessionService: SessionHttpService) { }
 
   ngOnInit() {
   }
@@ -23,9 +24,9 @@ export class ExerciceComponent implements OnInit {
     return this.exerciceService.findAll();
   }
 
-  /* TODO sessions() {
+  sessions() {
     return this.sessionService.findAll();
-  } */
+  }
 
   add() {
     this.currentExercice = new Exercice();
