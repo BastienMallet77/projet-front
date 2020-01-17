@@ -27,10 +27,10 @@
     <th>{{program.nbValidation}}</th>
     <td>
       <div class="btn-group btn-group-sm"></div>
-      <button type="button" class="btn btn-info" (click)="edit()">
+      <button type="button" class="btn btn-info" (click)="edit(program.id)">
         <fa name="pencil"></fa>
       </button>
-      <button type="button" class="btn btn-danger" (click)="delete()">
+      <button type="button" class="btn btn-danger" (click)="delete(program.id)">
         <fa name="trash" inverse="true"></fa>
       </button>
     </td>
