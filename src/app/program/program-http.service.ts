@@ -59,6 +59,13 @@ export class ProgramHttpService {
           this.load();
         }, err => console.log(err));
       }
+      else
+        {
+          this.http.put<Program>(this.appConfig.backEnd + 'program/' + program.id, program).subscribe(resp =>
+          {
+            this.load();
+          }, error => console.log(error));
+        }
     }
   }
 
