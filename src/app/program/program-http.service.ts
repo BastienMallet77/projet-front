@@ -35,7 +35,16 @@ export class ProgramHttpService {
 
   findById(id: number): Observable<Program>
   {
-    return this.http.get<Program>(this.appConfig.backEnd + 'program/' + id);
+    for (const program of this.programs)
+    {
+      if (program.id == id)
+      {
+        {
+          return this.http.get<Program>(this.appConfig.backEnd + 'program/' + id);
+        }
+      }
+    }
+    return null;
   }
 
   save(program: Program)
