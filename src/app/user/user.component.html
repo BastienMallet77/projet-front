@@ -12,7 +12,7 @@
         <th scope="col">E-mail</th>
         <th scope="col">Mot de passe</th>
         <th scope="col">Date de naissance</th>
-        <th scope="col">Role</th>
+        <!--TODO <th scope="col">Role</th>-->
         <th scope="col">Newsletter</th>
         <th scope="col">Compte desactivté</th>
         <th scope="col"></th>
@@ -27,7 +27,7 @@
         <td scope="row">{{user.email}}</td>
         <td scope="row">{{user.password}}</td>
         <td scope="row">{{user.birthDate | date:'dd/MM/yyyy'}}</td>
-        <td scope="row">{{user.role}}</td>
+        <!-- TODO <td scope="row">{{user.role}}</td>-->
         <td scope="row">
           <fa name="check" size="2x" *ngIf="user.commercial" style="color: green"></fa>
         </td>
@@ -86,10 +86,10 @@
       <input type="date" class="form-control" placeholder="Entrer la date de naissance" id="dtNaissance"
              [ngModel]="currentUser.birthDate | date:'yyyy-MM-dd'" (ngModelChange)="currentUser.birthDate=$event">
     </div>
-    <label for="role">Role:</label>
+    <!--TODO <label for="role">Role:</label>
     <select class="form-control" placeholder="Entrer la civilité" id="role" [(ngModel)]="currentUser.role">
       <option value="{{role}}" *ngFor="let role of roles()">{{role}}</option>
-    </select>
+    </select>-->
     <!--    TODO faire matcher le role avec l'enum en base -->
     <!--    <select class="form-control" placeholder="Entrer la civilité" id="civilite" [(ngModel)]="currentFormateur.civilite">-->
     <!--      <option value="{{civ}}" *ngFor="let civ of civilites()">{{civ}}</option>-->

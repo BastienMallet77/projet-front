@@ -51,4 +51,3 @@ export class InProgressComponent implements OnInit {
     this.currentInProgress = null;
   }
 }
-

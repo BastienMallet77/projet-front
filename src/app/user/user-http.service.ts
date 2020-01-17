@@ -25,10 +25,10 @@ export class UserHttpService {
       err => console.log(err));
   }
   loadRoles() {
-    this.http.get<Array<string>>(this.appConfig.backEnd + 'user/roles').subscribe(resp => {
+    /*this.http.get<Array<string>>(this.appConfig.backEnd + 'user/roles').subscribe(resp => {
         this.roles = resp;
       },
-      err => console.log(err));
+      err => console.log(err));*/
   }
 
   findAll(): Array<User> {

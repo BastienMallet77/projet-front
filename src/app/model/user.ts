@@ -13,7 +13,7 @@ export class User {
   password: string;
   birthDate: Date;
   // TODO role ;
-  role: string;
+  //role: string;
   commercial: boolean;
   isDesactivated: boolean;
   programs: Program;
