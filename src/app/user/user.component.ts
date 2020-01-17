@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {User} from '../model/user';
 import {UserHttpService} from './user-http.service';
+import {ProgramHttpService} from '../program/program-http.service';
+import {Program} from '../model/program';
 
 @Component({
   selector: 'user',
@@ -11,8 +13,8 @@ export class UserComponent implements OnInit {
 
   currentUser: User = null;
   // TODO à mettre dans le constructeur
-  // private programService : ProgramHttpService, private inProgressService: InProgressHttpService, private degreeService: DegreeHttpService
-  constructor(private userService: UserHttpService) {
+  // , private inProgressService: InProgressHttpService, private degreeService: DegreeHttpService
+  constructor(private userService: UserHttpService, private programService: ProgramHttpService) {
 
   }
 
@@ -22,9 +24,9 @@ export class UserComponent implements OnInit {
   list(){
     return this.userService.findAll();
   }
-  /*roles(){
+  roles(){
     return this.userService.roles;
-  }*/
+  }
 
   add(){
     this.currentUser = new User();
@@ -34,6 +36,10 @@ export class UserComponent implements OnInit {
     this.userService.findById(id).subscribe(resp => {
       this.currentUser = resp;
       //TODO les algo pour les mapping avec le programme/inprogress et le degree
+      if (!this.currentUser.programs) {
+        this.currentUser.programs = new Program();
+      }
+
     }, err => {
       console.log(err);
     });

@@ -14,14 +14,14 @@ export class InProgressHttpService {
 
   inProgresses: Array<InProgress>;
 
-  constructor(private appConfig: AppConfigService, private programService: ProgramHttpService,
-              private userService: UserHttpService, private http: HttpClient) {
+  constructor(private appConfig: AppConfigService/*, private programService: ProgramHttpService,
+              private userService: UserHttpService*/, private http: HttpClient) {
     this.load();
   }
 
   load() {
     console.log("load");
-    this.http.get<Array<InProgress>>(this.appConfig.backEnd + 'in-progresses').subscribe(resp => {
+    this.http.get<Array<InProgress>>(this.appConfig.backEnd + 'inprogress').subscribe(resp => {
         this.inProgresses = resp;
       },
       err => console.log(err));
@@ -35,7 +35,7 @@ export class InProgressHttpService {
   }
 
   findById(id: number): Observable<InProgress> {
-    return this.http.get<InProgress>(this.appConfig.backEnd + 'in-progresses/' + id);
+    return this.http.get<InProgress>(this.appConfig.backEnd + 'inprogress/' + id);
   }
 
   save(inProgress: InProgress) {
@@ -47,11 +47,11 @@ export class InProgressHttpService {
         inProgress.progInProgress = null;
       }
       if (!inProgress.id) {
-        this.http.post<InProgress>(this.appConfig.backEnd + 'in-progresses', inProgress).subscribe(resp => {
+        this.http.post<InProgress>(this.appConfig.backEnd + 'inprogress', inProgress).subscribe(resp => {
           this.load();
         }, err => console.log(err));
       } else {
-        this.http.put<InProgress>(this.appConfig.backEnd + 'in-progresses/' + inProgress.id, inProgress).subscribe(resp => {
+        this.http.put<InProgress>(this.appConfig.backEnd + 'inprogress/' + inProgress.id, inProgress).subscribe(resp => {
           this.load();
         }, err => console.log(err));
       }
@@ -59,7 +59,7 @@ export class InProgressHttpService {
   }
 
   delete(id: number) {
-    this.http.delete<InProgress>(this.appConfig.backEnd + 'in-progresses/' + id).subscribe(resp => {
+    this.http.delete<InProgress>(this.appConfig.backEnd + 'inprogress/' + id).subscribe(resp => {
       this.load();
     }, err => console.log(err));
   }
