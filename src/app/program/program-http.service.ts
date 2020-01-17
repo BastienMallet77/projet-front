@@ -3,6 +3,10 @@ import {Program} from '../model/program';
 import {AppConfigService} from '../app-config.service';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
+import {UserHttpService} from '../user/user-http.service';
+import {SessionHttpService} from '../session/session-http.service';
+import {LevelHttpService} from '../level/level-http.service';
+import {SportHttpService} from '../sport/sport-http.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +15,7 @@ export class ProgramHttpService {
 
   programs: Array<Program>;
 
-  constructor(private appConfig: AppConfigService, private http: HttpClient)
+  constructor(private appConfig: AppConfigService, private userService: UserHttpService, private sportService: SportHttpService, private levelService: LevelHttpService, /* private inProgressService: InProgressHttpService, TODO*/ private http: HttpClient)
   {
     this.load();
   }

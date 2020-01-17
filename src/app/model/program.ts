@@ -1,6 +1,9 @@
 import {User} from './user';
-// import {Session} from './session';
+import {Session} from './session';
 import {InProgress} from './inProgress';
+import {Sport} from './sport';
+import {Specialisation} from './specialisation';
+import {Level} from './level';
 
 export class Program{
   id: number;
@@ -14,14 +17,14 @@ export class Program{
   isDone: boolean;
 
   users: Array<User> = new Array<User>();
-  // sessions: Array<Session> = new Array<Session>();
-  // sport: Sport;
-  // level: Level;
-  // specialisation: Specialisation; todo
-  inprogress: InProgress;
+  sessions: Array<Session> = new Array<Session>();
+  sport: Sport;
+  level: Level;
+  specialisation: Specialisation;
+  inProgress: InProgress;
 
 
-  constructor(id?: number, version?: number, name?: string, description?: string, duration?: number, nbValidation?: number, creationDate?: Date, isValidated?: boolean, isDone?: boolean, users?: Array<User>, inprogress?: InProgress) {
+  constructor(id?: number, version?: number, name?: string, description?: string, duration?: number, nbValidation?: number, creationDate?: Date, isValidated?: boolean, isDone?: boolean, users?: Array<User>,sessions?: Array<Session>, sport?: Sport, level?: Level, specialisation?: Specialisation, inProgress?: InProgress) {
     this.id = id;
     this.version = version;
     this.name = name;
@@ -32,10 +35,10 @@ export class Program{
     this.isValidated = isValidated;
     this.isDone = isDone;
     this.users = users;
-    // this.sessions = sessions;
-    // this.sport = sport;
-    // this.level = level;
-    // this.specialisation = specialisation;
-    this.inprogress = inprogress;
+    this.sessions = sessions;
+    this.sport = sport;
+    this.level = level;
+    this.specialisation = specialisation;
+    this.inProgress = inProgress;
   }
 }
