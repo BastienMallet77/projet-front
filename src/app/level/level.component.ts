@@ -26,9 +26,7 @@ export class LevelComponent implements OnInit {
   }
 
   sports() {
-
     return this.sportHttpService.findAll();
-
   }
   specialisations() {
     return this.specialisationHttpService.findAll();
