@@ -1,45 +1,49 @@
-<ul class="nav nav-pills">
-  <li class="nav-item">
-    <a class="nav-link" [routerLink]="['/home']" routerLinkActive="active">Accueil</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" [routerLink]="['/board']" routerLinkActive="active">Tableau de bord</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" [routerLink]="['/sport']" routerLinkActive="active">Liste des sports</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" [routerLink]="['/auth']" routerLinkActive="active">Se déconnecter</a>
-  </li>
-  <li class="nav-item">
-  <a class="dropdown-item" [routerLink]="['/degrees']" routerLinkActive="active">Degree</a>
-  </li>
-  <li class="nav-item">
-    <a class="dropdown-item" [routerLink]="['/exercices']" routerLinkActive="active">Exercice</a>
-  </li>
-  <li class="nav-item">
-    <a class="dropdown-item" [routerLink]="['/in-progresses']" routerLinkActive="active">InProgress</a>
-  </li>
-  <li class="nav-item">
-    <a class="dropdown-item" [routerLink]="['/levels']" routerLinkActive="active">Level</a>
-  </li>
-  <li class="nav-item">
-    <a class="dropdown-item" [routerLink]="['/programs']" routerLinkActive="active">Program</a>
-  </li>
-  <li class="nav-item">
-    <a class="dropdown-item" [routerLink]="['/sessions']" routerLinkActive="active">Session</a>
-  </li>
-  <li class="nav-item">
-    <a class="dropdown-item" [routerLink]="['/specialisations']" routerLinkActive="active">Specialisation</a>
-  </li>
-  <li class="nav-item">
-    <a class="dropdown-item" [routerLink]="['/sports']" routerLinkActive="active">Sport</a>
-  </li>
-  <li class="nav-item">
-    <a class="dropdown-item" [routerLink]="['/users']" routerLinkActive="active">User</a>
-  </li>
-</ul>
 
 <div class="container-fluid">
+
+  <div class="jumbotron jumbotron-fluid" >
+    <div class="container" style="text-align: center">
+      <h1 class="display-4" style="color: white" >It's Training Day</h1>
+      <p class="lead" style="color:antiquewhite;">Le premier site de coaching gratuit, enfin pour le moment  <i class="far fa-smile-wink"></i></p>
+    </div>
+  </div>
+  <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+    <button type="button" class="btn btn-secondary" [routerLink]="['/home']" routerLinkActive="active">Acceuil</button>
+    <button type="button" class="btn btn-secondary" [routerLink]="['/board']" routerLinkActive="active">Tableau de Bord</button>
+
+    <div class="btn-group" role="group">
+      <div ngbDropdown class="d-inline-block">
+        <button class="btn btn-secondary" id="dropdownBasic1" ngbDropdownToggle>Listes</button>
+        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+          <button ngbDropdownItem [routerLink]="['/users']" routerLinkActive="active">Utilisateurs</button>
+          <button ngbDropdownItem [routerLink]="['/sports']" routerLinkActive="active">Sports</button>
+          <button ngbDropdownItem [routerLink]="['/levels']" routerLinkActive="active">Niveaux</button>
+          <button ngbDropdownItem [routerLink]="['/specialisations']" routerLinkActive="active">Specialisations</button>
+          <button ngbDropdownItem [routerLink]="['/programs']" routerLinkActive="active">Programmes</button>
+          <button ngbDropdownItem [routerLink]="['/sessions']" routerLinkActive="active">Sessions</button>
+          <button ngbDropdownItem [routerLink]="['/exercices']" routerLinkActive="active">Exercices</button>
+          <button ngbDropdownItem [routerLink]="['/in-progresses']" routerLinkActive="active">Exercice en cours</button>
+          <button ngbDropdownItem [routerLink]="['/degrees']" routerLinkActive="active">Certificats</button>
+
+        </div>
+      </div>
+    </div>
+    <button type="button" class="btn btn-secondary">Se déconnecter</button>
+
+  </div>
+  <fa name="check" ></fa>
+  <i class="fab fa-accessible-icon"></i>
   <router-outlet></router-outlet>
+
 </div>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12" style="text-align: end">
+        ©  Copyright 2020
+      </div>
+    </div>
+  </div>
+</footer>
