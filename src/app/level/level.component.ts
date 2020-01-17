@@ -3,6 +3,12 @@ import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {LevelHttpService} from "./level-http.service";
 import {LevelService} from "./level.service";
 import {Level} from "../model/level";
+import {SportHttpService} from "../sport/sport-http.service";
+import {SpecialisationHttpService} from "../specialisation/specialisation-http.service";
+import {ProgramHttpService} from "../program/program-http.service";
+import {Sport} from "../model/sport";
+import {Specialisation} from "../model/specialisation";
+import {Program} from "../model/program";
 
 @Component({
   selector: 'level',
@@ -13,10 +19,22 @@ export class LevelComponent implements OnInit {
   currentLevel: Level = null;
   modalLevel: Level = null;
 
-  constructor(private modalService: NgbModal, private levelHttpService: LevelHttpService) {
+  constructor(private modalService: NgbModal, private levelHttpService: LevelHttpService, private sportHttpService: SportHttpService, private specialisationHttpService: SpecialisationHttpService, private programHttpService: ProgramHttpService) {
   }
 
   ngOnInit() {
+  }
+
+  sports() {
+
+    return this.sportHttpService.findAll();
+
+  }
+  specialisations() {
+    return this.specialisationHttpService.findAll();
+  }
+  programs() {
+    return this.programHttpService.findAll();
   }
 
   list() {
@@ -25,6 +43,9 @@ export class LevelComponent implements OnInit {
 
   add() {
     this.currentLevel = new Level();
+    this.currentLevel.programs = new Array<Program>();
+    this.currentLevel.specialisations = new Array<Specialisation>();
+    this.currentLevel.sports = new Array<Sport>();
   }
 
   detail(content, id: number) {
@@ -39,6 +60,19 @@ export class LevelComponent implements OnInit {
   edit(id: number) {
     this.levelHttpService.findById(id).subscribe(resp => {
       this.currentLevel = resp;
+
+      if (!this.currentLevel.sports) {
+        this.currentLevel.sports = new Array<Sport>();
+      }
+
+      if (!this.currentLevel.specialisations) {
+        this.currentLevel.specialisations = new Array<Specialisation>();
+      }
+
+      if (!this.currentLevel.programs) {
+        this.currentLevel.programs = new Array<Program>();
+      }
+
     }, error => {
       console.log(error);
     });
@@ -57,8 +91,5 @@ export class LevelComponent implements OnInit {
     this.currentLevel = null;
   }
 
- next(level: Level) {
-    this.levelHttpService.next(level);
-  }
 
 }

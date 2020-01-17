@@ -7,9 +7,9 @@ export class Level {
   version: number;
   levelName: string;
   levelDescription: string;
-  sports: Array<Sport> = new Array<Sport>();
-  specialisations: Array<Specialisation> = new Array<Specialisation>();
-  programs: Array<Program> = new Array<Program>();
+  sports: Array<Sport>;
+  specialisations: Array<Specialisation>;
+  programs: Array<Program>;
 
   constructor(id?: number, version?: number, levelName?: string, levelDescription?: string, sports?: Array<Sport>, specialisations?: Array<Specialisation>, programs?: Array<Program>) {
     this.id = id;
