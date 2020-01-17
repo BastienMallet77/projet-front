@@ -7,8 +7,8 @@
     <th scope="col">nom</th>
     <th scope="col">description</th>
     <th scope="col">durée</th>
-    <th scope="col">nombre de validation</th>
     <th scope="col">date de création</th>
+    <th scope="col">Affichage inProgress</th>
     <th scope="col">est-il validé</th>
     <th scope="col">est-il terminé</th>
   </tr>
@@ -20,11 +20,10 @@
     <th>{{program.name}}</th>
     <th>{{program.description}}</th>
     <th>{{program.duration}}</th>
-    <th>{{program.creationDate}}</th>
-    <th>{{program.inprogress}}</th>
+    <th>{{program.creationDate | date:'dd/MM/yyyy'}}</th>
+    <th>{{program.inProgress}}</th>
     <th>{{program.isValidated}}</th>
     <th>{{program.isDone}}</th>
-    <th>{{program.nbValidation}}</th>
     <td>
       <div class="btn-group btn-group-sm"></div>
       <button type="button" class="btn btn-info" (click)="edit(program.id)">
@@ -55,10 +54,6 @@
     <div class="form-group">
       <label for="duration">Durée</label>
       <input type="number" class="form-control" placeholder="Entrez la durée du programme" id="duration" [(ngModel)]="currentProgram.duration">
-    </div>
-    <div class="form-group">
-      <label for="nbValidation">Nombre de conscentement de la part des autres coachs</label>
-      <input type="number" class="form-control" placeholder="Entrez le nombre de fois que le programme à été approuvé par d'autres coachs" id="nbValidation" [(ngModel)]="currentProgram.nbValidation">
     </div>
     <div class="form-group">
       <label for="creationDate">Date de création du programme</label>

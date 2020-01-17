@@ -21,10 +21,10 @@ export class Program{
   sport: Sport;
   level: Level;
   specialisation: Specialisation;
-  inprogress: InProgress;
+  inProgress: InProgress;
 
 
-  constructor(id?: number, version?: number, name?: string, description?: string, duration?: number, nbValidation?: number, creationDate?: Date, isValidated?: boolean, isDone?: boolean, users?: Array<User>,sessions?: Array<Session>, sport?: Sport, level?: Level, specialisation?: Specialisation, inprogress?: InProgress) {
+  constructor(id?: number, version?: number, name?: string, description?: string, duration?: number, nbValidation?: number, creationDate?: Date, isValidated?: boolean, isDone?: boolean, users?: Array<User>,sessions?: Array<Session>, sport?: Sport, level?: Level, specialisation?: Specialisation, inProgress?: InProgress) {
     this.id = id;
     this.version = version;
     this.name = name;
@@ -39,6 +39,6 @@ export class Program{
     this.sport = sport;
     this.level = level;
     this.specialisation = specialisation;
-    this.inprogress = inprogress;
+    this.inProgress = inProgress;
   }
 }
