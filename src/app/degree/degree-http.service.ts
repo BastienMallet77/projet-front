@@ -36,6 +36,12 @@ export class DegreeHttpService {
 
   save(degree: Degree) {
     if (degree) {
+      if(degree.sport && !degree.sport.id){
+        degree.sport=null;
+      }
+      if(degree.usercertified && !degree.usercertified.id){
+        degree.usercertified = null;
+      }
 
       if (!degree.id) {
         this.http.post<Degree>(this.appConfig.backEnd + 'degree', degree).subscribe(resp => {

@@ -16,8 +16,8 @@
         <th scope="row"  style="cursor: pointer">{{degree.id}}</th>
         <td >{{degree.version}}</td>
         <td >{{degree.certificate}}</td>
-        <td >{{degree.usercertified}}</td>
-        <td >{{degree.sport}}</td>
+        <td >{{degree.usercertified?.lastName}}</td>
+        <td >{{degree.sport?.sportName}}</td>
 
         <td>
           <div class="btn-group btn-group-sm">
@@ -47,12 +47,18 @@
         <input class="form-check-input" type="checkbox" [(ngModel)]="currentDegree.certificate"> Certifié
       </label>
       <div class="form-group">
-        <label for="sport">Coach:</label>
+        <label for="sport">Sport:</label>
         <select class="form-control"  id="sport" [(ngModel)]="currentDegree.sport.id">
           <option value="{{sport.id}}" *ngFor="let sport of sports()">{{sport.sportName}}</option>
         </select>
       </div>
-  </div>
+      <div class="form-group">
+        <label for="Coach">Coach:</label>
+        <select class="form-control"  id="Coach" [(ngModel)]="currentDegree.usercertified.id">
+          <option value="{{user.id}}" *ngFor="let user of users()">{{user.firstName}}{{user.lastName}}</option>
+        </select>
+      </div>
+    </div>
   <div class="card-footer">
     <div class="btn-group btn-group-lg">
       <button type="button" class="btn btn-primary" (click)="save()">

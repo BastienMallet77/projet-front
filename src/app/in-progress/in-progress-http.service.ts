@@ -14,8 +14,8 @@ export class InProgressHttpService {
 
   inProgresses: Array<InProgress>;
 
-  constructor(private appConfig: AppConfigService/*, private programService: ProgramHttpService,
-              private userService: UserHttpService*/, private http: HttpClient) {
+  constructor(private appConfig: AppConfigService,
+               private http: HttpClient) {
     this.load();
   }
 
