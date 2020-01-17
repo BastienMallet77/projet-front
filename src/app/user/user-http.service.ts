@@ -3,6 +3,7 @@ import {User} from '../model/user';
 import {AppConfigService} from '../app-config.service';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
+import {InProgressHttpService} from '../in-progress/in-progress-http.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,8 +13,8 @@ export class UserHttpService {
   users: Array<User>;
   roles: Array<String>;
   // TODO à mettre dans le constructeur
-  // , private programService : ProgramHttpService, private inProgressService: InProgressHttpService, private degreeService: DegreeHttpService
-  constructor(private appConfig: AppConfigService, private http: HttpClient) {
+  // , private programService : ProgramHttpService, private degreeService: DegreeHttpService
+  constructor(private appConfig: AppConfigService, private inProgressService: InProgressHttpService, private http: HttpClient) {
     this.load();
     this.loadRoles();
   }
