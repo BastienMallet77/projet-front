@@ -87,10 +87,8 @@
              [ngModel]="currentUser.birthDate | date:'yyyy-MM-dd'" (ngModelChange)="currentUser.birthDate=$event">
     </div>
     <label for="role">Role:</label>
-    <select class="form-control" id="role" [(ngModel)]="currentUser.role">
-      <option value="user">Utilisateur</option>
-      <option value="coach">Coach</option>
-      <option value="admin">Admin</option>
+    <select class="form-control" placeholder="Entrer la civilité" id="role" [(ngModel)]="currentUser.role">
+      <option value="{{role}}" *ngFor="let role of roles()">{{role}}</option>
     </select>
     <!--    TODO faire matcher le role avec l'enum en base -->
     <!--    <select class="form-control" placeholder="Entrer la civilité" id="civilite" [(ngModel)]="currentFormateur.civilite">-->
