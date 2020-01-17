@@ -59,7 +59,7 @@ export class InProgressHttpService {
   }
 
   delete(id: number) {
-    this.http.delete<InProgress>(this.appConfig.backEnd + 'in-progresses/' + id).subscribe(resp => {
+    this.http.delete<InProgress>(this.appConfig.backEnd + 'inprogress/' + id).subscribe(resp => {
       this.load();
     }, err => console.log(err));
   }
