@@ -10,7 +10,7 @@
             <p class="card-text"> {{level.levelDescription}} </p>
           </div>
           <div class="card-footer">
-            <small>  <button type="button" class="btn btn-success btn-block" (click)="next(level.id)"> {{level.levelName}} </button> </small>
+            <small>  <button type="button" class="btn btn-success btn-block"> {{level.levelName}} </button> </small>
           </div>
           <div class="card-footer">
             <!-- TODO: ngif user=admin!-->
@@ -47,26 +47,31 @@
       <label for="desc">Description:</label>
       <input type="text" class="form-control" placeholder="Renseigner la description du niveau" id="desc" [(ngModel)]="currentLevel.levelDescription">
     </div>
-<!--
+
+
+
     <div class="form-group">
       <label for="sport">Sport:</label>
-      <select class="form-control" placeholder="Entrer le sport" id="sport" [(ngModel)]="currentLevel.sports.sportName">
-        <option value="{{spo}}" *ngFor="let spo of sports()">{{spo}}</option>
+      <select class="form-control" placeholder="Entrer le sport" id="sport" [(ngModel)]="currentLevel.sports">
+        <option value="{{spo.sportName}}" *ngFor="let spo of sports()">{{spo.sportName}}</option>
       </select>
     </div>
+
+
     <div class="form-group">
       <label for="spec">Spécialisation:</label>
-      <select class="form-control" placeholder="Entrer la spécialisation" id="spec" [(ngModel)]="currentLevel.specialisations.speName">
-        <option value="{{spe}}" *ngFor="let spe of specialisations()">{{spe}}</option>
+      <select class="form-control" placeholder="Entrer la spécialisation" id="spec" [(ngModel)]="currentLevel.specialisations">
+        <option value="{{spe.speName}}" *ngFor="let spe of specialisations()">{{spe.speName}}</option>
       </select>
     </div>
     <div class="form-group">
       <label for="prog">Programme:</label>
-      <select class="form-control" placeholder="Entrer le programme" id="prog" [(ngModel)]="currentLevel.programs.name">
-        <option value="{{progs}}" *ngFor="let progs of programs()">{{progs}}</option>
+      <select class="form-control" placeholder="Entrer le programme" id="prog" [(ngModel)]="currentLevel.programs">
+        <option value="{{progs.name}}" *ngFor="let progs of programs()">{{progs.name}}</option>
       </select>
     </div>
-    -->
+
+
   </div>
   <div class="card-footer">
     <div class="btn-group btn-group-lg">

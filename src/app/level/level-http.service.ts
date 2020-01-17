@@ -37,6 +37,9 @@ export class LevelHttpService {
 
   save(level: Level) {
     if (level) {
+
+
+
       if (!level.id) {
         this.http.post<Level>(this.appConfig.backEnd + 'level', level).subscribe(resp => {
           this.load();
@@ -53,10 +56,6 @@ export class LevelHttpService {
     this.http.delete<Level>(this.appConfig.backEnd + 'level/' + id).subscribe(resp => {
       this.load();
     }, err => console.log(err));
-  }
-
-  next(level: Level) {
-    //TODO lien vers la page suivante une fois le niveau choisi
   }
 
 }
