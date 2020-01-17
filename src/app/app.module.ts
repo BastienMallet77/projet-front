@@ -18,6 +18,7 @@ import { SpecialisationComponent } from './specialisation/specialisation.compone
 import { SportComponent } from './sport/sport.component';
 import { UserComponent } from './user/user.component';
 import { DashboardCoachComponent } from './dashboard-coach/dashboard-coach.component';
+import { ListSportUserComponent } from './list-sport-user/list-sport-user.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { DashboardCoachComponent } from './dashboard-coach/dashboard-coach.compo
     SpecialisationComponent,
     SportComponent,
     UserComponent,
-    DashboardCoachComponent
+    DashboardCoachComponent,
+    ListSportUserComponent
   ],
   imports: [
     BrowserModule,

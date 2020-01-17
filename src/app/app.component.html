@@ -10,6 +10,7 @@
   <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
     <button type="button" class="btn btn-secondary" [routerLink]="['/home']" routerLinkActive="active">Accueil</button>
     <button type="button" class="btn btn-secondary" [routerLink]="['/board']" routerLinkActive="active">Tableau de Bord</button>
+    <button type="button" class="btn btn-secondary" [routerLink]="['/sportUser']" routerLinkActive="active">Liste des sports</button>
 
     <div class="btn-group" role="group">
       <div ngbDropdown class="d-inline-block">
@@ -31,8 +32,6 @@
     <button type="button" class="btn btn-secondary">Se déconnecter</button>
 
   </div>
-  <fa name="check" ></fa>
-  <i class="fab fa-accessible-icon"></i>
   <router-outlet></router-outlet>
 
 </div>
