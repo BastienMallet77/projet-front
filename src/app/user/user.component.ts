@@ -3,6 +3,9 @@ import {User} from '../model/user';
 import {UserHttpService} from './user-http.service';
 import {ProgramHttpService} from '../program/program-http.service';
 import {Program} from '../model/program';
+import {InProgress} from '../model/inProgress';
+import {Degree} from '../model/degree';
+import {InProgressHttpService} from '../in-progress/in-progress-http.service';
 
 @Component({
   selector: 'user',
@@ -12,9 +15,9 @@ import {Program} from '../model/program';
 export class UserComponent implements OnInit {
 
   currentUser: User = null;
-  // TODO à mettre dans le constructeur
-  // , private inProgressService: InProgressHttpService, private degreeService: DegreeHttpService
-  constructor(private userService: UserHttpService, private programService: ProgramHttpService) {
+  // TODO ?? à mettre dans le constructeur ??
+  // , private degreeService: DegreeHttpService, private inProgressService: InProgressHttpService, private programService: ProgramHttpService
+  constructor(private userService: UserHttpService) {
 
   }
 
@@ -35,11 +38,16 @@ export class UserComponent implements OnInit {
   edit(id: number){
     this.userService.findById(id).subscribe(resp => {
       this.currentUser = resp;
-      //TODO les algo pour les mapping avec le programme/inprogress et le degree
+
       if (!this.currentUser.programs) {
         this.currentUser.programs = new Program();
       }
-
+      if (!this.currentUser.inProgress) {
+        this.currentUser.inProgress = new InProgress();
+      }
+      if (!this.currentUser.degreesCoach) {
+        this.currentUser.degreesCoach = new Degree();
+      }
     }, err => {
       console.log(err);
     });

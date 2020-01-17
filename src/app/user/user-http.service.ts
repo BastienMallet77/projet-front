@@ -13,6 +13,7 @@ export class UserHttpService {
 
   users: Array<User>;
   roles: Array<String>;
+
   // TODO !! Si rajouté au constructeur : Circular
   // , private programService : ProgramHttpService
   constructor(private appConfig: AppConfigService, private inProgressService: InProgressHttpService, private degreeService: DegreeHttpService, private http: HttpClient) {
@@ -26,8 +27,9 @@ export class UserHttpService {
     },
       err => console.log(err));
   }
-  loadRoles() {
-    /* TODO this.http.get<Array<string>>(this.appConfig.backEnd + 'user/roles').subscribe(resp => {
+  loadRoles()  {
+    /*TODO !! Fait planter
+    this.http.get<Array<string>>(this.appConfig.backEnd + 'user/roles').subscribe(resp => {
         this.roles = resp;
       },
       err => console.log(err));*/
