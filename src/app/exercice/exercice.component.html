@@ -8,7 +8,7 @@
         <th scope="col">Version</th>
         <th scope="col">Nom</th>
         <th scope="col">Texte</th>
-        <th scope="col">Session</th>>
+        <th scope="col">Session</th>
       </tr>
       </thead>
       <tbody>
@@ -17,11 +17,11 @@
         <td (click)="detail(content, exercice.id)" style="cursor: pointer">{{exercice.version}}</td>
         <td (click)="detail(content, exercice.id)" style="cursor: pointer">{{exercice.exerciceName}}</td>
         <td (click)="detail(content, exercice.id)" style="cursor: pointer">{{exercice.exerciceText}}</td>
-        <td (click)="detail(content, exercice.id)" style="cursor: pointer">{{exercice.session}}</td>
+        <td (click)="detail(content, exercice.id)" style="cursor: pointer">{{exercice.session.name}}</td>
         <td>
           <div class="btn-group btn-group-sm">
             <button type="button" class="btn btn-info" (click)="edit(exercice.id)">
-              <fa name="pencil"></fa>
+              <i class="fas fa-pencil-alt"></i>
             </button>
             <button type="button" class="btn btn-danger" (click)="delete(exercice.id)">
               <fa name="trash" inverse="true"></fa>

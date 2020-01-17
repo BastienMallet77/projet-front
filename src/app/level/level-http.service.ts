@@ -8,7 +8,6 @@ import {Observable} from "rxjs";
   providedIn: 'root'
 })
 export class LevelHttpService {
-
   levels: Array<Level>;
 
   constructor(private appConfig: AppConfigService, private http: HttpClient) {

@@ -17,15 +17,15 @@
       <tr *ngFor="let inProgress of list()">
         <th>{{ inProgress.id }}</th>
         <td>{{inProgress.version}}</td>
-        <td>{{inProgress.beginingDate}}</td>
-        <td>{{inProgress.endDate}}</td>
+        <td>{{inProgress.beginingDate | date:'dd/MM/yyyy'}}</td>
+        <td>{{inProgress.endDate | date:'dd/MM/yyyy'}}</td>
         <td>{{inProgress.progression}}</td>
-        <td>{{inProgress.userProgressing.id}}</td>
+        <td>{{inProgress.userProgressing?.id}}</td>
         <!--<td>{{inProgress.progInProgress}}</td>-->
         <td>
           <div class="btn-group btn-group-sm">
             <button type="button" class="btn btn-info" (click)="edit(inProgress.id)">
-              <fa name="pencil"></fa>
+              <i class="fas fa-pencil-alt"></i>
             </button>
             <button type="button" class="btn btn-danger" (click)="delete(inProgress.id)">
               <fa name="trash" inverse="true"></fa>
@@ -103,8 +103,8 @@
     </div>
     <div class="form-group">
       <label for="userProgressing">Id de l'utilisateur :</label>
-      <select class="form-control" placeholder="Choisir l'utilisateur'" id="userProgressing" [(ngModel)]="currentInProgress.userProgressing.userName">
-        <option value="{{form.userName}}" *ngFor="let form of users()">{{form.userName}}</option>
+      <select class="form-control" placeholder="Choisir l'utilisateur'" id="userProgressing" [(ngModel)]="currentInProgress.userProgressing.id">
+        <option value="{{us.id}}" *ngFor="let us of users()">{{us.userName}}</option>
       </select>
     </div>
     <!--<div class="form-group">
