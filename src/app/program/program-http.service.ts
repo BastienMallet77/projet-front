@@ -35,7 +35,16 @@ export class ProgramHttpService {
 
   findById(id: number): Observable<Program>
   {
-    return this.http.get<Program>(this.appConfig.backEnd + 'program/' + id);
+    for (const program of this.programs)
+    {
+      if (program.id == id)
+      {
+        {
+          return this.http.get<Program>(this.appConfig.backEnd + 'program/' + id);
+        }
+      }
+    }
+    return null;
   }
 
   save(program: Program)
@@ -50,6 +59,13 @@ export class ProgramHttpService {
           this.load();
         }, err => console.log(err));
       }
+      else
+        {
+          this.http.put<Program>(this.appConfig.backEnd + 'program/' + program.id, program).subscribe(resp =>
+          {
+            this.load();
+          }, error => console.log(error));
+        }
     }
   }
 

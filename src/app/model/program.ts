@@ -7,7 +7,7 @@ import {Level} from './level';
 
 export class Program{
   id: number;
-  version: number = 0;
+  version: number;
   name: string;
   description: string;
   duration: number;
