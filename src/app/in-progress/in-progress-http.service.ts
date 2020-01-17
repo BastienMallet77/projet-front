@@ -20,17 +20,13 @@ export class InProgressHttpService {
   }
 
   load() {
-    console.log("load");
     this.http.get<Array<InProgress>>(this.appConfig.backEnd + 'inprogress').subscribe(resp => {
         this.inProgresses = resp;
       },
       err => console.log(err));
-    console.log("loaded");
   }
 
   findAll(): Array<InProgress> {
-    console.log("findAll");
-    console.log(this.inProgresses);
     return this.inProgresses;
   }
 
@@ -59,7 +55,7 @@ export class InProgressHttpService {
   }
 
   delete(id: number) {
-    this.http.delete<InProgress>(this.appConfig.backEnd + 'in-progresses/' + id).subscribe(resp => {
+    this.http.delete<InProgress>(this.appConfig.backEnd + 'inprogress/' + id).subscribe(resp => {
       this.load();
     }, err => console.log(err));
   }
