@@ -10,16 +10,24 @@ import {Observable} from 'rxjs';
 export class UserHttpService {
 
   users: Array<User>;
+  roles: Array<String>;
   // TODO à mettre dans le constructeur
   // , private programService : ProgramHttpService, private inProgressService: InProgressHttpService, private degreeService: DegreeHttpService
   constructor(private appConfig: AppConfigService, private http: HttpClient) {
     this.load();
+    this.loadRoles();
   }
 
   load(){
     this.http.get<Array<User>>(this.appConfig.backEnd + 'user').subscribe(resp => {
       this.users = resp;
     },
+      err => console.log(err));
+  }
+  loadRoles() {
+    this.http.get<Array<string>>(this.appConfig.backEnd + 'user/roles').subscribe(resp => {
+        this.roles = resp;
+      },
       err => console.log(err));
   }
 
