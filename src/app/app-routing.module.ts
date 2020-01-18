@@ -11,6 +11,7 @@ import {SpecialisationComponent} from './specialisation/specialisation.component
 import {SportComponent} from './sport/sport.component';
 import {UserComponent} from './user/user.component';
 import {ListSportUserComponent} from './list-sport-user/list-sport-user.component';
+import {InfoUserComponent} from './info-user/info-user.component';
 
 
 const routes: Routes = [
@@ -25,6 +26,7 @@ const routes: Routes = [
   {path: 'sports', component: SportComponent},
   {path: 'users', component: UserComponent},
   {path: 'sportUser', component: ListSportUserComponent},
+  {path: 'infoUser', component: InfoUserComponent},
 ];
 
 @NgModule({
