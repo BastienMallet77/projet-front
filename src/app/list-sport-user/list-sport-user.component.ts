@@ -7,13 +7,13 @@ import {SportHttpService} from '../sport/sport-http.service';
   styleUrls: ['./list-sport-user.component.css']
 })
 export class ListSportUserComponent implements OnInit {
-
+  search: string = "";
   constructor(private sportService: SportHttpService) { }
 
   ngOnInit() {
   }
 
   list() {
-    return this.sportService.findAll();
+    return this.sportService.findAll().filter(s =>s.sportName.indexOf(this.search) != -1);
   }
 }
