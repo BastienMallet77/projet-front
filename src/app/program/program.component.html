@@ -1,4 +1,8 @@
-<div>Liste des programmes</div>
+<div class="card-footer">
+  <div>
+    <div class="card mt-5">
+      <div class="card-header bg-primary text-white">Liste des programmes</div>
+      <div class="card-body">
 <table class="table table-hover">
   <thead>
   <tr>
@@ -11,6 +15,7 @@
     <th scope="col">Affichage inProgress</th>
     <th scope="col">est-il validé</th>
     <th scope="col">est-il terminé</th>
+    <th scope="col"></th>
   </tr>
   </thead>
   <tbody>
@@ -36,9 +41,15 @@
   </tr>
   </tbody>
 </table>
-<button type="button" class="btn btn-success btn-lg" (click)="add()">
-  <fa name="plus"></fa>
-</button>
+        <div class="card-footer">
+          <button type="button" class="btn btn-success btn-lg" (click)="add()">
+            <fa name="plus"></fa>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 
 <div class="card mt-3" *ngIf="currentProgram">
   <div class="card-header bg-primary text-white">Edition du programme</div>
@@ -79,4 +90,4 @@
     </div>
   </div>
 </div>
-
+  </div>
