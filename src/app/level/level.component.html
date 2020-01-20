@@ -50,7 +50,7 @@
     <div class="form-group">
       <label for="sport">Sport:</label>
       <select class="form-control" placeholder="Entrer le sport" id="sport"
-              [(ngModel)]="currentLevel.sports">
+              [(ngModel)]="currentLevel.sport">
         <option value="{{spo.id}}" *ngFor="let spo of sports()">{{spo.sportName}}</option>
       </select>
     </div>

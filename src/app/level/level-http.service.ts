@@ -37,8 +37,6 @@ export class LevelHttpService {
   save(level: Level) {
     if (level) {
 
-
-
       if (!level.id) {
         this.http.post<Level>(this.appConfig.backEnd + 'level', level).subscribe(resp => {
           this.load();
