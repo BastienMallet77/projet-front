@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {LevelHttpService} from "./level-http.service";
-import {LevelService} from "./level.service";
 import {Level} from "../model/level";
 import {SportHttpService} from "../sport/sport-http.service";
 import {SpecialisationHttpService} from "../specialisation/specialisation-http.service";
