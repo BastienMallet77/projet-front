@@ -18,6 +18,10 @@ import { SpecialisationComponent } from './specialisation/specialisation.compone
 import { SportComponent } from './sport/sport.component';
 import { UserComponent } from './user/user.component';
 import { DashboardCoachComponent } from './dashboard-coach/dashboard-coach.component';
+import { ListSportUserComponent } from './list-sport-user/list-sport-user.component';
+import { ListSpecSportComponent } from './list-spec-sport/list-spec-sport.component';
+import { ListLevelSportComponent } from './list-level-sport/list-level-sport.component';
+import { InfoUserComponent } from './info-user/info-user.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +37,11 @@ import { DashboardCoachComponent } from './dashboard-coach/dashboard-coach.compo
     SpecialisationComponent,
     SportComponent,
     UserComponent,
-    DashboardCoachComponent
+    DashboardCoachComponent,
+    ListSportUserComponent,
+    ListSpecSportComponent,
+    ListLevelSportComponent,
+    InfoUserComponent
   ],
   imports: [
     BrowserModule,

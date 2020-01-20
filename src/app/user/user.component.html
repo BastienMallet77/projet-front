@@ -1,7 +1,9 @@
 <div class="card-footer">
-<div >
+<div>
   <div class="card mt-5">
-    <div class="card-header bg-primary text-white">Liste des utilisateurs</div>
+    <div class="card-header bg-primary text-white">Liste des utilisateurs
+    <input style="margin-left:830px ;border-radius: 10px" placeholder="Recherche" [(ngModel)]="search"></div>
+
     <div class="card-body">
       <table class="table table-hover">
         <thead>
@@ -39,7 +41,7 @@
           <td>
             <div class="btn-group btn-group-sm">
               <button type="button" class="btn btn-info" (click)="edit(user.id)">
-                <fa name="pencil"></fa>
+                <i class="fas fa-pencil-alt"></i>
               </button>
               <button type="button" class="btn btn-danger" (click)="delete(user.id)">
                 <fa name="trash" inverse="true"></fa>
@@ -116,4 +118,5 @@
       </div>
     </div>
   </div>
+</div>
 </div>

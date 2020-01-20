@@ -15,7 +15,7 @@
           <div class="card-footer">
             <!-- TODO: ngif user=admin!-->
             <div class="btn-group btn-block" role="group"  >
-              <small>  <button type="button" class="btn btn-primary" (click)="edit(level.id)" > <fa name="pencil"></fa> </button> </small>
+              <small>  <button type="button" class="btn btn-primary" (click)="edit(level.id)" > <i class="fas fa-pencil-alt"></i> </button> </small>
               <small>  <button type="button" class="btn btn-danger" (click)="delete(level.id)"> <fa name="trash" inverse="true"></fa> </button> </small>
             </div>
           </div>
@@ -46,6 +46,13 @@
     <div class="form-group">
       <label for="desc">Description:</label>
       <input type="text" class="form-control" placeholder="Renseigner la description du niveau" id="desc" [(ngModel)]="currentLevel.levelDescription">
+    </div>
+    <div class="form-group">
+      <label for="sport">Sport:</label>
+      <select class="form-control" placeholder="Entrer le sport" id="sport"
+              [(ngModel)]="currentLevel.sports">
+        <option value="{{spo.id}}" *ngFor="let spo of sports()">{{spo.sportName}}</option>
+      </select>
     </div>
 
 <!--

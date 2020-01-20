@@ -1,62 +1,70 @@
-<div class="card mt-3">
-  <div class="card-header bg-primary text-white">Liste des sports</div>
-  <div class="card-body">
-    <table class="table table-hover">
-      <thead>
-      <tr>
-        <th scope="col">Identifiant</th>
-        <th scope="col">Version</th>
-        <th scope="col">Nom</th>
-        <th scope="col">Description</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr *ngFor="let sport of list()">
-        <th scope="row"  style="cursor: pointer">{{sport.id}}</th>
-        <td >{{sport.version}}</td>
-        <td >{{sport.sportName}}</td>
-        <td >{{sport.sportDescription}}</td>
-
-        <td>
-          <div class="btn-group btn-group-sm">
-            <button type="button" class="btn btn-info" (click)="edit(sport.id)">
-              <fa name="pencil"></fa>
-            </button>
-            <button type="button" class="btn btn-danger" >
-              <fa name="trash" inverse="true" (click)="delete(sport.id)"></fa>
-            </button>
-          </div>
-        </td>
-      </tr>
-      </tbody>
-    </table>
+<div class="card-footer">
+  <div>
+    <div class="card mt-5">
+      <div class="card-header bg-primary text-white">Liste des sports</div>
+      <div class="card-body">
+        <div class="table-responsive-md">
+          <table class="table table-hover">
+            <thead>
+            <tr>
+              <th scope="col">Identifiant</th>
+              <th scope="col">Version</th>
+              <th scope="col">Nom</th>
+              <th scope="col">Description</th>
+              <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let sport of list()">
+              <th scope="row" style="cursor: pointer">{{sport.id}}</th>
+              <td>{{sport.version}}</td>
+              <td>{{sport.sportName}}</td>
+                <td>{{sport.sportDescription}}</td>
+              <td>
+                <div class="btn-group btn-group-sm">
+                  <button type="button" class="btn btn-info" (click)="edit(sport.id)">
+                    <i class="fas fa-pencil-alt"></i>
+                  </button>
+                  <button type="button" class="btn btn-danger">
+                    <fa name="trash" inverse="true" (click)="delete(sport.id)"></fa>
+                  </button>
+                </div>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card-footer">
+          <button type="button" class="btn btn-success btn-lg" (click)="add()">
+            <fa name="plus"></fa>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card mt-3" *ngIf="currentSport">
+    <div class="card-header bg-primary text-white">Edition du sport</div>
+    <div class="card-body">
+      <div class="form-group">
+        <label for="name">Nom du sport:</label>
+        <input type="text" class="form-control" placeholder="Nom du sport" id="name"
+               [(ngModel)]="currentSport.sportName">
+      </div>
+      <div class="form-group">
+        <label for="SportDescription">Description du sport:</label>
+        <textarea class="form-control" id="SportDescription" rows="3" [(ngModel)]="currentSport.sportDescription"
+                  placeholder="Decrivez le sport brievement"></textarea>
+      </div>
+    </div>
     <div class="card-footer">
-      <button type="button" class="btn btn-success btn-lg" (click)="add()" >
-        <fa name="plus"></fa>
-      </button>
-    </div>
-  </div>
-</div>
-<div class="card mt-3" *ngIf="currentSport">
-  <div class="card-header bg-primary text-white">Edition du sport</div>
-  <div class="card-body">
-    <div class="form-group" >
-      <label for="name">Nom du sport:</label>
-      <input type="text" class="form-control" placeholder="Nom du sport" id="name" [(ngModel)]="currentSport.sportName">
-    </div>
-    <div class="form-group">
-      <label for="SportDescription">Description du sport:</label>
-      <textarea class="form-control" id="SportDescription" rows="3"  [(ngModel)]="currentSport.sportDescription" placeholder="Decrivez le sport brievement"></textarea>
-    </div>
-  </div>
-  <div class="card-footer">
-    <div class="btn-group btn-group-lg">
-      <button type="button" class="btn btn-primary" (click)="save()">
-        <fa name="check"></fa>
-      </button>
-      <button type="button" class="btn btn-warning" (click)="cancel()">
-        <fa name="undo" inverse="true"></fa>
-      </button>
+      <div class="btn-group btn-group-lg">
+        <button type="button" class="btn btn-primary" (click)="save()">
+          <fa name="check"></fa>
+        </button>
+        <button type="button" class="btn btn-warning" (click)="cancel()">
+          <fa name="undo" inverse="true"></fa>
+        </button>
+      </div>
     </div>
   </div>
 </div>

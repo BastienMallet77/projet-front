@@ -1,4 +1,6 @@
-<div class="card mt-3">
+<div class="card-footer">
+  <div>
+<div class="card mt-5">
   <div class="card-header bg-primary text-white">Liste des certificats</div>
   <div class="card-body">
     <table class="table table-hover">
@@ -9,6 +11,7 @@
         <th scope="col">Certifié</th>
         <th scope="col">UserCertificate</th>
         <th scope="col">Sport</th>
+        <th scope="col"></th>
       </tr>
       </thead>
       <tbody>
@@ -22,7 +25,7 @@
         <td>
           <div class="btn-group btn-group-sm">
             <button type="button" class="btn btn-info" (click)="edit(degree.id)">
-              <fa name="pencil"></fa>
+              <i class="fas fa-pencil-alt"></i>
             </button>
             <button type="button" class="btn btn-danger" >
               <fa name="trash" inverse="true" (click)="delete(degree.id)"></fa>
@@ -39,6 +42,8 @@
     </div>
   </div>
 </div>
+  </div>
+
 <div class="card mt-3" *ngIf="currentDegree">
   <div class="card-header bg-primary text-white">Edition du Certificat</div>
   <div class="card-body">
@@ -69,4 +74,5 @@
       </button>
     </div>
   </div>
+</div>
 </div>

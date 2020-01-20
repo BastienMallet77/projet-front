@@ -14,6 +14,7 @@ import {InProgressHttpService} from '../in-progress/in-progress-http.service';
 })
 export class UserComponent implements OnInit {
 
+  search: string = "";
   currentUser: User = null;
   // TODO ?? à mettre dans le constructeur ??
   // , private degreeService: DegreeHttpService, private inProgressService: InProgressHttpService, private programService: ProgramHttpService

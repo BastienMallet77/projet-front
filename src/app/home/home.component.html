@@ -1,37 +1,74 @@
-Faire un formulaire d'inscritpion et de connexionn puis faire un petit cadre pour expliquer le site
-
-
-<div class="col-2">
-<div class="form-group">
-  <label for="name">Identifiant : </label>
-  <input type="text" class="form-control" placeholder="Identifiant" id="name">
-</div>
-<div class="form-group">
-  <label for="password">Mot de passe : </label>
-  <input type="password" class="form-control" placeholder="Password" id="password">
-</div>
-</div>
-
-
-<p>Nouvel Utilisateur ?</p><button class="btn-info">Je m'inscris</button>
-
-
-
 <div class="row">
-  <div class="col-4">
-    <div class="card" style="width: 18rem;">
-      <img class="card-img-top" src="../../../../imagesprojetlocal/bodybuilder.jpg" alt="sportif" title="sportifpagedaccueil" class="img-thumbnail">
+  <div class="col-5">
+    <div class="card" style="width: 24rem;">
+      <img class="card-img-top" src="./assets/images/bodybuilder.jpg" alt="sportif" title="sportifpagedaccueil" class="img-thumbnail">
       <div class="card-body">
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <p class="card-text">Fan de sport mais pas très motivé ? Nous sommes là pour mettre à votre disposition de vraies séances de sport !
+          Ces séances sont créées par des coachs professionnels qui collaborent avec nous pour votre bien-être.
+          Que vous ayez envie de découvrir les joies de la course ou d'exceller en haltérophilie, ce site est fait pour vous !
+          Alors ne tardez pas trop et rejoignez nous!</p>
       </div>
     </div>
-    
+
 
   </div>
-  <div class="col-6">
- <p>Fan de sport mais pas très motivé ? Nous sommes là pour mettre à votre disposition de vraies séances de sport !
-   Ces séances sont créées par des coachs professionnels qui collaborent avec nous pour votre bien-être.
-   Que vous ayez envie de découvrir les joies de la course ou d'exceller en haltérophilie, ce site est fait pour vous !
-   Alors ne tardez pas trop et rejoignez nous!</p>
+  <div class="col-4" style="margin-top: 40px">
+      <div class="form-group, col-6">
+        <label for="name">Identifiant : </label>
+        <input type="text" class="form-control" placeholder="Identifiant" id="name">
+      </div>
+      <div class="form-group, col-6">
+        <label for="password">Mot de passe : </label>
+        <input type="password" class="form-control" placeholder="Password" id="password">
+      </div>
+    <br>
+    <button class="btn btn-success" style="margin-left: 20px">Je me connecte</button>
+  </div>
+  <div class="col-3" style="margin-top: 100px">
+
+    <p>Nouvel Utilisateur ?</p><button class="btn btn-info" (click)="add()" > Je m'inscris</button>
   </div>
 </div>
+<div class="row justify-content-center">
+  <div class="col-7">
+
+    <div class="card mt-3" *ngIf="currentUser">
+      <div class="card-header bg-primary text-white"><i class="fas fa-arrow-down"></i> Formulaire d'inscription <i class="fas fa-arrow-down"></i></div>
+      <div class="card-body">
+        <div class="form-group">
+          <label for="pseudo">Pseudo:</label>
+          <input type="text" class="form-control" placeholder="Entrer le pseudo" id="pseudo"
+                 [(ngModel)]="currentUser.userName">
+        </div>
+        <div class="form-group">
+          <label for="email">E-mail:</label>
+          <input type="email" class="form-control" placeholder="exemple@xxxx.com" id="email"
+                 [(ngModel)]="currentUser.email">
+        </div>
+        <div class="form-group">
+          <label for="mdp">Mot de passe:</label>
+          <input type="password" class="form-control" placeholder="Entrer le mot de passe" id="mdp"
+                 [(ngModel)]="currentUser.password">
+        </div>
+        <div class="form-group form-check">
+          <label class="form-check-label">
+            <input class="form-check-input" type="checkbox" [(ngModel)]="currentUser.commercial"> J'accepte de recevoir les Neswletter de la part des partenaires commericaux
+          </label>
+        </div>
+        <p><span style="font-style: italic">Vous pouvez ajoutez plus d'information en accedant à votre profil</span></p>
+        <div class="card-footer">
+          <div class="btn-group btn-group-lg">
+            <button type="button" class="btn btn-primary" (click)="save()">
+              <fa name="check"></fa>
+            </button>
+            <button type="button" class="btn btn-warning" (click)="cancel()">
+              <fa name="undo" inverse="true"></fa>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
