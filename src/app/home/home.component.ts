@@ -28,4 +28,8 @@ export class HomeComponent implements OnInit {
   cancel() {
     this.currentUser = null;
   }
+
+  login() {
+    
+  }
 }
