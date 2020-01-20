@@ -36,11 +36,15 @@ export class LevelHttpService {
 
   save(level: Level) {
     if (level) {
-
-
-
+      if (level.sport && !level.sport.id) {
+        level.sport = null;
+      }
+      if (level.specialisation && !level.specialisation.id) {
+        level.specialisation = null;
+      }
       if (!level.id) {
         this.http.post<Level>(this.appConfig.backEnd + 'level', level).subscribe(resp => {
+
           this.load();
         }, err => console.log(err));
       } else {

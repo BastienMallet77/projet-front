@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {LevelHttpService} from "./level-http.service";
-import {LevelService} from "./level.service";
 import {Level} from "../model/level";
 import {SportHttpService} from "../sport/sport-http.service";
 import {SpecialisationHttpService} from "../specialisation/specialisation-http.service";
@@ -42,8 +41,8 @@ export class LevelComponent implements OnInit {
   add() {
     this.currentLevel = new Level();
     this.currentLevel.programs = new Array<Program>();
-    this.currentLevel.specialisations = new Array<Specialisation>();
-    this.currentLevel.sports = new Array<Sport>();
+    this.currentLevel.specialisation = new Specialisation();
+    this.currentLevel.sport = new Sport();
   }
 
   detail(content, id: number) {
@@ -59,12 +58,12 @@ export class LevelComponent implements OnInit {
     this.levelHttpService.findById(id).subscribe(resp => {
       this.currentLevel = resp;
 
-      if (!this.currentLevel.sports) {
-        this.currentLevel.sports = new Array<Sport>();
+      if (!this.currentLevel.sport) {
+        this.currentLevel.sport = new Sport();
       }
 
-      if (!this.currentLevel.specialisations) {
-        this.currentLevel.specialisations = new Array<Specialisation>();
+      if (!this.currentLevel.specialisation) {
+        this.currentLevel.specialisation = new Specialisation();
       }
 
       if (!this.currentLevel.programs) {

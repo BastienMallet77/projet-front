@@ -12,6 +12,7 @@ import {SportComponent} from './sport/sport.component';
 import {UserComponent} from './user/user.component';
 import {ListSportUserComponent} from './list-sport-user/list-sport-user.component';
 import {InfoUserComponent} from './info-user/info-user.component';
+import {DashboardComponent} from './dashboard/dashboard.component';
 
 
 const routes: Routes = [
@@ -27,6 +28,7 @@ const routes: Routes = [
   {path: 'users', component: UserComponent},
   {path: 'sportUser', component: ListSportUserComponent},
   {path: 'infoUser', component: InfoUserComponent},
+  {path: 'board', component: DashboardComponent},
 ];
 
 @NgModule({
