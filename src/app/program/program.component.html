@@ -20,15 +20,15 @@
   </thead>
   <tbody>
   <tr *ngFor="let program of list()">
-    <th>{{program.id}}</th>
-    <th>{{program.version}}</th>
-    <th>{{program.name}}</th>
-    <th>{{program.description}}</th>
-    <th>{{program.duration}}</th>
-    <th>{{program.creationDate | date:'dd/MM/yyyy'}}</th>
-    <th>{{program.inProgress}}</th>
-    <th>{{program.isValidated}}</th>
-    <th>{{program.isDone}}</th>
+    <td>{{program.id}}</td>
+    <td>{{program.version}}</td>
+    <td>{{program.name}}</td>
+    <td>{{program.description}}</td>
+    <td>{{program.duration}}</td>
+    <td>{{program.creationDate | date:'dd/MM/yyyy'}}</td>
+    <td>{{program.inProgress.userProgressing.firstName}}</td>
+    <td>{{program.isValidated}}</td>
+    <td>{{program.isDone}}</td>
     <td>
       <div class="btn-group btn-group-sm"></div>
       <button type="button" class="btn btn-info" (click)="edit(program.id)">
