@@ -7,17 +7,17 @@ export class Level {
   version: number;
   levelName: string;
   levelDescription: string;
-  sports: Array<Sport>;
-  specialisations: Array<Specialisation>;
+  sport: Sport;
+  specialisation: Specialisation;
   programs: Array<Program>;
 
-  constructor(id?: number, version?: number, levelName?: string, levelDescription?: string, sports?: Array<Sport>, specialisations?: Array<Specialisation>, programs?: Array<Program>) {
+  constructor(id?: number, version?: number, levelName?: string, levelDescription?: string, sports?: Sport, specialisations?: Specialisation, programs?: Array<Program>) {
     this.id = id;
     this.version = version;
     this.levelName = levelName;
     this.levelDescription = levelDescription;
-    this.sports = sports;
-    this.specialisations = specialisations;
+    this.sport = sports;
+    this.specialisation = specialisations;
     this.programs = programs;
   }
 }

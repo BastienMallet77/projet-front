@@ -51,15 +51,15 @@
 <!--
     <div class="form-group">
       <label for="sport">Sport:</label>
-      <select class="form-control" placeholder="Entrer le sport" id="sport" [(ngModel)]="currentLevel.sports">
-        <option value="{{spo.id}}" *ngFor="let spo of sports()">{{spo.sportName}}</option>
+      <select class="form-control" placeholder="Entrer le sport" id="sport" [(ngModel)]="currentLevel.sport">
+        <option value="{{spo.id}}" *ngFor="let spo of sport()">{{spo.sportName}}</option>
       </select>
     </div>
 
     <div class="form-group">
       <label for="spec">Spécialisation:</label>
-      <select class="form-control" placeholder="Entrer la spécialisation" id="spec" [(ngModel)]="currentLevel.specialisations">
-        <option value="{{spe.id}}" *ngFor="let spe of specialisations()">{{spe.speName}}</option>
+      <select class="form-control" placeholder="Entrer la spécialisation" id="spec" [(ngModel)]="currentLevel.specialisation">
+        <option value="{{spe.id}}" *ngFor="let spe of specialisation()">{{spe.speName}}</option>
       </select>
     </div>
     <div class="form-group">
