@@ -1,6 +1,6 @@
 <div class="row justify-content-center">
   <div class="col-7">
-    <h3 style="margin-left: 100px">Veuillez choisir que vous souhaitez pratiquer</h3>
+    <h3 style="margin-left: 100px">Veuillez choisir ce que vous souhaitez pratiquer</h3>
   </div>
   <div class="col-5" >
     <div>
@@ -9,8 +9,9 @@
   </div>
 </div>
 <div class="row justify-content-around">
-  <div class="col-lg-5" *ngFor="let sport of list()" >
+  <div class="col-lg-5" *ngFor="let sport of list()" [routerLink]="[sport.id]" style="cursor: pointer">
     <div id="sportUserList" style="text-align: center">
+      <a href=""><img class="card-img"  src="{{sport.img}}" alt="404"> </a>
       <span id="tooltipSport" ngbTooltip="{{sport.sportDescription}}" [openDelay]="300" [closeDelay]="500"><h2>{{sport.sportName}}</h2>
       </span>
     </div>
