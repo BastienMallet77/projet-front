@@ -17,6 +17,7 @@ import {Program} from "../model/program";
 export class LevelComponent implements OnInit {
   currentLevel: Level = null;
   modalLevel: Level = null;
+  speWithSportId: Array<Specialisation>;
 
   constructor(private modalService: NgbModal, private levelHttpService: LevelHttpService, private sportHttpService: SportHttpService, private specialisationHttpService: SpecialisationHttpService, private programHttpService: ProgramHttpService) {
   }
@@ -27,8 +28,9 @@ export class LevelComponent implements OnInit {
   sports() {
     return this.sportHttpService.findAll();
   }
-  specialisations() {
-    return this.specialisationHttpService.findAll();
+  specialisations(sportId: number) {
+    let spId = sportId;
+    return this.specialisationHttpService.findBySportId(spId);
   }
   programs() {
     return this.programHttpService.findAll();

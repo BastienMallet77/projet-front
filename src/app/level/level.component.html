@@ -64,11 +64,11 @@
     </select>
   </div>
 
-    <div class="form-group">
+    <div *ngIf="currentLevel.sport.id!=null" class="form-group">
       <label for="specialisation">Specialisation:</label>
       <select class="form-control" placeholder="Entrer le specialisation" id="specialisation"
               [(ngModel)]="currentLevel.specialisation.id">
-        <option value="{{spe.id}}" *ngFor="let spe of specialisations()">{{spe.speName}}</option>
+          <option value="{{spe.id}}" *ngFor="let spe of specialisations(currentLevel.sport.id)">{{spe.speName}}</option>
       </select>
     </div>
 
