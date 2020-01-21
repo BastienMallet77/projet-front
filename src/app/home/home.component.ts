@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, ElementRef, OnInit, Renderer, ViewChild} from '@angular/core';
 import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {UserHttpService} from '../user/user-http.service';
 import {User} from '../model/user';
@@ -11,14 +11,13 @@ import {User} from '../model/user';
 export class HomeComponent implements OnInit {
   currentUser: User = null;
 
-
   constructor( private userService : UserHttpService ) {}
 
   ngOnInit() {
   }
-
-  add(){
+  add() : void {
     this.currentUser = new User();
+
   }
   save(){
     this.userService.save(this.currentUser);
@@ -30,6 +29,6 @@ export class HomeComponent implements OnInit {
   }
 
   login() {
-    
+
   }
 }

@@ -33,31 +33,3 @@
 .cardForMouseOver:hover {
   background: rgba(0, 0, 0, 0.75) ;
 }
-
-/*.card-text !*A montrer en mouseOver*!{*/
-/*   top: 0;*/
-/*   bottom: 0;*/
-/*   left: 0;*/
-/*   right: 0;*/
-/*   background: rgba(0, 0, 0, 0.75) !important;*/
-/*   color: #000;*/
-/*   visibility: hidden;*/
-/*   opacity: 0;*/
-/* }*/
-
-/*.card-img !*A montrer tout le temps*!{*/
-/*  top: 0;*/
-/*  bottom: 0;*/
-/*  left: 0;*/
-/*  right: 0;*/
-/*}*/
-
-/*.cardForMouseOver:hover!*Endroit ou afficher le mouseOver*!{*/
-/*  opacity: 0.1;*/
-/*}*/
-
-/*.cardForMouseOver:hover .card-text !*Endroit ou afficher le mouseOver*!{*/
-/*   visibility: visible;*/
-/*  color: #000;*/
-/*   opacity: 1;*/
-/*}*/

@@ -31,12 +31,12 @@
 <div class="row justify-content-center">
   <div class="col-7">
 
-    <div class="card mt-3" *ngIf="currentUser">
+    <div class="card mt-3" *ngIf="currentUser" id="inscription">
       <div class="card-header bg-primary text-white"><i class="fas fa-arrow-down"></i> Formulaire d'inscription <i class="fas fa-arrow-down"></i></div>
       <div class="card-body">
         <div class="form-group">
           <label for="pseudo">Pseudo:</label>
-          <input type="text" class="form-control" placeholder="Entrer le pseudo" id="pseudo"
+          <input  type="text" class="form-control" placeholder="Entrer le pseudo" id="pseudo"
                  [(ngModel)]="currentUser.userName">
         </div>
         <div class="form-group">
