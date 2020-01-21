@@ -20,25 +20,16 @@
   </thead>
   <tbody>
   <tr *ngFor="let program of list()">
-    <th  style="cursor: pointer"> <a class="normalTextBold" [routerLink]="['/program', program.id]" routerLinkActive="active" > {{program.id}} </a> </th>
-    <th style="cursor: pointer"> <a class="normalText" [routerLink]="['/program', program.id]" routerLinkActive="active" >  {{program.version}}</a> </th>
-    <th style="cursor: pointer"> <a class="normalText" [routerLink]="['/program', program.id]" routerLinkActive="active" > {{program.name}}</a> </th>
-    <th style="cursor: pointer"> <a class="normalText" [routerLink]="['/program', program.id]" routerLinkActive="active" > {{program.description}}</a> </th>
-    <th style="cursor: pointer"> <a class="normalText" [routerLink]="['/program', program.id]" routerLinkActive="active" > {{program.duration}}</a> </th>
-    <th style="cursor: pointer"> <a class="normalText" [routerLink]="['/program', program.id]" routerLinkActive="active" > {{program.creationDate | date:'dd/MM/yyyy'}}</a> </th>
-    <th style="cursor: pointer"> <a class="normalText" [routerLink]="['/program', program.id]" routerLinkActive="active" > {{program.inProgress}}</a> </th>
-    <th style="cursor: pointer"> <a class="normalText" [routerLink]="['/program', program.id]" routerLinkActive="active" > {{program.isValidated}}</a> </th>
-    <th style="cursor: pointer"> <a class="normalText" [routerLink]="['/program', program.id]" routerLinkActive="active" > {{program.isDone}}</a> </th>
-    <td>{{program.id}}</td>
-    <td>{{program.version}}</td>
-    <td>{{program.name}}</td>
-    <td>{{program.description}}</td>
-    <td>{{program.duration}}</td>
+    <td  style="cursor: pointer"> <a class="normalTextBold" [routerLink]="['/program', program.id]" routerLinkActive="active" > {{program.id}} </a> </td>
+    <td style="cursor: pointer"> <a class="normalText" [routerLink]="['/program', program.id]" routerLinkActive="active" >  {{program.version}}</a> </td>
+    <td style="cursor: pointer"> <a class="normalText" [routerLink]="['/program', program.id]" routerLinkActive="active" > {{program.name}}</a> </td>
+    <td style="cursor: pointer"> <a class="normalText" [routerLink]="['/program', program.id]" routerLinkActive="active" > {{program.description}}</a> </td>
+    <td style="cursor: pointer"> <a class="normalText" [routerLink]="['/program', program.id]" routerLinkActive="active" > {{program.duration}}</a> </td>
     <td>{{program.rate}}</td>
-    <td>{{program.creationDate | date:'dd/MM/yyyy'}}</td>
-    <td>{{program.inProgress.userProgressing.firstName}}</td>
-    <td>{{program.isValidated}}</td>
-    <td>{{program.isDone}}</td>
+    <td style="cursor: pointer"> <a class="normalText" [routerLink]="['/program', program.id]" routerLinkActive="active" > {{program.creationDate | date:'dd/MM/yyyy'}}</a> </td>
+    <td style="cursor: pointer"> <a class="normalText" [routerLink]="['/program', program.id]" routerLinkActive="active" > {{program.inProgress.userProgressing.firstName}}</a> </td>
+    <td style="cursor: pointer"> <a class="normalText" [routerLink]="['/program', program.id]" routerLinkActive="active" > {{program.isValidated}}</a> </td>
+    <td style="cursor: pointer"> <a class="normalText" [routerLink]="['/program', program.id]" routerLinkActive="active" > {{program.isDone}}</a> </td>
     <td>
       <div class="btn-group btn-group-sm"></div>
       <button type="button" class="btn btn-info" (click)="edit(program.id)">
