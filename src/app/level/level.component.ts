@@ -87,6 +87,4 @@ export class LevelComponent implements OnInit {
   cancel() {
     this.currentLevel = null;
   }
-
-
 }
