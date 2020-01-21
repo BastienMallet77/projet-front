@@ -1,0 +1,109 @@
+<div style="text-align: center">
+  <h1> Tableau de bord du programme: </h1>
+  <h2>{{this.program?.name}} </h2>
+</div>
+
+<!-- TODO gérer le nombre d'éléments de la progress bar, leur taille et leur nom en fonction du nombre de sessions contenues dans le programme-->
+<div class="maBar" style="justify-content: center">
+  <div class="progress" style="justify-content: center">
+    <span> <fa name="home"></fa> </span>
+
+    <div *ngFor="let session of this.sessions">
+      <div
+           class="progress-bar monProgressBarElement" role="progressbar"
+           style="width: 150px" aria-valuenow="0"
+           aria-valuemin="0"
+           aria-valuemax="100"
+           >
+          <!--100/{{this.numberSession}} px -->
+          <a [ngClass]="{'done':session?.isDone}" [routerLink]="['/session', session.id]" routerLinkActive="active">
+            <span class="progressBarText"> {{session.name}} </span></a>
+      </div>
+    </div>
+
+    <span class="timeline__iconContainer"> <fa name="trophy"></fa> </span>
+  </div>
+</div>
+
+
+<table class="table">
+  <tbody>
+  <tr>
+    <div class="card-deck">
+      <div class="card" *ngFor="let session of this.sessions">
+        <div class="card-body">
+          <h5 class="card-title"> {{session.name}}</h5>
+          <p class="card-text"> {{session.text}} </p>
+        </div>
+        <div class="card-footer">
+          <button type="button" class="btn btn-success" (click)="display(session.id)"> Let's Go</button>
+        </div>
+      </div>
+    </div>
+  </tr>
+  </tbody>
+</table>
+
+
+<table class="table" *ngIf="afficheExos">
+  <tbody>
+  <h3> Les exercices de la session {{selectedSession?.name}}: </h3>
+  <tr>
+    <div class="card-deck">
+      <div class="card" *ngFor="let exo of this.exercices">
+        <div class="card-body">
+          <h5 class="card-title"> {{exo.exerciceName}}</h5>
+          <p class="card-text"> {{exo.exerciceText}} </p>
+        </div>
+      </div>
+    </div>
+    <footer class="fini">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-12">
+            <button type="button" class="btn btn-success">
+              <a (click)="sessionIsDone(this.selectedSession)" class="progressBarText"> J'ai terminé la session
+              ! <fa name="star"></fa> </a></button>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </tr>
+  </tbody>
+</table>
+
+
+<footer class="fini">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12">
+        <!--TODO lien vers le tableau de bord use-->
+        <button type="button" class="btn btn-info"><a href="#" (click)="programIsDone(this.program)"
+                                                      class="progressBarText"> J'ai terminé le programme
+          !  <fa name="trophy"></fa> </a></button>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<!--TODO rendre ça plus beau -->
+<footer class="footer">
+  <div class="container">
+    <div class="row" style="justify-content:space-between">
+
+      <button type="button" class="btn btn-warning spaceButton"><a href="#" class="previousnext">&laquo; Session
+        précédente </a>
+      </button>
+      <button type="button" class="btn btn-danger spaceButton"><a href="#" class="progressBarText"> Abandonner le
+        programme
+        <fa name="trash"></fa>
+      </a></button>
+      <button type="button" class="btn btn-warning spaceButton"><a href="#" class="previousnext"> Session suivante
+        &raquo;</a>
+      </button>
+
+    </div>
+  </div>
+</footer>
+
