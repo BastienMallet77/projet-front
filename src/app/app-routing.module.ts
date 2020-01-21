@@ -13,6 +13,9 @@ import {UserComponent} from './user/user.component';
 import {ListSportUserComponent} from './list-sport-user/list-sport-user.component';
 import {InfoUserComponent} from './info-user/info-user.component';
 import {DashboardComponent} from './dashboard/dashboard.component';
+import {ListSpecSportComponent} from './list-spec-sport/list-spec-sport.component';
+import {ListLevelSportComponent} from './list-level-sport/list-level-sport.component';
+import {ListProgramUserComponent} from './list-program-user/list-program-user.component';
 
 
 const routes: Routes = [
@@ -29,6 +32,9 @@ const routes: Routes = [
   {path: 'sportUser', component: ListSportUserComponent},
   {path: 'infoUser', component: InfoUserComponent},
   {path: 'board', component: DashboardComponent},
+  {path: 'sportUser/:id', component: ListSpecSportComponent},
+  {path: 'sportUser/:id/level/:id', component: ListLevelSportComponent},
+  {path: 'sportUser/:id/level/:id/spec/:id', component: ListProgramUserComponent},
 ];
 
 @NgModule({
