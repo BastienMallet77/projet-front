@@ -25,6 +25,7 @@ import { InfoUserComponent } from './info-user/info-user.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ListProgramUserComponent } from './list-program-user/list-program-user.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { ProgramBoardViewComponent } from './program-board-view/program-board-view.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
     DashboardComponent,
     ListProgramUserComponent,
     NotFoundComponent
+    InfoUserComponent,
+    ProgramBoardViewComponent
   ],
   imports: [
     BrowserModule,

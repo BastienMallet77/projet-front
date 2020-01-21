@@ -7,6 +7,7 @@ import {UserHttpService} from '../user/user-http.service';
 import {SessionHttpService} from '../session/session-http.service';
 import {LevelHttpService} from '../level/level-http.service';
 import {SportHttpService} from '../sport/sport-http.service';
+import {Session} from "../model/session";
 
 @Injectable({
   providedIn: 'root'
@@ -76,5 +77,7 @@ export class ProgramHttpService {
       this.load();
     }, err => console.log(err));
   }
+
+
 
 }
