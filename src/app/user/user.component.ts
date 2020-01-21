@@ -6,6 +6,7 @@ import {Program} from '../model/program';
 import {InProgress} from '../model/inProgress';
 import {Degree} from '../model/degree';
 import {InProgressHttpService} from '../in-progress/in-progress-http.service';
+import {DegreeHttpService} from '../degree/degree-http.service';
 
 @Component({
   selector: 'user',
@@ -16,9 +17,8 @@ export class UserComponent implements OnInit {
 
   search: string = "";
   currentUser: User = null;
-  // TODO ?? à mettre dans le constructeur ??
-  // , private degreeService: DegreeHttpService, private inProgressService: InProgressHttpService, private programService: ProgramHttpService
-  constructor(private userService: UserHttpService) {
+
+  constructor(private userService: UserHttpService, private degreeService: DegreeHttpService, private inProgressService: InProgressHttpService, private programService: ProgramHttpService) {
 
   }
 

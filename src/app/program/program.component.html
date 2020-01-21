@@ -29,6 +29,15 @@
     <th style="cursor: pointer"> <a class="normalText" [routerLink]="['/program', program.id]" routerLinkActive="active" > {{program.inProgress}}</a> </th>
     <th style="cursor: pointer"> <a class="normalText" [routerLink]="['/program', program.id]" routerLinkActive="active" > {{program.isValidated}}</a> </th>
     <th style="cursor: pointer"> <a class="normalText" [routerLink]="['/program', program.id]" routerLinkActive="active" > {{program.isDone}}</a> </th>
+    <td>{{program.id}}</td>
+    <td>{{program.version}}</td>
+    <td>{{program.name}}</td>
+    <td>{{program.description}}</td>
+    <td>{{program.duration}}</td>
+    <td>{{program.creationDate | date:'dd/MM/yyyy'}}</td>
+    <td>{{program.inProgress.userProgressing.firstName}}</td>
+    <td>{{program.isValidated}}</td>
+    <td>{{program.isDone}}</td>
     <td>
       <div class="btn-group btn-group-sm"></div>
       <button type="button" class="btn btn-info" (click)="edit(program.id)">

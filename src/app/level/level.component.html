@@ -4,10 +4,19 @@
     <tr>
       <div class="card-deck">
         <div class="card" *ngFor="let level of list()">
-          <a href="https://placeholder.com"><img class="card-img-top"  src="https://via.placeholder.com/150" alt="Image niveau 1"> </a>
-          <div class="card-body">
-            <h5 class="card-title"> {{level.levelName}} </h5>
+          <!-- TODO test : <div class="cardForMouseOver">
             <p class="card-text"> {{level.levelDescription}} </p>
+            <a href="https://placeholder.com"><img class="card-img"  src="{{level.img}}" alt="404"> </a>
+
+            <<div class="cardToMouseOver">
+
+              <h5 class="card-title"> {{level.levelName}} </h5>
+            </div>
+          </div>-->
+          <div class="cardForMouseOver">
+            <p class="card-text"> {{level.levelDescription}} </p>
+            <a href="https://placeholder.com"><img class="card-img"  src="{{level.img}}" alt="404"> </a>
+            <h5 class="card-title"> {{level.levelName}} </h5>
           </div>
           <div class="card-footer">
             <small>  <button type="button" class="btn btn-success btn-block"> {{level.levelName}} </button> </small>
@@ -48,25 +57,33 @@
       <input type="text" class="form-control" placeholder="Renseigner la description du niveau" id="desc" [(ngModel)]="currentLevel.levelDescription">
     </div>
     <div class="form-group">
-      <label for="sport">Sport:</label>
-      <select class="form-control" placeholder="Entrer le sport" id="sport"
-              [(ngModel)]="currentLevel.sports">
-        <option value="{{spo.id}}" *ngFor="let spo of sports()">{{spo.sportName}}</option>
+    <label for="sport">Sport:</label>
+    <select class="form-control" placeholder="Entrer le sport" id="sport"
+            [(ngModel)]="currentLevel.sport.id">
+      <option value="{{spo.id}}" *ngFor="let spo of sports()">{{spo.sportName}}</option>
+    </select>
+  </div>
+
+    <div class="form-group">
+      <label for="specialisation">Specialisation:</label>
+      <select class="form-control" placeholder="Entrer le specialisation" id="specialisation"
+              [(ngModel)]="currentLevel.specialisation.id">
+        <option value="{{spe.id}}" *ngFor="let spe of specialisations()">{{spe.speName}}</option>
       </select>
     </div>
 
 <!--
     <div class="form-group">
       <label for="sport">Sport:</label>
-      <select class="form-control" placeholder="Entrer le sport" id="sport" [(ngModel)]="currentLevel.sports">
-        <option value="{{spo.id}}" *ngFor="let spo of sports()">{{spo.sportName}}</option>
+      <select class="form-control" placeholder="Entrer le sport" id="sport" [(ngModel)]="currentLevel.sport">
+        <option value="{{spo.id}}" *ngFor="let spo of sport()">{{spo.sportName}}</option>
       </select>
     </div>
 
     <div class="form-group">
       <label for="spec">Spécialisation:</label>
-      <select class="form-control" placeholder="Entrer la spécialisation" id="spec" [(ngModel)]="currentLevel.specialisations">
-        <option value="{{spe.id}}" *ngFor="let spe of specialisations()">{{spe.speName}}</option>
+      <select class="form-control" placeholder="Entrer la spécialisation" id="spec" [(ngModel)]="currentLevel.specialisation">
+        <option value="{{spe.id}}" *ngFor="let spe of specialisation()">{{spe.speName}}</option>
       </select>
     </div>
     <div class="form-group">
