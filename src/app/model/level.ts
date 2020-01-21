@@ -10,8 +10,9 @@ export class Level {
   sport: Sport;
   specialisation: Specialisation;
   programs: Array<Program>;
+  img: string;
 
-  constructor(id?: number, version?: number, levelName?: string, levelDescription?: string, sport?: Sport, specialisation?: Specialisation, programs?: Array<Program>) {
+  constructor(id?: number, version?: number, levelName?: string, levelDescription?: string, sport?: Sport, specialisation?: Specialisation, programs?: Array<Program>, img?: string) {
     this.id = id;
     this.version = version;
     this.levelName = levelName;
@@ -19,5 +20,6 @@ export class Level {
     this.sport = sport;
     this.specialisation = specialisation;
     this.programs = programs;
+    this.img = img;
   }
 }

@@ -4,10 +4,19 @@
     <tr>
       <div class="card-deck">
         <div class="card" *ngFor="let level of list()">
-          <a href="https://placeholder.com"><img class="card-img-top"  src="https://via.placeholder.com/150" alt="Image niveau 1"> </a>
-          <div class="card-body">
-            <h5 class="card-title"> {{level.levelName}} </h5>
+          <!-- TODO test: <div class="cardForMouseOver">
             <p class="card-text"> {{level.levelDescription}} </p>
+            <a href="https://placeholder.com"><img class="card-img"  src="{{level.img}}" alt="404"> </a>
+
+            <<div class="cardToMouseOver">
+
+              <h5 class="card-title"> {{level.levelName}} </h5>
+            </div>
+          </div>-->
+          <div class="cardForMouseOver">
+            <p class="card-text"> {{level.levelDescription}} </p>
+            <a href="https://placeholder.com"><img class="card-img"  src="{{level.img}}" alt="404"> </a>
+            <h5 class="card-title"> {{level.levelName}} </h5>
           </div>
           <div class="card-footer">
             <small>  <button type="button" class="btn btn-success btn-block"> {{level.levelName}} </button> </small>

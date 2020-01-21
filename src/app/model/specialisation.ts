@@ -10,9 +10,10 @@ export class Specialisation {
   sport: Sport;
   levelss: Array<Level> = new Array<Level>();
   programss: Array<Program> = new Array<Program>();
+  img: string;
 
 
-  constructor(id?: number, version?: number, speName?: string, speDescription?: string, sport?: Sport, levelss?: Array<Level>, programss?: Array<Program>) {
+  constructor(id?: number, version?: number, speName?: string, speDescription?: string, sport?: Sport, levelss?: Array<Level>, programss?: Array<Program>, img?: string) {
     this.id = id;
     this.version = version;
     this.speName = speName;
@@ -20,5 +21,6 @@ export class Specialisation {
     this.sport = sport;
     this.levelss = levelss;
     this.programss = programss;
+    this.img = img;
   }
 }
