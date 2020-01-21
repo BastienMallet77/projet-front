@@ -1,1 +1,6 @@
-<p>list-level-sport works!</p>
+<div class="col-lg-5" *ngFor="let level of listLevel()" [routerLink]="['spec/', level.id]" style="cursor: pointer">
+  <div id="sportUserList" style="text-align: center">
+      <span id="tooltipSport" ngbTooltip="{{level.levelDescription}}" [openDelay]="300" [closeDelay]="500"><h2>{{level.levelName}}</h2>
+      </span>
+  </div>
+</div>
