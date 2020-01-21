@@ -23,6 +23,7 @@ import { ListSpecSportComponent } from './list-spec-sport/list-spec-sport.compon
 import { ListLevelSportComponent } from './list-level-sport/list-level-sport.component';
 import { InfoUserComponent } from './info-user/info-user.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { ListProgramUserComponent } from './list-program-user/list-program-user.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     ListSpecSportComponent,
     ListLevelSportComponent,
     InfoUserComponent,
-    DashboardComponent
+    DashboardComponent,
+    ListProgramUserComponent
   ],
   imports: [
     BrowserModule,
