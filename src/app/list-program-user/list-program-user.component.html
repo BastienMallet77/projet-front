@@ -1,4 +1,4 @@
-<div class="col-lg-5" *ngFor="let prog of listPrograms()">
+<div class="col-lg-5" *ngFor="let prog of listPrograms()" style="cursor: pointer">
   <div id="sportUserList" style="text-align: center">
       <span id="tooltipSport" ngbTooltip="{{prog.description}}" [openDelay]="300" [closeDelay]="500"><h2>{{prog.name}}</h2>
       </span>

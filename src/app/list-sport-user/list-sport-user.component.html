@@ -9,7 +9,7 @@
   </div>
 </div>
 <div class="row justify-content-around">
-  <div class="col-lg-5" *ngFor="let sport of list()" [routerLink]="[sport.id]" routerLinkActive="active">
+  <div class="col-lg-5" *ngFor="let sport of list()" [routerLink]="[sport.id]" style="cursor: pointer">
     <div id="sportUserList" style="text-align: center">
       <span id="tooltipSport" ngbTooltip="{{sport.sportDescription}}" [openDelay]="300" [closeDelay]="500"><h2>{{sport.sportName}}</h2>
       </span>
