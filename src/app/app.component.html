@@ -34,7 +34,7 @@
         <div ngbDropdownMenu aria-labelledby="dropdownBasic2">
           <button ngbDropdownItem [routerLink]="['/infoUser']" routerLinkActive="active">Mes informations</button>
           <button ngbDropdownItem [routerLink]="['/board']" routerLinkActive="active">Tableau de Bord</button>
-          <button ngbDropdownItem [routerLink]="['/logout']" routerLinkActive="active">Se deconnecter</button>
+          <button ngbDropdownItem [routerLink]="['/home']" routerLinkActive="active" (click)="logout()">Se deconnecter</button>
           <button [routerLink]="['/program/:id']" routerLinkActive="active">Tableau de bord des Programmes</button>
         </div>
       </div>

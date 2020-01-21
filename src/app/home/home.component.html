@@ -13,19 +13,19 @@
   </div>
   <div class="col-4" style="margin-top: 40px">
       <div class="form-group, col-6">
-        <label for="name">Identifiant : </label>
-        <input type="text" class="form-control" placeholder="Identifiant" id="name">
+        <label for="userName">Identifiant : </label>
+        <input type="text" class="form-control" placeholder="Identifiant" id="userName" [(ngModel)]="currentConnection.userName">
       </div>
       <div class="form-group, col-6">
         <label for="password">Mot de passe : </label>
-        <input type="password" class="form-control" placeholder="Password" id="password">
+        <input type="password" class="form-control" placeholder="Password" id="password" [(ngModel)]="currentConnection.password">
       </div>
     <br>
-    <button class="btn btn-success" style="margin-left: 20px" (click)="login()">Je me connecte</button>
+    <button class="btn btn-success" style="margin-left: 20px" (click)="login(currentConnection.userName, currentConnection.password)" *ngIf="!isConnected">Je me connecte</button>
   </div>
-  <div class="col-3" style="margin-top: 100px">
+ <div class="col-3" style="margin-top: 100px" *ngIf="!isConnected"> <!-- /* TODO */-->
 
-    <p>Nouvel Utilisateur ?</p><button class="btn btn-info" (click)="add()" > Je m'inscris</button>
+  <p>Nouvel Utilisateur ?</p><button class="btn btn-info" (click)="add()" > Je m'inscris</button>
   </div>
 </div>
 <div class="row justify-content-center">
