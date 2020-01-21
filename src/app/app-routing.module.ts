@@ -12,6 +12,7 @@ import {SportComponent} from './sport/sport.component';
 import {UserComponent} from './user/user.component';
 import {ListSportUserComponent} from './list-sport-user/list-sport-user.component';
 import {InfoUserComponent} from './info-user/info-user.component';
+import {ProgramBoardViewComponent} from "./program-board-view/program-board-view.component";
 
 
 const routes: Routes = [
@@ -21,6 +22,7 @@ const routes: Routes = [
   {path: 'in-progresses', component: InProgressComponent},
   {path: 'levels', component: LevelComponent},
   {path: 'programs', component: ProgramComponent},
+  {path: 'program/:id', component: ProgramBoardViewComponent},
   {path: 'sessions', component: SessionComponent},
   {path: 'specialisations', component: SpecialisationComponent},
   {path: 'sports', component: SportComponent},

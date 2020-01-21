@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ProgramHttpService} from './program-http.service';
 import {Program} from '../model/program';
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: 'program',
@@ -9,8 +10,9 @@ import {Program} from '../model/program';
 })
 export class ProgramComponent implements OnInit {
   currentProgram: Program = null;
+  detailProgram: Program = null;
 
-  constructor(private programService: ProgramHttpService) { }
+  constructor(private modalService: NgbModal, private programService: ProgramHttpService) { }
 
   ngOnInit() {
   }
@@ -53,4 +55,16 @@ export class ProgramComponent implements OnInit {
   {
     this.currentProgram = null;
   }
+
+
+
+  detail(content, id: number) {
+    this.programService.findById(id).subscribe(resp => {
+      this.detailProgram = resp;
+    }, error => {
+      console.log(error);
+    });
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title', scrollable: true});
+  }
+
 }

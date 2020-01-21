@@ -9,6 +9,7 @@ export class Session {
   nbSession: number;
   program: Program;
   exercices: Array<Exercice> = new Array<Exercice>();
+  isDone: Boolean = false;
 
   constructor(id?: number, version?: number, name?: string, text?: string,
               nbSession?: number, program?: Program, exercices?: Array<Exercice>) {

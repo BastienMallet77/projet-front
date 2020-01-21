@@ -1,0 +1,44 @@
+.monProgressBarElement {
+  margin-left: 2px;
+  margin-right: 2px;
+}
+
+
+.done {
+  background-color: crimson !important;
+  font-weight: bold;
+}
+
+
+.progress {
+  background-color: whitesmoke;
+}
+
+ .progressBarText {
+   color: white;
+   text-decoration: none;
+ }
+
+.maBar{
+  margin-top: 20px;
+}
+
+ .card-deck {
+   margin-top: 20px;
+ }
+
+
+ .previousnext {
+   color: black;
+   text-decoration: none;
+ }
+ .fini{
+   text-align: center;
+   margin-top: 30px;
+   margin-bottom: 30px;
+ }
+
+
+ /*.spaceButton {*/
+ /*  margin-left: 15px;*/
+ /*}*/
