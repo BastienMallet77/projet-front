@@ -34,6 +34,20 @@ export class ProgramHttpService {
     return this.programs;
   }
 
+  /* TODO Test coach-program findAllByUser(id: number): Observable<Program>
+  {
+    for (const program of this.programs)
+    {
+      if (program.id == id)
+      {
+        {
+          return this.http.get<Program>(this.appConfig.backEnd + 'program/' + id);
+        }
+      }
+    }
+    return null;
+  }*/
+
   findById(id: number): Observable<Program>
   {
     for (const program of this.programs)

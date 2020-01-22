@@ -5,6 +5,7 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {InProgressHttpService} from '../in-progress/in-progress-http.service';
 import {DegreeHttpService} from '../degree/degree-http.service';
+import {Specialisation} from '../model/specialisation';
 
 @Injectable({
   providedIn: 'root'
@@ -36,6 +37,14 @@ export class UserHttpService {
 
   findAll(): Array<User> {
     return this.users;
+  }
+
+  findByCoachId(spId: number): Array<Specialisation>{
+    let id = spId;
+    this.http.get<Array<Specialisation>>(this.appConfig.backEnd + 'specialisation/' + id + '/specs').subscribe(resp => {
+      this.speWithSportId = resp;
+    });
+    return this.speWithSportId;
   }
 
   findById(id: number): Observable<User>{
