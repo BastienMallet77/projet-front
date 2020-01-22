@@ -26,7 +26,7 @@ export class Program{
   inProgresses: Array<InProgress> = new Array<InProgress>();
 
 
-  constructor(id?: number, version?: number, name?: string, description?: string, duration?: number, nbValidation?: number, creationDate?: Date, isValidated?: boolean, isDone?: boolean, users?: Array<User>,sessions?: Array<Session>, sport?: Sport, level?: Level, specialisation?: Specialisation, inProgress?: InProgress, rate?: number, nbRate?: number) {
+  constructor(id?: number, version?: number, name?: string, description?: string, duration?: number, nbValidation?: number, creationDate?: Date, isValidated?: boolean, isDone?: boolean, users?: Array<User>,sessions?: Array<Session>, sport?: Sport, level?: Level, specialisation?: Specialisation, inProgresses?: Array<InProgress>, rate?: number, nbRate?: number) {
     this.id = id;
     this.version = version;
     this.name = name;
