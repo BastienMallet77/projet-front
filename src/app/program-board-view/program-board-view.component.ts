@@ -81,22 +81,18 @@ export class ProgramBoardViewComponent implements OnInit {
   }
 
   sessionIsDone(sess: Session){
-    console.log("BEFORE: "+ sess.isDone)
-
-
     if(sess.isDone == false) {
       sess.isDone = true;
       this.numberSessionDone ++;
       this.percentageOfDone = (this.numberSessionDone*100)/this.numberSession;
     }
-
     for(let session of this.sessions){
       if(session.id == sess.id) {
         session = sess;
       }
     }
 
-    console.log("cette fonction fonctionne!" + sess.isDone + "% de fait: "+ this.percentageOfDone)
+
   }
 
   programIsDone(prog: Program) {
