@@ -21,7 +21,6 @@ export class DegreeHttpService {
   load() {
     this.http.get<Array<Degree>>(this.appConfig.backEnd + 'degree').subscribe(resp => {
         this.degrees = resp;
-        console.log(resp)
       },
       err => console.log(err));
   }

@@ -5,6 +5,7 @@ import {AppConfigService} from '../app-config.service';
 import {Observable} from "rxjs";
 import {UserHttpService} from '../user/user-http.service';
 import {User} from '../model/user';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -17,10 +18,7 @@ export class HomeHttpService {
   @Input()
   isConnected: boolean;
 
-  @Output()
-  info: EventEmitter<boolean> = new EventEmitter<boolean>();
-
-  constructor(private appConfig: AppConfigService, private http: HttpClient, private userService: UserHttpService) {
+  constructor(private appConfig: AppConfigService, private http: HttpClient, private userService: UserHttpService, private router: Router) {
   }
 
   login(userName: String, password: String)
@@ -28,8 +26,7 @@ export class HomeHttpService {
     this.http.get<User>(this.appConfig.backEnd + 'user/' + userName + '/' + password).subscribe(resp => {
       this.currentConnection = resp;
       localStorage.setItem('userConnected', JSON.stringify(this.currentConnection));
-      this.isConnected = true;
-      this.info.emit(this.isConnected);
+      this.router.navigate(['board']);
     },
       error => console.log(error));
   }

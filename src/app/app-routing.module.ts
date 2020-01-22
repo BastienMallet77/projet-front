@@ -38,6 +38,7 @@ const routes: Routes = [
   {path: 'sportUser/:id', component: ListSpecSportComponent},
   {path: 'sportUser/:id/level/:id', component: ListLevelSportComponent},
   {path: 'sportUser/:id/level/:id/spec/:id', component: ListProgramUserComponent},
+  {path: 'sportUser/:id/level/:id/spec/:id/program/:id', component: ProgramBoardViewComponent},
   {path: '', component: HomeComponent},
   {path: '**', component: NotFoundComponent},
 ];
