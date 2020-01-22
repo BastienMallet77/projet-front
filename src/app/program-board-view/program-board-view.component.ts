@@ -19,6 +19,8 @@ export class ProgramBoardViewComponent implements OnInit {
   monId: number;
   sessions: Array<Session>;
   numberSession: number = 0;
+  numberSessionDone: number = 0;
+  percentageOfDone: number;
   sectionsize: number;
   maSessionId: number;
   currentSession: Session;
@@ -39,6 +41,9 @@ export class ProgramBoardViewComponent implements OnInit {
         this.sessions = resp.sessions;
         for(let sess of this.sessions){
           this.numberSession ++;
+          if(sess.isDone){
+            this.numberSessionDone ++;
+          }
           this.maSessionId = sess.id;
           // this.exercices = sess.exercices;
           // console.log("LES EXERCICES SONT:" +this.exercices);
@@ -46,8 +51,13 @@ export class ProgramBoardViewComponent implements OnInit {
         this.sectionsize = 100/this.numberSession;
         });
 
+      if(this.numberSessionDone > 0){
+        this.percentageOfDone = (this.numberSessionDone*100)/this.numberSession;
+      } else {
+        this.percentageOfDone =0;
+      }
 
-
+      console.log("pourcentage de fait:" +this.percentageOfDone)
     });
 
   }
@@ -73,13 +83,27 @@ export class ProgramBoardViewComponent implements OnInit {
   }
 
   sessionIsDone(sess: Session){
-    sess.isDone = true;
-    console.log("cette fonction fonctionne!" + sess.isDone)
+    if(sess.isDone == false) {
+      sess.isDone = true;
+      this.numberSessionDone ++;
+      this.percentageOfDone = (this.numberSessionDone*100)/this.numberSession;
+      console.log(this.percentageOfDone);
+    }
+    for(let session of this.sessions){
+      if(session.id == sess.id) {
+        session = sess;
+      }
+    }
+
+    // if(this.percentageOfDone == 100){
+    //TODO modal BRAVO !
+    // }
+
   }
 
   programIsDone(prog: Program) {
     prog.isDone = true;
-    console.log("OK THE PROGRAM IS DONE!")
+    console.log("OK THE PROGRAM IS DONE!");
 }
 
 

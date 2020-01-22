@@ -9,7 +9,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  color: white;
+  color: black;
   visibility: hidden;
 }
 
@@ -25,6 +25,6 @@
 }
 
 #cardForMouseOver:hover {
-  background: rgba(8, 8, 6, 0.45);
+  background: rgba(8, 8, 6, 0.10);
   transition: 0.3s;
 }

@@ -18,9 +18,15 @@ export class HomeComponent implements OnInit {
 
   @Input()
   isConnected: boolean = false;
+  @Input()
+  info;
+
+  userCo: User = JSON.parse(localStorage.getItem('userConnected'));
 
 
-  constructor( private userService : UserHttpService, private homeService: HomeHttpService) {}
+  constructor( private userService : UserHttpService, private homeService: HomeHttpService, private http: HttpClient) {
+
+  }
 
   ngOnInit() {
   }
@@ -39,6 +45,8 @@ export class HomeComponent implements OnInit {
 
   login(userName: string, password: string)
   {
+    localStorage.clear();
     this.homeService.login(userName, password);
   }
+
 }

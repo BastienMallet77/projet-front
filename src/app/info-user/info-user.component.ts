@@ -13,4 +13,7 @@ export class InfoUserComponent implements OnInit {
   ngOnInit() {
   }
 
+  back() {
+    window.history.back()
+  }
 }
