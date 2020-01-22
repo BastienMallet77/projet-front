@@ -27,6 +27,10 @@ import { ListProgramUserComponent } from './list-program-user/list-program-user.
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ProgramBoardViewComponent } from './program-board-view/program-board-view.component';
 import { CreateProgramComponent } from './create-program/create-program.component';
+import {Router} from '@angular/router';
+import {UserHttpService} from './user/user-http.service';
+
+
 
 @NgModule({
   declarations: [

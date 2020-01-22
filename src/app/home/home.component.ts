@@ -49,9 +49,4 @@ export class HomeComponent implements OnInit {
     this.homeService.login(userName, password);
   }
 
-  load()
-  {
-
-  }
-
 }
