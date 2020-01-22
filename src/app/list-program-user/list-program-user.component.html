@@ -9,6 +9,7 @@
           <p>> Descritpion : {{prog.description}}</p>
           <p>> Durée du programme : {{prog.duration}} en jours</p>
           <p>> Programme crée le  : {{prog.creationDate | date:'dd/MM/yyyy'}}</p>
+          <p>> Note utilisateur : <ngb-rating [rate]="prog.rate" max="5" readonly="true"></ngb-rating> </p>
 
 
           </div>

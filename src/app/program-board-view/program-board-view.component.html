@@ -1,6 +1,13 @@
 <div style="text-align: center">
   <h1> Tableau de bord du programme: </h1>
   <h2>{{this.program?.name}} </h2>
+  <div class="form-group">
+   <ngb-rating [formControl]="ctrl" max="5" (ngModelChange)="program.rate"></ngb-rating>
+    <div class="form-text small">
+      <div *ngIf="ctrl.valid" class="text-success">Merci</div>
+      <div *ngIf="ctrl.invalid" class="text-danger">Notez le programme</div>
+    </div>
+  </div>
 </div>
 
 <!-- TODO gérer le nombre d'éléments de la progress bar, leur taille et leur nom en fonction du nombre de sessions contenues dans le programme-->
