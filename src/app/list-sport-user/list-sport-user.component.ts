@@ -14,6 +14,7 @@ export class ListSportUserComponent implements OnInit {
   }
 
   list() {
-    return this.sportService.findAll().filter(s =>s.sportName.indexOf(this.search) != -1);
+    this.search.toLowerCase()
+    return this.sportService.findAll().filter(s =>s.sportName.toLowerCase().indexOf(this.search) != -1);
   }
 }
