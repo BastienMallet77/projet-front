@@ -17,7 +17,10 @@ import {Program} from "../model/program";
 export class LevelComponent implements OnInit {
   currentLevel: Level = null;
   modalLevel: Level = null;
-  speWithSportId: Array<Specialisation>;
+  speWithSportId: Array<Specialisation> = null;
+  listSports: Array<Sport>;
+  //currentLevelSportId: number = null;
+  //sportSelectedId: number = null;
 
   constructor(private modalService: NgbModal, private levelHttpService: LevelHttpService, private sportHttpService: SportHttpService, private specialisationHttpService: SpecialisationHttpService, private programHttpService: ProgramHttpService) {
   }
@@ -25,12 +28,36 @@ export class LevelComponent implements OnInit {
   ngOnInit() {
   }
 
-  sports() {
-    return this.sportHttpService.findAll();
+  spe(){
+    console.log(this.currentLevel.sport.id);
+    this.specialisationHttpService.findBySportId(this.currentLevel.sport.id);
+    console.log("ici");
+    console.log(this.speWithSportId);
+    return this.speWithSportId;
   }
-  specialisations(sportId: number) {
-    let spId = sportId;
-    this.speWithSportId = this.specialisationHttpService.findBySportId(spId);
+
+
+  sports() {
+    /*if (this.curentLevelSportId != this.sportSelectedId) {
+      this.speWithSportId = this.specialisationHttpService.findBySportId(this.currentLevel.sport.id);
+      this.sportSelectedId = this.currentLevel.sport.id;
+    }*/
+    //this.sportHttpService.findAll();
+    /*console.log(this.currentLevel.sport.id);
+    console.log(this.sportSelectedId);
+    console.log(this.speWithSportId);*/
+
+    console.log(this.currentLevel.sport.id);
+    if (this.currentLevel.sport.id !=null) {
+      this.specialisationHttpService.findBySportId(this.currentLevel.sport.id);
+      console.log(this.speWithSportId);
+    }
+    return this.listSports;
+  }
+  specialisations() {
+    console.log("ici");
+    console.log(this.currentLevel.sport.id);
+    return this.specialisationHttpService.findBySportId(this.currentLevel.sport.id);
   }
   programs() {
     return this.programHttpService.findAll();
@@ -45,6 +72,7 @@ export class LevelComponent implements OnInit {
     this.currentLevel.programs = new Array<Program>();
     this.currentLevel.specialisation = new Specialisation();
     this.currentLevel.sport = new Sport();
+    this.listSports = this.sportHttpService.findAll();
   }
 
   detail(content, id: number) {
