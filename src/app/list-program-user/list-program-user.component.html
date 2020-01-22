@@ -3,8 +3,13 @@
   <div class="col-lg-10 mb-5" *ngFor="let prog of listPrograms()" style="cursor: pointer">
     <div class="card border-success" style="border-radius: 10px">
 
-      <div id="cardForMouseOver" >
-        <div class="row justify-content-between">
+      <div id="cardForMouseOver" style="text-align: center">
+        <div class="row justify-content-start">
+          <div id="card-text">
+          <p>> Descritpion : {{prog.description}}</p>
+          <p>> Durée du programme : {{prog.duration}} en jours</p>
+          <p>> Programme crée le  : {{prog.creationDate | date:'dd/MM/yyyy'}}</p>
+          <p>> Note utilisateur : <ngb-rating [rate]="prog.rate" max="5" readonly="true"></ngb-rating> </p>
 
           <div class="col-4">
         <div><img id="card-img" src="./assets/images/bodybuilder.jpg"

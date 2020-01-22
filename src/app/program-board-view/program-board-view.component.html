@@ -1,6 +1,13 @@
 <div style="text-align: center; margin-top: 15px">
   <h1> Tableau de bord du programme: </h1>
   <h2>{{this.program?.name}} </h2>
+  <div class="form-group">
+   <ngb-rating [formControl]="ctrl" max="5" (ngModelChange)="program.rate"></ngb-rating>
+    <div class="form-text small">
+      <div *ngIf="ctrl.valid" class="text-success">Merci</div>
+      <div *ngIf="ctrl.invalid" class="text-danger">Notez le programme</div>
+    </div>
+  </div>
 </div>
 <div class="form-group">
   <ngb-rating [formControl]="ctrl" [rate]="currentRate" (rateChange)="toRate($event)" max="5" [readonly]="!read"></ngb-rating>
@@ -94,7 +101,8 @@
         </div>
       </div>
     </div>
-    <footer class="fini">
+
+    <footer *ngIf="this.percentageOfDone != 100" class="fini">
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-12">
@@ -112,14 +120,13 @@
 </table>
 
 
-<footer class="fini">
+<footer *ngIf="this.percentageOfDone == 100" class="fini">
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-12">
         <!--TODO lien vers le tableau de bord use-->
-        <button type="button" class="btn btn-info"><a href="#" (click)="programIsDone(this.program)"
-                                                      class="progressBarText"> J'ai terminé le programme
-          !
+        <button type="button" class="btn btn-info"><a [routerLink]="['/board']" routerLinkActive="active"
+          (click)="programIsDone(this.program)" class="progressBarText"> J'ai terminé le programme !
           <fa name="trophy"></fa>
         </a></button>
       </div>
@@ -131,20 +138,22 @@
 <!--TODO rendre ça plus beau -->
 <footer class="footer">
   <div class="container">
-    <div class="row" style="justify-content:space-between">
-
+    <div class="row" style="justify-content:center">
+<!--
       <button type="button" class="btn btn-warning spaceButton"><a href="#" class="previousnext">&laquo; Session
         précédente </a>
       </button>
-      <button type="button" class="btn btn-danger spaceButton"><a href="#" class="progressBarText"> Abandonner le
-        programme
-        <fa name="trash"></fa>
+      -->
+      <button type="button" class="btn btn-danger spaceButton mb-5 mt-5">
+        <a class="progressBarText normalTextBold" [routerLink]="['/board']" routerLinkActive="active" >
+          Retour au tableau de bord
+         <fa name="times"></fa>
       </a></button>
+      <!--
       <button type="button" class="btn btn-warning spaceButton"><a href="#" class="previousnext"> Session suivante
         &raquo;</a>
       </button>
-
+      -->
     </div>
   </div>
 </footer>
-
