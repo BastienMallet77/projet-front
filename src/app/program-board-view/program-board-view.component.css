@@ -1,44 +1,46 @@
+.progress {
+
+}
+
+.changeColor{
+  background-color: mediumseagreen;
+}
+
 .monProgressBarElement {
   margin-left: 2px;
   margin-right: 2px;
+  background-color: rebeccapurple;
+  height: 30px;
+  border-radius: 5px;
 }
-
 
 .done {
   background-color: crimson !important;
   font-weight: bold;
 }
 
-
-.progress {
-  background-color: whitesmoke;
+.progressBarText {
+  color: white;
+  text-decoration: none;
+  font-size: 15px;
 }
 
- .progressBarText {
-   color: white;
-   text-decoration: none;
- }
-
-.maBar{
+.card-deck {
   margin-top: 20px;
 }
 
- .card-deck {
-   margin-top: 20px;
- }
+.previousnext {
+  color: black;
+  text-decoration: none;
+}
 
+.fini {
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
 
- .previousnext {
-   color: black;
-   text-decoration: none;
- }
- .fini{
-   text-align: center;
-   margin-top: 30px;
-   margin-bottom: 30px;
- }
-
-
- /*.spaceButton {*/
- /*  margin-left: 15px;*/
- /*}*/
+.spaceToi {
+  margin-left: 5px;
+  margin-right: 5px;
+}
