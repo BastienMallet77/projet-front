@@ -15,6 +15,7 @@ import {Session} from "../model/session";
 export class ProgramHttpService {
 
   programs: Array<Program>;
+  progWithCoachId: Array<Program>;
 
   constructor(private appConfig: AppConfigService, private userService: UserHttpService, private sportService: SportHttpService, private levelService: LevelHttpService, /* private inProgressService: InProgressHttpService, TODO*/ private http: HttpClient)
   {
@@ -32,6 +33,14 @@ export class ProgramHttpService {
   findAll(): Array<Program>
   {
     return this.programs;
+  }
+
+  findByCoachId(spId: number): Array<Program>{
+    let id = spId;
+    this.http.get<Array<Program>>(this.appConfig.backEnd + 'program/' + id + '/creator').subscribe(resp => {
+      this.progWithCoachId = resp;
+    });
+    return this.progWithCoachId;
   }
 
   /* TODO Test coach-program findAllByUser(id: number): Observable<Program>

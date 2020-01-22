@@ -34,6 +34,7 @@ const routes: Routes = [
   {path: 'specialisations', component: SpecialisationComponent},
   {path: 'sports', component: SportComponent},
   {path: 'users', component: UserComponent},
+  {path: 'user/:id/programs', component: UserComponent}, //TODO rajout pour test CaochBoard
   {path: 'sportUser', component: ListSportUserComponent},
   {path: 'infoUser', component: InfoUserComponent},
   {path: 'board', component: DashboardComponent},
