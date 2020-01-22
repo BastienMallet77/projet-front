@@ -1,48 +1,71 @@
-<div class="row" style="margin-top: 30px">
-  <div class="col-2" style="left:30px ">
-    <img style="border-radius: 50%" src="https://placekitten.com/640/360" class="img-circle" alt="Cinque Terre"
-         width="130" height="130">
+<div class="row" style="margin-top: 60px">
 
+  <div class="col-3" style="left:30px ">
 
-  </div>
-  <div class="col-3">
-    <div class="col-10" style="left:30px ;border: solid">
-      <p><i class="fas fa-medal" style="color: silver"></i>Nombre de sessions effectués</p>
+    <div class="row">
+      <img style="border-radius: 50%" src="https://placekitten.com/640/360" class="img-circle" alt="Cinque Terre"
+           width="130" height="130">
     </div>
-  </div>
-  <div class="col-4">
-    <div class="col-8" style="left:30px ;border: solid">
-      <p><i class="fas fa-trophy" style="color: gold"></i> Nombre de programmes terminés</p>
+    <div class="row">
+      <button class="btn btn-info mt-2" [routerLink]="['/infoUser']" routerLinkActive="active">Mes informations</button>
     </div>
-  </div>
-  <div class="col-3">
-
-      <button class="btn-success" style="height: 50px"  [routerLink]="['/coachBoard']"> Mon espace Coaching</button>
-
-  </div>
-</div>
-<div class="row">
-
-
-<div class="col-3 ml-2">
-  <button class="btn btn-info mt-2" [routerLink]="['/infoUser']" routerLinkActive="active">Mes informations</button>
-
-</div>
-<div class="card w-50" style="float: none">
-  <div class="row justify-content-center">
-    <div class="col-8" style="border: solid">
-      <p> Requete sql regroupent les inprogress avec les date de fin = null et, sport concerné et le niveau</p>
-
+    <div class="row">
+      <p>
+        <button class="btn btn-success mt-3 justify-content-end" [routerLink]="'/createProgram'"><i
+          class="fas fa-plus-circle"></i> Créer un programme
+        </button>
+      </p>
     </div>
-  </div>
-  <div class="mt-5">
-    <div class="row justify-content-center">
-      <div class="col-11" style="border: solid">
-        <p> Requete sql regroupent les inprogress avec les date de fin different de null, le sport concerné et le niveau</p>
 
+  </div>
+
+
+  <div class="col-9">
+
+    <div class="row">
+
+      <div class="col-6" style="justify-content: center">
+        <div class="col-10" style="border: solid">
+          <p><i class="fas fa-medal" style="color: silver"></i>Nombre de sessions effectuées</p>
+        </div>
+      </div>
+      <div class="col-6" style="justify-content: center">
+        <div class="col-10" style="border: solid">
+          <p><i class="fas fa-trophy" style="color: gold"></i> Nombre de programmes terminés: </p>
+        </div>
       </div>
     </div>
+
+    <div class="row mt-4">
+      <div class="col-11" style="border: solid">
+        <p> Requete sql regroupant les inprogress avec les dates de fin different de null, le sport concerné et le
+          niveau</p>
+        <div  *ngFor="let encours of this.mesEnCours">
+          <div *ngIf="encours.endDate == null">
+            <div> Nom du programme: {{encours.program?.name}}</div>
+            <div> Date de début du programme: {{encours.beginingDate}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-3">
+      <div class="col-11" style="border: solid">
+        <p> Requete sql regroupant les inprogress avec les date de fin = null et, sport concerné et le niveau</p>
+        <div  *ngFor="let encours of this.mesEnCours">
+          <div *ngIf="encours.endDate != null">
+            <div> Nom du programme: {{encours.program?.name}}</div>
+            <div> Date de début du programme: {{encours.beginingDate}}</div>
+            <div> Date de fin du programme: {{encours.endDate}}</div>
+          </div>
+        </div>
+    
+      </div>
+    </div>
+
   </div>
 </div>
-</div>
 
+
+<!--<div class="card w-50" style="float: none">-->
+<!--  <div class="row justify-content-center">-->

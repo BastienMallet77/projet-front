@@ -22,9 +22,9 @@ export class AppComponent {
   userCo: User = JSON.parse(localStorage.getItem('userConnected'));
 
 
+
   logout() {
     localStorage.removeItem('userConnected');
-    console.log(JSON.parse(localStorage.getItem('userConnected')));
     localStorage.clear();
     this.router.navigate(['']);
   }

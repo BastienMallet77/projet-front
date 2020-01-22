@@ -9,17 +9,17 @@ export class InProgress{
   endDate: Date;
   progression: number;
   userProgressing: User;
-  progInProgress: Array<Program> = new Array<Program>();
+  program: Program;
 
   constructor(id?: number, version?: number, beginingDate?: Date, endDate?: Date,
-              progression?: number, userProgressing?: User, progInProgress?: Array<Program>) {
+              progression?: number, userProgressing?: User, program?: Program) {
     this.id = id;
     this.version = version;
     this.beginingDate = beginingDate;
     this.endDate = endDate;
     this.progression = progression;
     this.userProgressing = userProgressing;
-    this.progInProgress = progInProgress;
+    this.program = program;
   }
 
 }
