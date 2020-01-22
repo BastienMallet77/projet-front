@@ -11,8 +11,9 @@ import {User} from '../model/user';
 })
 export class DashboardCoachComponent implements OnInit {
 
-  progWithCreatorId: Array<Program>;
-  proglistnb: number;
+  progWithCreatorId: Array<Program> = null;
+  proglistnb: number = null;
+  progListInit: boolean = false;
 
   /*@Output() TODO User connecté, pour récupérer l'ID du coach connecté
   userCo: User = JSON.parse(localStorage.getItem('userConnected'));
@@ -22,16 +23,17 @@ export class DashboardCoachComponent implements OnInit {
   ngOnInit() {
   }
 
-  getCoachPrograms (uId){
-    let cId = uId;
-    this.progWithCreatorId = this.programService.findByCoachId(cId);
+  getCoachPrograms(id){
+    this.progWithCreatorId = this.programService.findByCoachId(id);
     this.proglistnb = this.progWithCreatorId.length;
+    this.progListInit=true;
     console.log("Cherche");
-    this.afficheProfList();
+    //this.afficheProgList();
     return this.proglistnb;
   }
 
-  afficheProfList(){
+  afficheProgList(){
+    // this.getCoachPrograms(id);
     console.log("Affiche");
     return this.proglistnb;
   }
