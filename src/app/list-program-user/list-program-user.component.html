@@ -16,6 +16,9 @@
             <p class="mb-0"> Descritpion : {{prog.description}}</p>
             <p class="mb-0"> Durée du programme : {{prog.duration}}  jours</p>
             <p class="mb-0"> Programme crée le  : {{prog.creationDate | date:'dd/MM/yyyy'}}</p>
+            <p class="mb-0"> Note utilisateur : <ngb-rating [rate]="prog.rate" max="5" readonly="true"></ngb-rating> </p>
+            <p style="font-size: small"> (Nombre de votes : {{prog.nbRate}})</p>
+
           </div>
           <div class="col-4" style="margin: auto" >
 
