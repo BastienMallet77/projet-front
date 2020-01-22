@@ -1,3 +1,12 @@
+<div class="row justify-content-center">
+  <div class="col-6 ">
+  <h3 style="margin-left: 100px">Veuillez choisir le niveau des exercices à faire</h3>
+  </div>
+</div>
+
+
+
+
 <div class="row justify-content-around" style="margin-top: 20px">
   <div class="col-lg-3" *ngFor="let level of listLevel()" [routerLink]="['spec/', level.id]" style="cursor: pointer">
     <div class="card border-success" style="border-radius: 10px">
