@@ -27,7 +27,7 @@
     <td style="cursor: pointer"> <a class="normalText" [routerLink]="['/program', program.id]" routerLinkActive="active" > {{program.duration}}</a> </td>
     <td style="cursor: pointer"> <a class="normalText" [routerLink]="['/program', program.id]" routerLinkActive="active">{{program.rate}}</a></td>
     <td style="cursor: pointer"> <a class="normalText" [routerLink]="['/program', program.id]" routerLinkActive="active" > {{program.creationDate | date:'dd/MM/yyyy'}}</a> </td>
-    <td style="cursor: pointer"> <a class="normalText" [routerLink]="['/program', program.id]" routerLinkActive="active" > {{program.inProgress.userProgressing.firstName}}</a> </td>
+    <td style="cursor: pointer"> <a class="normalText" [routerLink]="['/program', program.id]" routerLinkActive="active" > {{program.inProgress.userProgressing?.firstName}}</a> </td>
     <td style="cursor: pointer"> <a class="normalText" [routerLink]="['/program', program.id]" routerLinkActive="active" > {{program.isValidated}}</a> </td>
     <td style="cursor: pointer"> <a class="normalText" [routerLink]="['/program', program.id]" routerLinkActive="active" > {{program.isDone}}</a> </td>
     <td>

@@ -24,9 +24,9 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
   }
-
-  add(){
+  add() : void {
     this.currentUser = new User();
+
   }
   save(){
     this.userService.save(this.currentUser);
