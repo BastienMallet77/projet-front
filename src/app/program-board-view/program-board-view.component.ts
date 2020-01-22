@@ -7,6 +7,7 @@ import {ActivatedRoute} from "@angular/router";
 import {SessionHttpService} from "../session/session-http.service";
 import {Exercice} from "../model/exercice";
 import {ExerciceHttpService} from "../exercice/exercice-http.service";
+import {FormControl, Validators} from '@angular/forms';
 
 @Component({
   selector: 'program-board-view',
@@ -23,6 +24,7 @@ export class ProgramBoardViewComponent implements OnInit {
   sectionsize: number;
   maSessionId: number;
   currentSession: Session;
+  ctrl = new FormControl(null, Validators.required);
 
   exercices: Array<Exercice>;
 
