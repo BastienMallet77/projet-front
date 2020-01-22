@@ -44,8 +44,8 @@ export class UserComponent implements OnInit {
       if (!this.currentUser.programs) {
         this.currentUser.programs = new Program();
       }
-      if (!this.currentUser.inProgress) {
-        this.currentUser.inProgress = new InProgress();
+      if (!this.currentUser.inProgresses) {
+        this.currentUser.inProgresses = new Array<InProgress>();
       }
       if (!this.currentUser.degreesCoach) {
         this.currentUser.degreesCoach = new Degree();
