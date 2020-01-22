@@ -17,6 +17,7 @@ export class UserComponent implements OnInit {
 
   search: string = "";
   currentUser: User = null;
+  progWithCoachId: Array<Program>; //TODO Pas sur sur le program (dans coach_program)
 
   constructor(private userService: UserHttpService, private degreeService: DegreeHttpService, private inProgressService: InProgressHttpService, private programService: ProgramHttpService) {
 

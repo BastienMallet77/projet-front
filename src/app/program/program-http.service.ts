@@ -16,6 +16,7 @@ import {Router} from '@angular/router';
 export class ProgramHttpService {
 
   programs: Array<Program>;
+  progWithCoachId: Array<Program>;
 
   constructor(private router: Router,private appConfig: AppConfigService, private userService: UserHttpService, private sportService: SportHttpService, private levelService: LevelHttpService, /* private inProgressService: InProgressHttpService, TODO*/ private http: HttpClient)
   {
@@ -34,6 +35,28 @@ export class ProgramHttpService {
   {
     return this.programs;
   }
+
+  findByCoachId(spId: number): Array<Program>{
+    let id = spId;
+    this.http.get<Array<Program>>(this.appConfig.backEnd + 'program/' + id + '/creator').subscribe(resp => {
+      this.progWithCoachId = resp;
+    });
+    return this.progWithCoachId;
+  }
+
+  /* TODO Test coach-program findAllByUser(id: number): Observable<Program>
+  {
+    for (const program of this.programs)
+    {
+      if (program.id == id)
+      {
+        {
+          return this.http.get<Program>(this.appConfig.backEnd + 'program/' + id);
+        }
+      }
+    }
+    return null;
+  }*/
 
   findById(id: number): Observable<Program>
   {

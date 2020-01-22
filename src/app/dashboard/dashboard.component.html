@@ -1,12 +1,12 @@
-<div class="row" style="margin-top: 60px">
+<div class="row" style="margin-top: 60px; justify-content: center">
 
-  <div class="col-3" style="left:30px ">
+  <div class="col-3" style="left:30px">
 
     <div class="row">
-      <img style="border-radius: 50%" src="https://placekitten.com/640/360" class="img-circle" alt="Cinque Terre"
+      <img style="border-radius: 50%" src="../../assets/images/user.jpg" class="img-circle" alt="ma photo"
            width="130" height="130">
     </div>
-    <div class="row">
+    <div class="row mt-2">
       <button class="btn btn-info mt-2" [routerLink]="['/infoUser']" routerLinkActive="active">Mes informations</button>
     </div>
     <div class="row">
@@ -20,52 +20,107 @@
   </div>
 
 
-  <div class="col-9">
+  <div class="col-9 mt-5" style="justify-content: center">
 
-    <div class="row">
-
-      <div class="col-6" style="justify-content: center">
-        <div class="col-10" style="border: solid">
-          <p><i class="fas fa-medal" style="color: silver"></i>Nombre de sessions effectuées</p>
-        </div>
-      </div>
-      <div class="col-6" style="justify-content: center">
-        <div class="col-10" style="border: solid">
-          <p><i class="fas fa-trophy" style="color: gold"></i> Nombre de programmes terminés: </p>
-        </div>
-      </div>
-    </div>
-
-    <div class="row mt-4">
-      <div class="col-11" style="border: solid">
-        <p> Requete sql regroupant les inprogress avec les dates de fin different de null, le sport concerné et le
-          niveau</p>
-        <div  *ngFor="let encours of this.mesEnCours">
-          <div *ngIf="encours.endDate == null">
-            <div> Nom du programme: {{encours.program?.name}}</div>
-            <div> Date de début du programme: {{encours.beginingDate}}</div>
+    <div class="row" style="align-items: center">
+      <div class="card" style="width: 500px">
+        <div class="row no-gutters" style="align-items: center">
+          <div class="col-md-3">
+            <i class="fas fa-medal fa-5x" style="color: silver"></i>
+          </div>
+          <div class="col-md-9">
+            <h5 class="card-title">Nombre de sessions effectuées: 7 </h5>
           </div>
         </div>
       </div>
     </div>
 
     <div class="row mt-3">
-      <div class="col-11" style="border: solid">
-        <p> Requete sql regroupant les inprogress avec les date de fin = null et, sport concerné et le niveau</p>
-        <div  *ngFor="let encours of this.mesEnCours">
-          <div *ngIf="encours.endDate != null">
-            <div> Nom du programme: {{encours.program?.name}}</div>
-            <div> Date de début du programme: {{encours.beginingDate}}</div>
-            <div> Date de fin du programme: {{encours.endDate}}</div>
+      <div class="card" style="width: 500px">
+        <div class="row no-gutters" style="align-items: center">
+          <div class="col-md-3">
+            <i class="fas fa-trophy fa-5x" style="color: gold"></i>
+          </div>
+          <div class="col-md-9">
+            <h5 class="card-title"> Nombre de programmes terminés: 1 </h5>
           </div>
         </div>
-    
       </div>
     </div>
 
   </div>
-</div>
 
+  <div class="row mt-4">
+    <div class="col-11 ml-3">
 
-<!--<div class="card w-50" style="float: none">-->
-<!--  <div class="row justify-content-center">-->
+      <div class="card" style="width: 100%;">
+        <div class="card-body">
+          <div class="card-header" style="background-color: #ffe770">
+            <h5 class="card-title"> PROGRAMMES EN COURS:</h5>
+          </div>
+          <div class="card-text">
+            <table class="table table-hover">
+              <thead>
+              <tr>
+                <th scope="col">Nom du programme</th>
+                <th scope="col">Sport</th>
+                <th scope="col">Niveau</th>
+                <th scope="col">Spécialisation</th>
+                <th scope="col">Date de début</th>
+                <th scope="col"> Progression (%)</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let encours of this.mesEnCours">
+                <!--<div *ngIf="encours.program?.isDone == false">-->
+                <td *ngIf="encours.endDate == null"> {{encours.program?.name}} </td>
+                <td *ngIf="encours.endDate == null">   {{encours.program?.sport?.sportName}}</td>
+                <td *ngIf="encours.endDate == null"> {{encours.program?.level?.levelName}} </td>
+                <td *ngIf="encours.endDate == null"> {{encours.program?.specialisation?.speName}} </td>
+                <td *ngIf="encours.endDate == null">  {{encours.beginingDate | date:'dd/MM/yyyy'}} </td>
+                <td *ngIf="encours.endDate == null"> {{encours.progression }}</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="card mt-3" style="width: 100%;">
+        <div class="card-body">
+          <div class="card-header" style="background-color: #4fc95d">
+            <h5 class="card-title"> PROGRAMMES TERMINES:</h5>
+          </div>
+          <div class="card-text">
+            <table class="table table-hover">
+              <thead>
+              <tr>
+                <th scope="col">Nom du programme</th>
+                <th scope="col">Sport</th>
+                <th scope="col">Niveau</th>
+                <th scope="col">Spécialisation</th>
+                <th scope="col">Date de début</th>
+                <th scope="col">Date de fin</th>
+                <th scope="col"> Progression (%)</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let encours of this.mesEnCours">
+                <!--<div *ngIf="encours.program?.isDone == false">-->
+                <td *ngIf="encours.endDate != null"> {{encours.program?.name}} </td>
+                <td *ngIf="encours.endDate != null">   {{encours.program?.sport.sportName}}</td>
+                <td *ngIf="encours.endDate != null"> {{encours.program?.level.levelName}} </td>
+                <td *ngIf="encours.endDate != null"> {{encours.program?.specialisation.speName}} </td>
+                <td *ngIf="encours.endDate != null">  {{encours.beginingDate | date:'dd/MM/yyyy'}} </td>
+                <td *ngIf="encours.endDate != null">  {{encours.endDate | date:'dd/MM/yyyy'}} </td>
+                <td *ngIf="encours.endDate != null"> {{encours.progression }}</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+

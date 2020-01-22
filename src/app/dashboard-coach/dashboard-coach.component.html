@@ -7,7 +7,8 @@
   </div>
   <div class="col-3">
     <div class="col-10" style="left:30px ;border: solid">
-      <p><i class="fas fa-medal" style="color: silver"></i>Nombre de programmes crées</p>
+      <!-- TODO Ajouter l'ID de coach connecté au lieu de 294-->
+      <p (click)="getCoachPrograms(294)"><i class="fas fa-medal" style="color: silver"></i> Nombre de programmes crées : {{afficheProfList()}}</p>
     </div>
   </div>
   <div class="col-4">
@@ -33,7 +34,6 @@
     <div class="row justify-content-center">
       <div class="col-8" style="border: solid">
         <p> Requete sql regroupent les inprogress avec les date de fin = null et, sport concerné et le niveau</p>
-
       </div>
     </div>
     <div class="mt-5">
@@ -46,4 +46,7 @@
     </div>
   </div>
 </div>
+<script>
+  document.getElementById("pDone").innerHTML = this.getCoachPrograms(294);
+</script>
 

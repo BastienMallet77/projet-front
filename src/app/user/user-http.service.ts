@@ -5,6 +5,8 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {InProgressHttpService} from '../in-progress/in-progress-http.service';
 import {DegreeHttpService} from '../degree/degree-http.service';
+import {Specialisation} from '../model/specialisation';
+import {Program} from '../model/program';
 
 @Injectable({
   providedIn: 'root'

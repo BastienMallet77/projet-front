@@ -13,20 +13,18 @@
               <ngb-rating [rate]="prog.rate" max="5" readonly="true"></ngb-rating>
             </p>
 
-            <div class="col-4">
-              <div><img id="card-img" src="./assets/images/bodybuilder.jpg"
-                        style="width: 200px; height: 150px; margin-top: 20px;margin-bottom: 20px; padding: 0">
-              </div>
-            </div>
-            <div class="col-4 align-items-center" style="padding: 0; justify-content: flex-start">
-              <h4>{{prog.name}}</h4>
-              <p class="mb-0"> Descritpion : {{prog.description}}</p>
-              <p class="mb-0"> Durée du programme : {{prog.duration}}  jours</p>
-              <p class="mb-0"> Programme crée le : {{prog.creationDate | date:'dd/MM/yyyy'}}</p>
-              <p class="mb-0"> Note utilisateur :
-                <ngb-rating [rate]="prog.rate" max="5" readonly="true"></ngb-rating>
-              </p>
-              <p style="font-size: small"> (Nombre de votes : {{prog.nbRate}})</p>
+          <div class="col-4">
+        <div><img id="card-img" src="./assets/images/bodybuilder.jpg"
+                  style="width: 200px; height: 150px; margin-top: 20px;margin-bottom: 20px; padding: 0">
+        </div>
+        </div>
+          <div class="col-4 align-items-center" style="padding: 0; justify-content: flex-start">
+        <h4>{{prog.name}}</h4>
+            <p class="mb-1"> Descritpion : {{prog.description}}</p>
+            <p class="mb-1"> Durée du programme : {{prog.duration}}  jours</p>
+            <p class="mb-1"> Programme crée le  : {{prog.creationDate | date:'dd/MM/yyyy'}}</p>
+            <p class="mb-1"> Note utilisateur : <ngb-rating [rate]="prog.rate" max="5" readonly="true"></ngb-rating> </p>
+            <p class="mb-1" style="font-size: small"> (Nombre de votes : {{prog.nbRate}})</p>
 
             </div>
             <div class="col-4" style="margin: auto">

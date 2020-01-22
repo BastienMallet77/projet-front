@@ -29,11 +29,11 @@ export class DashboardComponent implements OnInit {
 
   LesEnCours: Array<InProgress> = new Array<InProgress>();
   mesEnCours: Array<InProgress> = new Array<InProgress>();
-  mesProgEnCours: Array<Program> = new Array<Program>();
 
   constructor(private dashboardService: DashboardHttpService, private inProgressService: InProgressHttpService) {
     this.LesEnCours = this.inProgressService.findAll();
 
+// this.userCo.inProgress
 
     for(let enCours of this.LesEnCours){
       if(enCours.userProgressing.id != null) {
@@ -49,10 +49,5 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
   }
-
-  // findPrograms() Array<Program>{
-  //   return this.mesProgEnCours;
-  // }
-
 
 }
