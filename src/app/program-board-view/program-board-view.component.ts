@@ -25,12 +25,18 @@ export class ProgramBoardViewComponent implements OnInit {
   maSessionId: number;
   currentSession: Session;
   ctrl = new FormControl(null, Validators.required);
+  currentRate: number = -1;
+  meanRate: number;
+  moyenne: number;
+
 
   exercices: Array<Exercice>;
 
   selectedProgram: Program;
   selectedSession: Session;
   afficheExos: boolean;
+  private read: boolean = true;
+  private count: number;
 
   constructor(private route: ActivatedRoute, private programService: ProgramHttpService, private programBoardViewHttpService: ProgramBoardViewHttpService, private exerciceService: ExerciceHttpService, private sessionService: SessionHttpService) {
     this.route.params.subscribe(params => {
@@ -80,6 +86,15 @@ export class ProgramBoardViewComponent implements OnInit {
       this.exercices = resp.exercices;
       this.selectedSession = resp;
     });
+  }
+
+  toRate(nb: number)
+  {
+    this.meanRate = this.program.rate*this.program.nbRate;
+    this.program.rate = (this.meanRate+nb)/(this.program.nbRate + 1);
+    this.program.nbRate += 1;
+    this.programBoardViewHttpService.save(this.program);
+    this.read = false;
   }
 
   sessionIsDone(sess: Session){

@@ -29,6 +29,7 @@ import { ProgramBoardViewComponent } from './program-board-view/program-board-vi
 import { CreateProgramComponent } from './create-program/create-program.component';
 import {Router} from '@angular/router';
 import {UserHttpService} from './user/user-http.service';
+import { CreateSessionComponent } from './create-session/create-session.component';
 
 
 
@@ -56,7 +57,8 @@ import {UserHttpService} from './user/user-http.service';
     NotFoundComponent,
     InfoUserComponent,
     ProgramBoardViewComponent,
-    CreateProgramComponent
+    CreateProgramComponent,
+    CreateSessionComponent
   ],
   imports: [
     BrowserModule,
