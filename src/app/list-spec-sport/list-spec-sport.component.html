@@ -1,7 +1,17 @@
-<div class="col-lg-5" *ngFor="let specialisation of listSpecs()" [routerLink]="['level/',specialisation.id]" style="cursor: pointer">
-  <div id="sportUserList" style="text-align: center">
-      <span id="tooltipSport" ngbTooltip="{{specialisation.speDescription}}" [openDelay]="300" [closeDelay]="500"><h2>{{specialisation.speName}}</h2>
-      </span>
+<div class="row justify-content-around" style="margin-top: 20px">
+  <div class="col-lg-4" *ngFor="let specialisation of listSpecs()" [routerLink]="['level/',specialisation.id]"
+       style="cursor: pointer">
+    <div class="card border-success" style="border-radius: 10px">
+      <div id="cardForMouseOver" style="text-align: center">
+        <div><img id="card-img" src="./assets/images/bodybuilder.jpg"
+                  style="width: 320px; height: 400px; margin-top: 30px">
+          <p id="card-text">{{specialisation.speDescription}}</p>
+        </div>
+        <h2>{{specialisation.speName}}</h2>
+
+      </div>
+    </div>
   </div>
 </div>
+
 

@@ -1,7 +1,29 @@
-<div class="col-lg-5" *ngFor="let prog of listPrograms()" style="cursor: pointer">
-  <div id="sportUserList" style="text-align: center">
-      <span id="tooltipSport" ngbTooltip="{{prog.description}}" [openDelay]="300" [closeDelay]="500"><h2>{{prog.name}}</h2>
-      </span>
+<div class="row justify-content-around" style="margin-top: 20px">
+
+  <div class="col-lg-10" *ngFor="let prog of listPrograms()" style="cursor: pointer">
+    <div class="card border-success" style="border-radius: 10px">
+
+      <div id="cardForMouseOver" style="text-align: center">
+        <div class="row justify-content-start">
+          <div id="card-text">
+          <p>> Descritpion : {{prog.description}}</p>
+          <p>> Durée du programme : {{prog.duration}} en jours</p>
+          <p>> Programme crée le  : {{prog.creationDate | date:'dd/MM/yyyy'}}</p>
+
+
+          </div>
+          <div class="col-4">
+        <div><img id="card-img" src="./assets/images/bodybuilder.jpg"
+                  style="width: 200px; height: 150px; margin-top: 20px;margin-bottom: 20px; padding: 0">
+        </div>
+        </div>
+          <div class="col-4" style="padding: 0; justify-content: flex-start">
+        <h4>{{prog.name}}</h4>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
+
 
