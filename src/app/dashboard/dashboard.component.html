@@ -1,4 +1,4 @@
-<div class="row" style="margin-top: 60px; justify-content: center">
+<div class="row" style="margin-top: 30px; justify-content: center">
 
   <div class="col-3" style="left:30px">
 
@@ -29,7 +29,7 @@
             <i class="fas fa-medal fa-5x" style="color: silver"></i>
           </div>
           <div class="col-md-9">
-            <h5 class="card-title">Nombre de sessions effectuées: 7 </h5>
+            <h5 class="card-title">Nombre de sessions effectuées: {{this.userCo.nbSessionFinished}} </h5>
           </div>
         </div>
       </div>
@@ -42,7 +42,7 @@
             <i class="fas fa-trophy fa-5x" style="color: gold"></i>
           </div>
           <div class="col-md-9">
-            <h5 class="card-title"> Nombre de programmes terminés: 1 </h5>
+            <h5 class="card-title"> Nombre de programmes terminés: {{this.userCo.nbProgramFinished}} </h5>
           </div>
         </div>
       </div>
@@ -68,18 +68,27 @@
                 <th scope="col">Spécialisation</th>
                 <th scope="col">Date de début</th>
                 <th scope="col"> Progression (%)</th>
+                <th scope="col"></th>
               </tr>
               </thead>
               <tbody>
               <tr *ngFor="let encours of this.mesEnCours">
                 <!--<div *ngIf="encours.program?.isDone == false">-->
                 <td *ngIf="encours.endDate == null"> {{encours.program?.name}} </td>
-                <td *ngIf="encours.endDate == null">   {{encours.program?.sport?.sportName}}</td>
-                <td *ngIf="encours.endDate == null"> {{encours.program?.level?.levelName}} </td>
-                <td *ngIf="encours.endDate == null"> {{encours.program?.specialisation?.speName}} </td>
-                <td *ngIf="encours.endDate == null">  {{encours.beginingDate | date:'dd/MM/yyyy'}} </td>
-                <td *ngIf="encours.endDate == null"> {{encours.progression }}</td>
+                <td *ngIf="encours.endDate == null"> {{this.monSport?.sportName}}</td>
+                <td *ngIf="encours.endDate == null"> {{this.monLevel?.levelName}} </td>
+                <td *ngIf="encours.endDate == null"> {{this.maSpe?.speName}} </td>
+                <td *ngIf="encours.endDate == null"> {{encours.beginingDate | date:'dd/MM/yyyy'}} </td>
+                <td *ngIf="encours.endDate == null"> {{encours.progression}}%</td>
+                <td *ngIf="encours.endDate == null"> <button class="btn btn-info" [routerLink]="['/program', this.monProgEnCours?.id]" routerLinkActive="active">Reprendre</button></td>
               </tr>
+<!--
+              <div *ngFor="let prog of this.mesProgrammesEnCours">
+                <td >   {{prog.sport?.sportName}}</td>
+                <td > {{prog.level?.levelName}} </td>
+                <td > {{prog.specialisation?.speName}} </td>
+              </div>
+-->
               </tbody>
             </table>
           </div>
@@ -101,7 +110,6 @@
                 <th scope="col">Spécialisation</th>
                 <th scope="col">Date de début</th>
                 <th scope="col">Date de fin</th>
-                <th scope="col"> Progression (%)</th>
               </tr>
               </thead>
               <tbody>
@@ -113,7 +121,6 @@
                 <td *ngIf="encours.endDate != null"> {{encours.program?.specialisation.speName}} </td>
                 <td *ngIf="encours.endDate != null">  {{encours.beginingDate | date:'dd/MM/yyyy'}} </td>
                 <td *ngIf="encours.endDate != null">  {{encours.endDate | date:'dd/MM/yyyy'}} </td>
-                <td *ngIf="encours.endDate != null"> {{encours.progression }}</td>
               </tr>
               </tbody>
             </table>

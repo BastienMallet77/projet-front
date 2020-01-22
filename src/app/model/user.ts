@@ -16,11 +16,12 @@ export class User {
   commercial: boolean;
   isDesactivated: boolean;
   programs: Program;
-  inProgress: InProgress;
+  inProgresses: Array<InProgress> = new Array<InProgress>();
   degreesCoach: Degree;
+  nbSessionFinished: number = 0;
+  nbProgramFinished: number = 0;
 
-
-  constructor(id?: number, version?: number, firstName?: string, lastName?: string, userName?: string, email?: string, password?: string, birthDate?: Date, commercial?: boolean, isDesactivated?: boolean, programs?: Program, inProgress?: InProgress, degreesCoach?: Degree) {
+  constructor(id?: number, version?: number, firstName?: string, lastName?: string, userName?: string, email?: string, password?: string, birthDate?: Date, commercial?: boolean, isDesactivated?: boolean, programs?: Program, inProgresses?: Array<InProgress>, degreesCoach?: Degree, nbSessionFinished?: number, nbProgramFinished?: number) {
     this.id = id;
     this.version = version;
     this.firstName = firstName;
@@ -32,7 +33,9 @@ export class User {
     this.commercial = commercial;
     this.isDesactivated = isDesactivated;
     this.programs = programs;
-    this.inProgress = inProgress;
+    this.inProgresses = inProgresses;
     this.degreesCoach = degreesCoach;
+    this.nbSessionFinished = nbSessionFinished;
+    this.nbProgramFinished = nbProgramFinished;
   }
 }
