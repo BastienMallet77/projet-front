@@ -11,6 +11,7 @@ import {Sport} from "../model/sport";
 })
 export class SpecialisationHttpService {
   specialisations: Array<Specialisation>;
+  speWithSportId: Array<Specialisation>;
 
   constructor(private appConfig: AppConfigService, private http: HttpClient) {
     this.load();
@@ -35,6 +36,16 @@ export class SpecialisationHttpService {
     }
     return null;
   }
+
+  findBySportId(spId: number): Array<Specialisation>{
+    let id = spId;
+    this.http.get<Array<Specialisation>>(this.appConfig.backEnd + 'specialisation/' + id + '/specs').subscribe(resp => {
+      this.speWithSportId = resp;
+      console.log("dans speHTTP Service"+this.speWithSportId);
+    });
+    return this.speWithSportId;
+  }
+
 
   save(specialisation: Specialisation) {
     if (specialisation) {

@@ -45,4 +45,8 @@ export class ListSpecSportComponent implements OnInit {
   listSpecs() {
     return this.specs;
   }
+
+  back() {
+    window.history.back();
+  }
 }

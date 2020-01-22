@@ -1,5 +1,14 @@
+<div class="row justify-content-center">
+  <div class="col-6 ">
+  <h3 style="margin-left: 100px">Veuillez choisir le niveau des exercices à faire</h3>
+  </div>
+</div>
+
+
+
+
 <div class="row justify-content-around" style="margin-top: 20px">
-  <div class="col-lg-3" *ngFor="let level of listLevel()" [routerLink]="['spec/', level.id]" style="cursor: pointer">
+  <div class="col-lg-3 mb-5" *ngFor="let level of listLevel()" [routerLink]="['spec/', level.id]" style="cursor: pointer">
     <div class="card border-success" style="border-radius: 10px">
       <div id="cardForMouseOver" style="text-align: center">
         <div><img id="card-img" src="./assets/images/bodybuilder.jpg"
@@ -12,3 +21,7 @@
     </div>
   </div>
 </div>
+<div class="row justify-content-end mr-2">
+  <button class="btn btn-info mb-5 justify-content-end" (click)="back()"> Retour au choix du niveau</button>
+</div>
+

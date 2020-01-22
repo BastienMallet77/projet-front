@@ -1,6 +1,16 @@
-<div class="row justify-content-around" style="margin-top: 20px">
-  <div class="col-lg-4" *ngFor="let specialisation of listSpecs()" [routerLink]="['level/',specialisation.id]"
+<div class="row justify-content-center">
+  <div class="col-6 ">
+    <h3 style="margin-left: 100px">Veuillez choisir un type d'exercice à faire</h3>
+  </div>
+
+</div>
+
+<div class="row justify-content-around mt-3" >
+
+
+  <div class="col-3 mb-5" *ngFor="let specialisation of listSpecs()" [routerLink]="['level/',specialisation.id]"
        style="cursor: pointer">
+
     <div class="card border-success" style="border-radius: 10px">
       <div id="cardForMouseOver" style="text-align: center">
         <div><img id="card-img" src="./assets/images/bodybuilder.jpg"
@@ -10,8 +20,14 @@
         <h2>{{specialisation.speName}}</h2>
 
       </div>
+
     </div>
+
   </div>
+
+</div>
+<div class="row justify-content-end mr-2">
+    <button class="btn btn-info mb-5 justify-content-end" (click)="back()"> Retour à la liste des sports</button>
 </div>
 
 
