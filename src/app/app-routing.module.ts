@@ -19,6 +19,7 @@ import {ListLevelSportComponent} from './list-level-sport/list-level-sport.compo
 import {ListProgramUserComponent} from './list-program-user/list-program-user.component';
 import {NotFoundComponent} from './not-found/not-found.component';
 import {CreateProgramComponent} from './create-program/create-program.component';
+import {DashboardCoachComponent} from './dashboard-coach/dashboard-coach.component';
 
 
 const routes: Routes = [
@@ -36,6 +37,7 @@ const routes: Routes = [
   {path: 'sportUser', component: ListSportUserComponent},
   {path: 'infoUser', component: InfoUserComponent},
   {path: 'board', component: DashboardComponent},
+  {path: 'coachBoard', component: DashboardCoachComponent},
   {path: 'sportUser/:id', component: ListSpecSportComponent},
   {path: 'sportUser/:id/level/:id', component: ListLevelSportComponent},
   {path: 'sportUser/:id/level/:id/spec/:id', component: ListProgramUserComponent},
