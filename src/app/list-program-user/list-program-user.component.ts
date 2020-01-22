@@ -34,4 +34,8 @@ export class ListProgramUserComponent implements OnInit {
   listPrograms(){
     return this.programs;
   }
+
+  back() {
+    window.history.back()
+  }
 }

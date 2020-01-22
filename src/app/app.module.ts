@@ -26,8 +26,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ListProgramUserComponent } from './list-program-user/list-program-user.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ProgramBoardViewComponent } from './program-board-view/program-board-view.component';
-import {UserHttpService} from './user/user-http.service';
+import { CreateProgramComponent } from './create-program/create-program.component';
 import {Router} from '@angular/router';
+import {UserHttpService} from './user/user-http.service';
 
 
 
@@ -54,7 +55,8 @@ import {Router} from '@angular/router';
     ListProgramUserComponent,
     NotFoundComponent,
     InfoUserComponent,
-    ProgramBoardViewComponent
+    ProgramBoardViewComponent,
+    CreateProgramComponent
   ],
   imports: [
     BrowserModule,

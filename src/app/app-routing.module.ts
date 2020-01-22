@@ -18,6 +18,7 @@ import {ListSpecSportComponent} from './list-spec-sport/list-spec-sport.componen
 import {ListLevelSportComponent} from './list-level-sport/list-level-sport.component';
 import {ListProgramUserComponent} from './list-program-user/list-program-user.component';
 import {NotFoundComponent} from './not-found/not-found.component';
+import {CreateProgramComponent} from './create-program/create-program.component';
 
 
 const routes: Routes = [
@@ -39,6 +40,7 @@ const routes: Routes = [
   {path: 'sportUser/:id/level/:id', component: ListLevelSportComponent},
   {path: 'sportUser/:id/level/:id/spec/:id', component: ListProgramUserComponent},
   {path: 'sportUser/:id/level/:id/spec/:id/program/:id', component: ProgramBoardViewComponent},
+  {path: 'createProgram', component: CreateProgramComponent},
   {path: '', component: HomeComponent},
   {path: '**', component: NotFoundComponent},
 ];

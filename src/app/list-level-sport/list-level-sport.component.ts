@@ -44,4 +44,8 @@ export class ListLevelSportComponent implements OnInit {
   listLevel() {
     return this.levels;
   }
+
+  back() {
+    window.history.back()
+  }
 }
