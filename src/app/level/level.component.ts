@@ -30,7 +30,7 @@ export class LevelComponent implements OnInit {
   }
   specialisations(sportId: number) {
     let spId = sportId;
-    return this.specialisationHttpService.findBySportId(spId);
+    this.speWithSportId = this.specialisationHttpService.findBySportId(spId);
   }
   programs() {
     return this.programHttpService.findAll();

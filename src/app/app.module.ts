@@ -48,7 +48,7 @@ import { ProgramBoardViewComponent } from './program-board-view/program-board-vi
     InfoUserComponent,
     DashboardComponent,
     ListProgramUserComponent,
-    NotFoundComponent
+    NotFoundComponent,
     InfoUserComponent,
     ProgramBoardViewComponent
   ],
