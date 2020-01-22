@@ -41,6 +41,7 @@ export class SpecialisationHttpService {
     let id = spId;
     this.http.get<Array<Specialisation>>(this.appConfig.backEnd + 'specialisation/' + id + '/specs').subscribe(resp => {
       this.speWithSportId = resp;
+      console.log("dans speHTTP Service"+this.speWithSportId);
     });
     return this.speWithSportId;
   }

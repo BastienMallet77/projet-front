@@ -57,44 +57,20 @@
       <input type="text" class="form-control" placeholder="Renseigner la description du niveau" id="desc" [(ngModel)]="currentLevel.levelDescription">
     </div>
     <div class="form-group">
-      <label for="sport">Sport:</label>
-      <select class="form-control" placeholder="Entrer le sport" id="sport"
-              [ngModel]="currentLevel.sport.id" (ngModelChange)="currentLevel.sport.id=$event">
-        <option value="{{spo.id}}" *ngFor="let spo of listSports">{{spo.sportName}}</option>
-      </select>
-    </div>
+    <label for="sport">Sport:</label>
+    <select class="form-control" placeholder="Entrer le sport" id="sport"
+            [(ngModel)]="currentLevel.sport.id">
+      <option value="{{spo.id}}" *ngFor="let spo of listSports">{{spo.sportName}}</option>
+    </select>
+  </div>
 
-    <!-- TODO à mettre dans le div*ngIf="this.currentLevel.sport.id!=null"-->
-    <div class="form-group">
+    <div *ngIf="currentLevel.sport.id!=null" class="form-group">
       <label for="specialisation">Specialisation:</label>
       <select class="form-control" placeholder="Entrer le specialisation" id="specialisation"
-              [ngModel]="currentLevel.specialisation.id" (ngModelChange)="currentLevel.specialisation.id=$event" (click)="specialisations(currentLevel.sport.id)">
-        <option value="{{spe.id}}" *ngFor="let spe of speWithSportId">{{spe.speName}}</option>
+              [(ngModel)]="currentLevel.specialisation.id" (click)="specialisations(currentLevel.sport.id)">
+          <option value="{{spe.id}}" *ngFor="let spe of specialisationHttpService.speWithSportId">{{spe.speName}}</option>
       </select>
     </div>
-
-
-    <!--
-        <div class="form-group">
-          <label for="sport">Sport:</label>
-          <select class="form-control" placeholder="Entrer le sport" id="sport" [(ngModel)]="currentLevel.sport">
-            <option value="{{spo.id}}" *ngFor="let spo of sport()">{{spo.sportName}}</option>
-          </select>
-        </div>
-
-        <div class="form-group">
-          <label for="spec">Spécialisation:</label>
-          <select class="form-control" placeholder="Entrer la spécialisation" id="spec" [(ngModel)]="currentLevel.specialisation">
-            <option value="{{spe.id}}" *ngFor="let spe of specialisation()">{{spe.speName}}</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="prog">Programme:</label>
-          <select class="form-control" placeholder="Entrer le programme" id="prog" [(ngModel)]="currentLevel.programs">
-            <option value="{{progs.id}}" *ngFor="let progs of programs()">{{progs.name}}</option>
-          </select>
-        </div>
-    -->
 
   </div>
   <div class="card-footer">
