@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {ProgramHttpService} from "../program/program-http.service";
 import {ProgramBoardViewHttpService} from "./program-board-view-http.service";
 import {Session} from "../model/session";
@@ -8,6 +8,7 @@ import {SessionHttpService} from "../session/session-http.service";
 import {Exercice} from "../model/exercice";
 import {ExerciceHttpService} from "../exercice/exercice-http.service";
 import {FormControl, Validators} from '@angular/forms';
+import {User} from "../model/user";
 
 @Component({
   selector: 'program-board-view',
@@ -15,6 +16,14 @@ import {FormControl, Validators} from '@angular/forms';
   styleUrls: ['./program-board-view.component.css']
 })
 export class ProgramBoardViewComponent implements OnInit {
+  @Input()
+  isConnected: boolean = false;
+  @Input()
+  info;
+
+  userCo: User = JSON.parse(localStorage.getItem('userConnected'));
+
+
   program: Program;
   monId: number;
   sessions: Array<Session>;
@@ -106,8 +115,8 @@ export class ProgramBoardViewComponent implements OnInit {
       console.log(this.percentageOfDone);
 
       //SAVE PROGRESSION % DANS LE INPROGRESS CORRESPONDANT AU PROGRAMME
-      for(let inpro of prog.inProgresses){
-        if(inpro.program.id == inpro.id){
+      for (let inpro of prog.inProgresses) {
+        if (inpro.program.id == inpro.id) {
           inpro.progression = this.percentageOfDone;
         }
       }
@@ -120,11 +129,16 @@ export class ProgramBoardViewComponent implements OnInit {
       }
     }
 
+    //AUGMENTER LE NB SESSIONS FINIES DE L'USER   (SAVE LA MODIF USER)
+    this.userCo.nbSessionFinished++;
+
+    
+
     // if(this.percentageOfDone == 100){
     //TODO modal BRAVO !
     // }
-
   }
+
 
   programIsDone(prog: Program) {
     //PROG IS DONE
@@ -139,8 +153,7 @@ export class ProgramBoardViewComponent implements OnInit {
       }
     }
 
-
-
+    this.userCo.nbProgramFinished++;
     console.log("OK THE PROGRAM IS DONE!");
   }
 
