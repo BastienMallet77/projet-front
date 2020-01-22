@@ -85,6 +85,7 @@ export class ProgramBoardViewComponent implements OnInit {
       sess.isDone = true;
       this.numberSessionDone ++;
       this.percentageOfDone = (this.numberSessionDone*100)/this.numberSession;
+      console.log(this.percentageOfDone);
     }
     for(let session of this.sessions){
       if(session.id == sess.id) {
@@ -92,12 +93,15 @@ export class ProgramBoardViewComponent implements OnInit {
       }
     }
 
+    // if(this.percentageOfDone == 100){
+    //TODO modal BRAVO !
+    // }
 
   }
 
   programIsDone(prog: Program) {
     prog.isDone = true;
-    console.log("OK THE PROGRAM IS DONE!")
+    console.log("OK THE PROGRAM IS DONE!");
 }
 
 
