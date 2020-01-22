@@ -6,10 +6,12 @@
       <div id="cardForMouseOver" style="text-align: center">
         <div class="row justify-content-start">
           <div id="card-text">
-          <p>> Descritpion : {{prog.description}}</p>
-          <p>> Durée du programme : {{prog.duration}} en jours</p>
-          <p>> Programme crée le  : {{prog.creationDate | date:'dd/MM/yyyy'}}</p>
-          <p>> Note utilisateur : <ngb-rating [rate]="prog.rate" max="5" readonly="true"></ngb-rating> </p>
+            <p>> Descritpion : {{prog.description}}</p>
+            <p>> Durée du programme : {{prog.duration}} en jours</p>
+            <p>> Programme crée le : {{prog.creationDate | date:'dd/MM/yyyy'}}</p>
+            <p>> Note utilisateur :
+              <ngb-rating [rate]="prog.rate" max="5" readonly="true"></ngb-rating>
+            </p>
 
           <div class="col-4">
         <div><img id="card-img" src="./assets/images/bodybuilder.jpg"
@@ -18,21 +20,26 @@
         </div>
           <div class="col-4 align-items-center" style="padding: 0; justify-content: flex-start">
         <h4>{{prog.name}}</h4>
-            <p class="mb-0"> Descritpion : {{prog.description}}</p>
-            <p class="mb-0"> Durée du programme : {{prog.duration}}  jours</p>
-            <p class="mb-0"> Programme crée le  : {{prog.creationDate | date:'dd/MM/yyyy'}}</p>
-            <p class="mb-0"> Note utilisateur : <ngb-rating [rate]="prog.rate" max="5" readonly="true"></ngb-rating> </p>
-            <p style="font-size: small"> (Nombre de votes : {{prog.nbRate}})</p>
+            <p class="mb-1"> Descritpion : {{prog.description}}</p>
+            <p class="mb-1"> Durée du programme : {{prog.duration}}  jours</p>
+            <p class="mb-1"> Programme crée le  : {{prog.creationDate | date:'dd/MM/yyyy'}}</p>
+            <p class="mb-1"> Note utilisateur : <ngb-rating [rate]="prog.rate" max="5" readonly="true"></ngb-rating> </p>
+            <p class="mb-1" style="font-size: small"> (Nombre de votes : {{prog.nbRate}})</p>
 
-          </div>
-          <div class="col-4" style="margin: auto" >
+            </div>
+            <div class="col-4" style="margin: auto">
 
               <button class="btn btn-success" [routerLink]="['program/', prog.id]"> C'est parti !</button>
 
+            </div>
           </div>
         </div>
       </div>
     </div>
+  </div>
+  <div class="row justify-content-end mr-2">
+    <button class="btn btn-info mb-5 justify-content-end" (click)="back()"> Retour à la liste des specialisations
+    </button>
   </div>
 </div>
 <div class="row justify-content-end mr-2">

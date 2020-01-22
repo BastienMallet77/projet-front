@@ -8,6 +8,7 @@ import {SessionHttpService} from '../session/session-http.service';
 import {LevelHttpService} from '../level/level-http.service';
 import {SportHttpService} from '../sport/sport-http.service';
 import {Session} from "../model/session";
+import {Router} from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,7 @@ export class ProgramHttpService {
 
   programs: Array<Program>;
 
-  constructor(private appConfig: AppConfigService, private userService: UserHttpService, private sportService: SportHttpService, private levelService: LevelHttpService, /* private inProgressService: InProgressHttpService, TODO*/ private http: HttpClient)
+  constructor(private router: Router,private appConfig: AppConfigService, private userService: UserHttpService, private sportService: SportHttpService, private levelService: LevelHttpService, /* private inProgressService: InProgressHttpService, TODO*/ private http: HttpClient)
   {
     this.load();
   }
@@ -57,6 +58,7 @@ export class ProgramHttpService {
         this.http.post<Program>(this.appConfig.backEnd + 'program',
           program).subscribe(resp =>
         {
+          this.router.navigate(['createProgram/',program.id])
           this.load();
         }, err => console.log(err));
       }
@@ -65,6 +67,7 @@ export class ProgramHttpService {
           this.http.put<Program>(this.appConfig.backEnd + 'program/' + program.id, program).subscribe(resp =>
           {
             this.load();
+
           }, error => console.log(error));
         }
     }
