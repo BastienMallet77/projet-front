@@ -1,16 +1,37 @@
-#sportUserList{
-  border: ridge;
-  border-color: darkblue;
-  background-color: blue;
-  border-radius: 40px;
-  height: 250px;
-  margin: 50px;
-  color: white;
-}
 
 .card-img {
   border-radius: 40px;
   height: 250px;
   margin: 50px;
+}
+#cardForMouseOver /*Endroit ou afficher le mouseOver*/
+{
+  position: relative;
+  text-align: center;
+}
+
+#card-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  visibility: hidden;
+}
+
+#cardForMouseOver:hover #card-text {
+  visibility: visible;
+}
+
+#cardForMouseOver:hover #card-img {
+  opacity: 0.1;
+  transition: ease;
+  transition: 0.3s;
+
+}
+
+#cardForMouseOver:hover {
+  background: rgba(8, 8, 6, 0.45);
+  transition: 0.3s;
 }
 
