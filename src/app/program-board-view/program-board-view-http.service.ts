@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable, Input} from '@angular/core';
 import {Observable} from "rxjs";
 import {Program} from "../model/program";
 import {AppConfigService} from "../app-config.service";
