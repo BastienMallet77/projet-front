@@ -24,10 +24,14 @@ export class HomeHttpService {
   login(userName: String, password: String)
   {
     this.http.get<User>(this.appConfig.backEnd + 'user/' + userName + '/' + password).subscribe(resp => {
-      this.currentConnection = resp;
-      localStorage.setItem('userConnected', JSON.stringify(this.currentConnection));
-      this.router.navigate(['board']);
-    },
+        this.currentConnection = resp;
+        console.log(this.currentConnection);
+        if(this.currentConnection.id)
+        {
+          localStorage.setItem('userConnected', JSON.stringify(this.currentConnection));
+          this.router.navigate(['board']);
+        }
+      },
       error => console.log(error));
   }
 

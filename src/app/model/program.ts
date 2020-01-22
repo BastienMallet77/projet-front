@@ -16,6 +16,7 @@ export class Program{
   isValidated: boolean;
   isDone: boolean;
   rate: number;
+  nbRate: number;
 
   users: Array<User> = new Array<User>();
   sessions: Array<Session> = new Array<Session>();
@@ -25,7 +26,7 @@ export class Program{
   inProgresses: Array<InProgress> = new Array<InProgress>();
 
 
-  constructor(id?: number, version?: number, name?: string, description?: string, duration?: number, nbValidation?: number, creationDate?: Date, isValidated?: boolean, isDone?: boolean, users?: Array<User>,sessions?: Array<Session>, sport?: Sport, level?: Level, specialisation?: Specialisation, inProgresses?: Array<InProgress>, rate?: number) {
+  constructor(id?: number, version?: number, name?: string, description?: string, duration?: number, nbValidation?: number, creationDate?: Date, isValidated?: boolean, isDone?: boolean, users?: Array<User>,sessions?: Array<Session>, sport?: Sport, level?: Level, specialisation?: Specialisation, inProgresses?: Array<InProgress>, rate?: number, nbRate?: number) {
     this.id = id;
     this.version = version;
     this.name = name;
@@ -42,5 +43,6 @@ export class Program{
     this.specialisation = specialisation;
     this.inProgresses = inProgresses;
     this.rate = rate;
+    this.nbRate = nbRate;
   }
 }
