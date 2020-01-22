@@ -39,8 +39,8 @@ export class InProgressHttpService {
       if (inProgress.userProgressing && !inProgress.userProgressing.id) {
         inProgress.userProgressing = null;
       }
-      if (inProgress.progInProgress /*TODO utile ??? && !inProgress.progInProgress.??*/) {
-        inProgress.progInProgress = null;
+      if (inProgress.program /*TODO utile ??? && !inProgress.progInProgress.??*/) {
+        inProgress.program = null;
       }
       if (!inProgress.id) {
         this.http.post<InProgress>(this.appConfig.backEnd + 'inprogress', inProgress).subscribe(resp => {

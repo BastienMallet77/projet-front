@@ -24,7 +24,7 @@ export class HomeComponent implements OnInit {
   userCo: User = JSON.parse(localStorage.getItem('userConnected'));
 
 
-  constructor( private userService : UserHttpService, private homeService: HomeHttpService, private http: HttpClient) {
+  constructor(private userService : UserHttpService, private homeService: HomeHttpService, private http: HttpClient) {
 
   }
 
