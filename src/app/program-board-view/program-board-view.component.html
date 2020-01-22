@@ -22,10 +22,9 @@
 <div class="row" style="margin-top: 15px; justify-content: center; align-items: center">
   <fa name="home" class="fa-2x spaceToi"></fa>
   <div class="progress" style="width: 60%;
-background-color: white; height: 25px;
-border-style: solid; border-color: black; border-width: 0.1em; justify-content: center; align-items: center">
-    <div style="justify-content: center; align-items: center" *ngIf="this.percentageOfDone == 0 || this.percentageOfDone == null"> 0% </div>
-    <div class="row progress-bar" role="progressbar"
+      background-color: white;
+      border-style: solid; border-color: black; border-width: 0.1em">
+    <div class="progress-bar" role="progressbar"
          [style.width]="this.percentageOfDone+'%'"
          aria-valuenow="0"
          aria-valuemin="0"
@@ -33,20 +32,17 @@ border-style: solid; border-color: black; border-width: 0.1em; justify-content: 
          style="background-color: rebeccapurple"
     >
       <div *ngIf="this.percentageOfDone !=0 && this.percentageOfDone<100"> {{this.percentageOfDone}}%</div>
-      <div *ngIf="this.percentageOfDone == 100"> {{this.percentageOfDone}}%: COMPLETED</div>
-
+      <div *ngIf="this.percentageOfDone == 100"> {{this.percentageOfDone}}% COMPLETED</div>
     </div>
   </div>
-  <div>
-    <fa name="trophy" class="spaceToi fa-2x"></fa>
-  </div>
+  <fa name="trophy" class="spaceToi fa-2x"></fa>
 </div>
 
 
 <!-- TODO gérer le nombre d'éléments de la progress bar, leur taille et leur nom en fonction du nombre de sessions contenues dans le programme-->
 <div class="row" style="justify-content: center; align-items: center">
-  <div class="progress" style="justify-content: center; align-items: center;  margin-top: 10px;
-  background-color: whitesmoke;  height: 40px">
+  <div class="progress"
+       style="justify-content: center; align-items: center; background-color: whitesmoke;  height: 40px">
     <div *ngFor="let session of this.sessions">
       <div [ngClass]="{'done':session.isDone}" class="progress-bar monProgressBarElement" role="progressbar"
            style="width: 150px">
