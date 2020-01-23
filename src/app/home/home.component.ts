@@ -15,6 +15,7 @@ import {HomeHttpService} from './home-http.service';
 export class HomeComponent implements OnInit {
   currentUser: User;
   currentConnection: User = new User();
+  type:string;
 
   @Input()
   isConnected: boolean = false;
@@ -30,6 +31,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
   }
+
   add() : void {
     this.currentUser = new User();
 
