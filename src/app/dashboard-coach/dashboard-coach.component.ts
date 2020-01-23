@@ -12,16 +12,21 @@ import {User} from '../model/user';
 export class DashboardCoachComponent implements OnInit {
 
   progWithCreatorId: Array<Program> = new Array<Program>();
-  proglistnb: number = 999;
-  progListInit: boolean = false;
+  progValidatedWithCreatorId: Array<Program> = new Array<Program>();
+  proglistnb: number = 0;
+  progValidatedlistnb: number = 0;
 
-  /*@Output() TODO User connecté, pour récupérer l'ID du coach connecté
+  @Output() /* TODO User connecté, pour récupérer l'ID du coach connecté */
   userCo: User = JSON.parse(localStorage.getItem('userConnected'));
-  */
+
   constructor(private modalService: NgbModal, private programService: ProgramHttpService) {
-    this.programService.findByCoachId(294).subscribe(resp => {
+    this.programService.findByCoachId(this.userCo.id).subscribe(resp => {
       this.progWithCreatorId = resp;
       this.proglistnb = this.progWithCreatorId.length;
+    });
+    this.programService.findValidatedByCoachId(this.userCo.id).subscribe(resp => {
+      this.progValidatedWithCreatorId = resp;
+      this.progValidatedlistnb = this.progValidatedWithCreatorId.length;
     });
   }
 

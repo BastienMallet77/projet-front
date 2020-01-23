@@ -40,6 +40,10 @@ export class ProgramHttpService {
     return this.http.get<Array<Program>>(this.appConfig.backEnd + 'program/' + id + '/creator');
   }
 
+  findValidatedByCoachId(id: number): Observable <Array<Program>> {
+    return this.http.get<Array<Program>>(this.appConfig.backEnd + 'program/' + id + '/programsValidated');
+  }
+
   /* TODO Test coach-program findAllByUser(id: number): Observable<Program>
   {
     for (const program of this.programs)
