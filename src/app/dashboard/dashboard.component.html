@@ -63,21 +63,25 @@
               <thead style="align-items: center">
               <tr>
                 <th scope="col">Nom du programme</th>
-                <th scope="col">Sport</th>
-                <th scope="col">Niveau</th>
-                <th scope="col">Spécialisation</th>
-                <th scope="col">Date de début</th>
-                <th scope="col"> Progression (%)</th>
-                <th scope="col"></th>
-              </tr>
-              </thead>
-              <tbody>
-              <tr *ngFor="let encours of this.mesEnCours">
-                <!--<div *ngIf="encours.program?.isDone == false">-->
+                <!--
+               <th scope="col">Sport</th>
+               <th scope="col">Niveau</th>
+               <th scope="col">Spécialisation</th>
+               -->
+               <th scope="col">Date de début</th>
+               <th scope="col"> Progression (%)</th>
+               <th scope="col"></th>
+             </tr>
+             </thead>
+             <tbody>
+             <tr *ngFor="let encours of this.mesEnCours">
+               <!--<div *ngIf="encours.program?.isDone == false">-->
                 <td *ngIf="encours.endDate == null"> {{encours.program?.name}} </td>
+                <!--
                 <td *ngIf="encours.endDate == null"> {{this.monSport?.sportName}}</td>
                 <td *ngIf="encours.endDate == null"> {{this.monLevel?.levelName}} </td>
                 <td *ngIf="encours.endDate == null"> {{this.maSpe?.speName}} </td>
+                -->
                 <td *ngIf="encours.endDate == null"> {{encours.beginingDate | date:'dd/MM/yyyy'}} </td>
                 <td *ngIf="encours.endDate == null"> {{encours.progression}}%</td>
                 <td *ngIf="encours.endDate == null"> <button class="btn btn-info" [routerLink]="['/program', this.monProgEnCours?.id]" routerLinkActive="active">Reprendre</button></td>

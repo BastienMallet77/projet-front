@@ -36,32 +36,30 @@ export class DashboardComponent implements OnInit {
   constructor(private userService: UserHttpService, private dashboardService: DashboardHttpService, private inProgressService: InProgressHttpService, private programService: ProgramHttpService, private homeService: HomeHttpService) {
     //RECUP L'USER CO
     this.dashboardService.loadUser(this.homeService.currentConnection.id).subscribe(resp => {
-      this.userCo = resp;
-      if (this.userCo != null) {
-        // RECUP LES INPROGRESS DE L'USER
-        this.LesEnCours = this.inProgressService.findAll();
-        for (let enCours of this.LesEnCours) {
-          if (enCours.userProgressing) {
-            if (enCours.userProgressing.id != null) {
-              if (enCours.userProgressing.id == this.userCo.id) {
-                this.mesEnCours.push(enCours);
-                this.monProgEnCours = enCours.program;
-                this.monSport = this.monProgEnCours.sport;
-                this.monLevel = this.monProgEnCours.level;
-                this.maSpe = this.monProgEnCours.specialisation;
+        this.userCo = resp;
+        if (this.userCo != null) {
+          // RECUP LES INPROGRESS DE L'USER
+          this.LesEnCours = this.inProgressService.findAll();
+          for (let enCours of this.LesEnCours) {
+            if (enCours.userProgressing) {
+              if (enCours.userProgressing.id != null) {
+                if (enCours.userProgressing.id == this.userCo.id) {
+                  this.mesEnCours.push(enCours);
+                  this.monProgEnCours = enCours.program;
+                  this.monSport = this.monProgEnCours.sport;
+                  this.monLevel = this.monProgEnCours.level;
+                  this.maSpe = this.monProgEnCours.specialisation;
+                }
               }
             }
           }
+          // RECUP LES PROGRAMMES CORRESPONDANTS
+          for (let encours of this.mesEnCours) {
+            this.mesProgrammesEnCours.push(encours.program);
+          }
         }
-
-        // RECUP LES PROGRAMMES CORRESPONDANTS
-        for (let encours of this.mesEnCours) {
-          this.mesProgrammesEnCours.push(encours.program);
-        }
-      }
-    }, err => console.log(err));
-
-
+      }, err => console.log(err)
+    );
   }
 
   ngOnInit() {

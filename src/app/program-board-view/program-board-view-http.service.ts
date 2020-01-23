@@ -54,47 +54,31 @@ export class ProgramBoardViewHttpService {
 
 
   sessionIsDone(sess: Session, prog: Program, monUser: User) {
-    if (sess.isDone == false) {
-      sess.isDone = true;
-    }
-
     //SAVE SESSION DANS LA BDD (PUT=EDIT)!
     this.http.put<Session>(this.appConfig.backEnd + 'session/' + sess.id, sess).subscribe(resp => {
-    });
 
-    //AUGMENTER LE NB SESSIONS FINIES DE L'USER   (SAVE LA MODIF USER)
-    monUser.nbSessionFinished++;
+      //AUGMENTER LE NB SESSIONS FINIES DE L'USER   (SAVE LA MODIF USER)
+      monUser.nbSessionFinished++;
 
-    //SAVE USER!
-    this.http.put<User>(this.appConfig.backEnd + 'user/' + monUser.id, monUser).subscribe(resp => {
+      //SAVE USER!
+      this.http.put<User>(this.appConfig.backEnd + 'user/' + monUser.id, monUser).subscribe(resp => {
+      });
+
     });
   }
 
 
-  programIsDone(prog
-                  :
-                  Program
-  ) {
-    // CREER ENDDATE DANS LE INPROGRESS CORRESPONDANT AU PROGRAMME -->> DANS LE SERVICE
-    // CALCUL PROGRESSION % -->> DANS LE SERVICE
-    // SAVE INPROGRESS en BDD -->> DANS LE SERVICE qui renvoie au httpservice methose SaveInProgress
-
-    //PASSER LE PROGRAMME EN DONE TRUE
-    prog.isDone = true;
-
-    //INCREMENTER NB PROG FINIS DE L'USER
-    this.userCo.nbProgramFinished++;
-
+  programIsDone(prog: Program, monUser: User) {
     //SAVE prog et user en BDD (avec this htttp service PUT)
     this.http.put<Program>(this.appConfig.backEnd + 'program/' + prog.id, prog).subscribe(resp => {
-    });
 
-    this.http.put<User>(this.appConfig.backEnd + 'user/' + this.userCo.id, this.userCo).subscribe(resp => {
-    });
+      this.http.put<User>(this.appConfig.backEnd + 'user/' + monUser.id, monUser).subscribe(resp => {
+      });
 
-    //REDIRIGER VERS DASHBOARD USER
-    this.router.navigate(['board']);
+      //REDIRIGER VERS DASHBOARD USER
+      this.router.navigate(['board']);
+
+    });
   }
-
 
 }

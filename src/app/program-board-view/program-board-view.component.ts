@@ -99,7 +99,7 @@ export class ProgramBoardViewComponent implements OnInit {
 
   sessionIsDone(sess: Session, prog: Program, monUser: User) {
     if (sess.isDone == false) {
-      // sess.isDone = true;    DANS LE SERVICE!!!
+      sess.isDone = true;
       this.numberSessionDone++;
 
       //CALCUL PROGRESSION
@@ -119,23 +119,13 @@ export class ProgramBoardViewComponent implements OnInit {
 
     this.programBoardViewHttpService.sessionIsDone(sess, prog, monUser);
 
-    // //SAVE LA SESSION
-    // for (let session of this.sessions) {
-    //   if (session.id == sess.id) {
-    //     session = sess;
-    //   }
-    // }
-
-    // //AUGMENTER LE NB SESSIONS FINIES DE L'USER   (SAVE LA MODIF USER)
-    // this.userCo.nbSessionFinished++;
-
     // if(this.percentageOfDone == 100){
     //TODO modal BRAVO !
     // }
   }
 
 
-  programIsDone(prog: Program) {
+  programIsDone(prog: Program, monUser: User) {
     // INPROGRESS: AJOUT ENDDATE ET SAVE PROGRESSION 100%
     for (let inpro of prog.inProgresses) {
       if (inpro.program) {
@@ -147,7 +137,13 @@ export class ProgramBoardViewComponent implements OnInit {
       }
     }
 
-    this.programBoardViewHttpService.programIsDone(prog);
+    //PASSER LE PROGRAMME EN DONE TRUE
+    prog.isDone = true;
+
+    //INCREMENTER NB PROG FINIS DE L'USER
+    monUser.nbProgramFinished++;
+
+    this.programBoardViewHttpService.programIsDone(prog, monUser);
 
     // //PROG IS DONE
     // prog.isDone = true;
