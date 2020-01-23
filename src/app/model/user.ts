@@ -20,6 +20,7 @@ export class User {
   degreesCoach: Degree;
   nbSessionFinished: number = 0;
   nbProgramFinished: number = 0;
+  img:string;
   sessionStop: number;
   levelStop: number;
   programStop: number;
@@ -40,9 +41,5 @@ export class User {
     this.degreesCoach = degreesCoach;
     this.nbSessionFinished = nbSessionFinished;
     this.nbProgramFinished = nbProgramFinished;
-    this.role = role;
-    this.sessionStop = sessionStop;
-    this.levelStop = levelStop;
-    this.programStop = programStop;
   }
 }

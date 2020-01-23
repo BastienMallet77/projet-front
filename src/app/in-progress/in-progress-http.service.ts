@@ -14,8 +14,7 @@ export class InProgressHttpService {
 
   inProgresses: Array<InProgress>;
 
-  constructor(private appConfig: AppConfigService,
-               private http: HttpClient) {
+  constructor(private appConfig: AppConfigService, private http: HttpClient) {
     this.load();
   }
 
@@ -27,7 +26,11 @@ export class InProgressHttpService {
   }
 
   findAll(): Array<InProgress> {
-    return this.inProgresses;
+    this.http.get<Array<InProgress>>(this.appConfig.backEnd + 'inprogress').subscribe(resp => {
+        this.inProgresses = resp;
+      },
+      err => console.log(err));
+    return this.inProgresses
   }
 
   findById(id: number): Observable<InProgress> {

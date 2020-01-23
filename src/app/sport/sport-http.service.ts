@@ -9,9 +9,7 @@ import {Observable} from 'rxjs';
 })
 
 export class SportHttpService {
-
   sports: Array<Sport>;
-
 
   constructor(private appConfig: AppConfigService, private http: HttpClient) {
     this.load();
@@ -20,13 +18,11 @@ export class SportHttpService {
   load() {
     this.http.get<Array<Sport>>(this.appConfig.backEnd + 'sport').subscribe(resp => {
         this.sports = resp;
-        console.log(resp)
       },
       err => console.log(err));
   }
 
   findAll(): Array<Sport> {
-
     return this.sports;
   }
 

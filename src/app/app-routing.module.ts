@@ -22,6 +22,7 @@ import {CreateProgramComponent} from './create-program/create-program.component'
 import {DashboardCoachComponent} from './dashboard-coach/dashboard-coach.component';
 import {CreateSessionComponent} from './create-session/create-session.component';
 import {CreateExerciceComponent} from './create-exercice/create-exercice.component';
+import {AppComponent} from './app.component';
 
 
 const routes: Routes = [

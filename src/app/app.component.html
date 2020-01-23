@@ -10,8 +10,8 @@
   <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
     <button type="button" class="btn btn-secondary" [routerLink]="['/home']" routerLinkActive="active">Accueil</button>
     <button type="button" class="btn btn-secondary" [routerLink]="['/sportUser']" routerLinkActive="active">Liste des sports</button>
-
-    <div class="btn-group" role="group">
+<div *ngIf="userCo">
+    <div class="btn-group" role="group" *ngIf="userCo() && userCo().role === 'ADMIN'">
       <div ngbDropdown class="d-inline-block">
         <button class="btn btn-secondary" id="dropdownBasic1" ngbDropdownToggle>Listes</button>
         <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
@@ -28,7 +28,8 @@
         </div>
       </div>
     </div>
-    <div class="btn-group" role="group">
+</div>
+    <div class="btn-group" role="group" *ngIf="userCo()">
       <div ngbDropdown class="d-inline-block">
         <button class="btn btn-secondary" id="dropdownBasic2" ngbDropdownToggle>Mon Tableau de bord</button>
         <div ngbDropdownMenu aria-labelledby="dropdownBasic2">

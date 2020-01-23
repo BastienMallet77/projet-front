@@ -1,51 +1,48 @@
-<div class="row justify-content-around" style="margin-top: 20px">
+<div class="row justify-content-around mb-5 mt-3">
 
-  <div class="col-lg-10 mb-5" *ngFor="let prog of listPrograms()" style="cursor: pointer">
+  <div class="col-10 mb-5" *ngFor="let prog of listPrograms()" style="cursor: pointer">
     <div class="card border-success" style="border-radius: 10px">
 
       <div id="cardForMouseOver" style="text-align: center">
-        <div class="row justify-content-start">
           <div id="card-text">
-            <p>> Descritpion : {{prog.description}}</p>
-            <p>> Durée du programme : {{prog.duration}} en jours</p>
-            <p>> Programme crée le : {{prog.creationDate | date:'dd/MM/yyyy'}}</p>
-            <p>> Note utilisateur :
-              <ngb-rating [rate]="prog.rate" max="5" readonly="true"></ngb-rating>
-            </p>
+            <div class="row justify-content-center">
 
-          <div class="col-4">
-        <div><img id="card-img" src="./assets/images/bodybuilder.jpg"
-                  style="width: 200px; height: 150px; margin-top: 20px;margin-bottom: 20px; padding: 0">
-        </div>
-        </div>
-          <div class="col-4 align-items-center" style="padding: 0; justify-content: flex-start">
-        <h4>{{prog.name}}</h4>
-            <p class="mb-1"> Descritpion : {{prog.description}}</p>
-            <p class="mb-1"> Durée du programme : {{prog.duration}}  jours</p>
-            <p class="mb-1"> Programme crée le  : {{prog.creationDate | date:'dd/MM/yyyy'}}</p>
-            <p class="mb-1"> Note utilisateur : <ngb-rating [rate]="prog.rate" max="5" readonly="true"></ngb-rating> </p>
-            <p class="mb-1" style="font-size: small"> (Nombre de votes : {{prog.nbRate}})</p>
+              <div class="col-5">
+                <div><img id="card-img" src="./assets/images/bodybuilder.jpg"
+                          style="width: 200px; height: 150px; margin-top: 20px;margin-bottom: 20px; padding: 0">
+                </div>
+              </div>
+
+
+            <div class="col-5 align-items-center" style="padding: 0; justify-content: flex-start">
+              <h4>{{prog.name}}</h4>
+              <p class="mb-1"> Descritpion : {{prog.description}}</p>
+              <p class="mb-1"> Durée du programme : {{prog.duration}}  jours</p>
+              <p class="mb-1"> Programme crée le : {{prog.creationDate | date:'dd/MM/yyyy'}}</p>
+              <p class="mb-1"> Note utilisateur :
+                <ngb-rating [rate]="prog.rate" max="5" readonly="true"></ngb-rating>
+              </p>
+              <p class="mb-1" style="font-size: small"> (Nombre de votes : {{prog.nbRate}})</p>
 
             </div>
-            <div class="col-4" style="margin: auto">
+            <div class="col-2" style="margin: auto">
 
-              <button class="btn btn-success" [routerLink]="['program/', prog.id]"> C'est parti !</button>
+              <button class="btn btn-success" [routerLink]="['program/', prog.id]"><i class="fas fa-dumbbell"></i> C'est parti !<i class="fas fa-dumbbell"></i></button>
 
             </div>
           </div>
-        </div>
+          </div>
+
       </div>
+
+    </div>
+    <div class="row justify-content-end mr-2">
+      <button class="btn btn-info mb-5 mt-3 justify-content-end" (click)="back()"> Retour à la liste des specialisations
+      </button>
     </div>
   </div>
-  <div class="row justify-content-end mr-2">
-    <button class="btn btn-info mb-5 justify-content-end" (click)="back()"> Retour à la liste des specialisations
-    </button>
-  </div>
+
+
+
+
 </div>
-<div class="row justify-content-end mr-2">
-  <button class="btn btn-info mb-5 justify-content-end" (click)="back()"> Retour à la liste des specialisations</button>
-</div>
-
-
-
-

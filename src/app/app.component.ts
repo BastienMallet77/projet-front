@@ -2,6 +2,7 @@ import {Component, Output} from '@angular/core';
 import {User} from './model/user';
 import { Router } from '@angular/router';
 import {UserHttpService} from './user/user-http.service';
+import {HomeHttpService} from './home/home-http.service';
 
 @Component({
   selector: 'app-root',
@@ -10,22 +11,19 @@ import {UserHttpService} from './user/user-http.service';
 })
 export class AppComponent {
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private homeService: HomeHttpService) {
+
   }
 
   title = 'projet-front';
 
-  @Output()
   isConnected: boolean;
 
-  @Output()
-  userCo: User = JSON.parse(localStorage.getItem('userConnected'));
-
-
+  userCo() {
+    return this.homeService.currentConnection;
+  }
 
   logout() {
-    localStorage.removeItem('userConnected');
-    localStorage.clear();
-    this.router.navigate(['']);
+    this.homeService.logout();
   }
 }

@@ -12,6 +12,8 @@ import {InProgress} from "../model/inProgress";
 import {Specialisation} from "../model/specialisation";
 import {Level} from "../model/level";
 import {Sport} from "../model/sport";
+import {UserHttpService} from "../user/user-http.service";
+import {HomeHttpService} from "../home/home-http.service";
 
 @Component({
   selector: 'dashboard',
@@ -19,17 +21,7 @@ import {Sport} from "../model/sport";
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  currentUser: User;
-  currentConnection: User = new User();
-
-  @Input()
-  isConnected: boolean = false;
-  @Input()
-  info;
-
-  userCo: User = JSON.parse(localStorage.getItem('userConnected'));
-
-  leInProgressDeUserCo: InProgress;
+  userCo: User;
 
   LesEnCours: Array<InProgress> = new Array<InProgress>();
   mesEnCours: Array<InProgress> = new Array<InProgress>();
@@ -39,36 +31,39 @@ export class DashboardComponent implements OnInit {
   monLevel: Level;
   maSpe: Specialisation;
 
-  lesProgrammes: Array<Program> = new Array<Program>();
   mesProgrammesEnCours: Array<Program> = new Array<Program>();
 
-  constructor(private dashboardService: DashboardHttpService, private inProgressService: InProgressHttpService, private programService: ProgramHttpService) {
-    // RECUP LES INPROGRESS DE L'USER
-    this.LesEnCours = this.inProgressService.findAll();
-    for (let enCours of this.LesEnCours) {
-      if (enCours.userProgressing.id != null) {
-        if (enCours.userProgressing.id == this.userCo.id) {
-          this.mesEnCours.push(enCours);
-          this.monProgEnCours = enCours.program;
-          this.monSport = this.monProgEnCours.sport;
-          this.monLevel = this.monProgEnCours.level;
-          this.maSpe = this.monProgEnCours.specialisation;
+  constructor(private userService: UserHttpService, private dashboardService: DashboardHttpService, private inProgressService: InProgressHttpService, private programService: ProgramHttpService, private homeService: HomeHttpService) {
+    //RECUP L'USER CO
+    this.dashboardService.loadUser(this.homeService.currentConnection.id).subscribe(resp => {
+        this.userCo = resp;
+        if (this.userCo != null) {
+          // RECUP LES INPROGRESS DE L'USER
+          this.LesEnCours = this.inProgressService.findAll();
+          for (let enCours of this.LesEnCours) {
+            if (enCours.userProgressing) {
+              if (enCours.userProgressing.id != null) {
+                if (enCours.userProgressing.id == this.userCo.id) {
+                  this.mesEnCours.push(enCours);
+                  this.monProgEnCours = enCours.program;
+                  this.monSport = this.monProgEnCours.sport;
+                  this.monLevel = this.monProgEnCours.level;
+                  this.maSpe = this.monProgEnCours.specialisation;
+                }
+              }
+            }
+          }
+          // RECUP LES PROGRAMMES CORRESPONDANTS
+          for (let encours of this.mesEnCours) {
+            this.mesProgrammesEnCours.push(encours.program);
+          }
         }
-      }
-    }
-
-    // RECUP LES PROGRAMMES CORRESPONDANTS
-    for (let encours of this.mesEnCours) {
-      this.mesProgrammesEnCours.push(encours.program);
-    }
-
-
-
-
-    //this.lesProgrammes = this.programService.findAll();
+      }, err => console.log(err)
+    );
   }
 
   ngOnInit() {
   }
+
 
 }

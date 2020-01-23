@@ -12,7 +12,6 @@ export class ProgramComponent implements OnInit {
   currentProgram: Program = null;
   detailProgram: Program = null;
 
-
   constructor(private modalService: NgbModal, private programService: ProgramHttpService) { }
 
   ngOnInit() {

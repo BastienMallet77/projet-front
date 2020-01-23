@@ -1,31 +1,15 @@
 <div style="text-align: center; margin-top: 15px">
-  <h1> Tableau de bord du programme: </h1>
+  <h1> Tableau de bord du programme : </h1>
   <h2>{{this.program?.name}} </h2>
   <div class="form-group">
-    <ngb-rating [formControl]="ctrl" [rate]="currentRate" (rateChange)="toRate($event)" max="5" [readonly]="!read"></ngb-rating>
+    <ngb-rating [formControl]="ctrl" [rate]="currentRate" (rateChange)="toRate($event)" max="5"
+                [readonly]="!read"></ngb-rating>
     <div class="form-text small">
-      <div *ngIf="ctrl.valid" class="text-success">Merci</div>
-      <div *ngIf="ctrl.invalid" class="text-danger">Notez le programme</div>
+      <div *ngIf="ctrl.valid" class="text-success"> Merci </div>
+      <div *ngIf="ctrl.invalid" class="text-danger"> Notez le programme </div>
     </div>
   </div>
 </div>
-
-
-
-<!--<div class="progress">-->
-<!--  <div class="progress-bar" role="progressbar" style="width: 20%" aria-valuenow="15" aria-valuemin="0"-->
-<!--       aria-valuemax="100"> Session 1-->
-<!--  </div>-->
-<!--  <div class="progress-bar bg-info" role="progressbar" style="margin-left:2px; width: 20%" aria-valuenow="20"-->
-<!--       aria-valuemin="0" aria-valuemax="100"> Session 1-->
-<!--  </div>-->
-<!--  <div class="progress-bar" role="progressbar" style="margin-left:2px; width: 20%" aria-valuenow="15" aria-valuemin="0"-->
-<!--       aria-valuemax="100"> Session 1-->
-<!--  </div>-->
-<!--  <div class="progress-bar bg-info" role="progressbar" style="margin-left:2px; width: 20%" aria-valuenow="20"-->
-<!--       aria-valuemin="0" aria-valuemax="100"> Session 1-->
-<!--  </div>-->
-<!--</div>-->
 
 <div class="row" style="margin-top: 15px; justify-content: center; align-items: center">
   <fa name="home" class="fa-2x spaceToi"></fa>
@@ -51,15 +35,15 @@
 <div class="row" style="justify-content: center; align-items: center">
   <div class="progress"
        style="justify-content: center; align-items: center; background-color: whitesmoke;  height: 40px">
-    <div *ngFor="let session of this.sessions">
-      <div [ngClass]="{'done':session.isDone}" class="progress-bar monProgressBarElement" role="progressbar"
-           style="width: 150px">
-        <!--100/{{this.numberSession}} px -->
-        <a [routerLink]="['/session', session.id]" routerLinkActive="active">
-          <div class="progressBarText"> {{session.name}} </div>
-        </a>
-      </div>
-    </div>
+<!--    <div *ngFor="let session of this.sessions">-->
+<!--      <div [ngClass]="{'done':session.isDone}" class="progress-bar monProgressBarElement" role="progressbar"-->
+<!--           style="width: 150px">-->
+<!--        &lt;!&ndash;100/{{this.numberSession}} px &ndash;&gt;-->
+<!--        <a [routerLink]="['/session', session.id]" routerLinkActive="active">-->
+<!--          <div class="progressBarText"> {{session.name}} </div>-->
+<!--        </a>-->
+<!--      </div>-->
+<!--    </div>-->
   </div>
 </div>
 
@@ -74,7 +58,7 @@
           <p class="card-text"> {{session.text}} </p>
         </div>
         <div class="card-footer">
-          <button type="button" class="btn btn-success" (click)="display(session.id)"> Let's Go</button>
+          <button type="button" class="btn btn-success" (click)="display(session.id)"> Let's Go </button>
         </div>
       </div>
     </div>
@@ -100,11 +84,9 @@
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-12">
-            <button type="button" class="btn btn-success">
-              <a (click)="sessionIsDone(this.selectedSession, this.program)" class="progressBarText"> J'ai terminé la session
-                !
-                <fa name="star"></fa>
-              </a></button>
+            <button type="button" class="btn btn-success" (click)="sessionIsDone(this.selectedSession, this.program, this.userCo)"> J'ai terminé la session !
+              <fa name="star"></fa>
+            </button>
           </div>
         </div>
       </div>
@@ -119,10 +101,9 @@
     <div class="row justify-content-center">
       <div class="col-12">
         <!--TODO lien vers le tableau de bord use-->
-        <button type="button" class="btn btn-info"><a [routerLink]="['/board']" routerLinkActive="active"
-          (click)="programIsDone(this.program)" class="progressBarText"> J'ai terminé le programme !
+        <button type="button" class="btn btn-info" (click)="programIsDone(this.program, this.userCo)"> J'ai terminé le programme !
           <fa name="trophy"></fa>
-        </a></button>
+        </button>
       </div>
     </div>
   </div>
@@ -133,16 +114,17 @@
 <footer class="footer">
   <div class="container">
     <div class="row" style="justify-content:center">
-<!--
-      <button type="button" class="btn btn-warning spaceButton"><a href="#" class="previousnext">&laquo; Session
-        précédente </a>
-      </button>
-      -->
+      <!--
+            <button type="button" class="btn btn-warning spaceButton"><a href="#" class="previousnext">&laquo; Session
+              précédente </a>
+            </button>
+            -->
+      <!--TODO REDIRECT !! METHODE-->
       <button type="button" class="btn btn-danger spaceButton mb-5 mt-5">
-        <a class="progressBarText normalTextBold" [routerLink]="['/board']" routerLinkActive="active" >
+        <a class="progressBarText normalTextBold" [routerLink]="['/board']" routerLinkActive="active">
           Retour au tableau de bord
-         <fa name="times"></fa>
-      </a></button>
+          <fa name="times"></fa>
+        </a></button>
       <!--
       <button type="button" class="btn btn-warning spaceButton"><a href="#" class="previousnext"> Session suivante
         &raquo;</a>
