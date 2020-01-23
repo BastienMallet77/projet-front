@@ -11,15 +11,19 @@
       <p><i class="fas fa-medal" style="color: silver"></i> Nombre de programmes crées : {{proglistnb}}</p>
     </div>
   </div>
-  <div class="col-4">
+  <div class="col-3">
     <div class="col-8" style="left:30px ;border: solid">
       <p><i class="fas fa-trophy" style="color: gold"></i> Nombre de programmes validés : {{progValidatedlistnb}}</p>
     </div>
   </div>
-  <div class="col-3">
+  <div class="col-2">
+    <div class="col-8" style="left:30px ;border: solid">
+      <p><i class="fas fa-trophy" style="color: gold"></i> Note globale : {{avgGradeCoach}}</p>
+    </div>
+  </div>
 
+  <div class="col-2">
     <button class="btn-success" style="height: 50px"  [routerLink]="['/board']"> Retour à l'espace Training</button>
-
   </div>
 </div>
 <div class="row">
