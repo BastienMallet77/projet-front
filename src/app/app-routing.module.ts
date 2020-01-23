@@ -21,6 +21,7 @@ import {NotFoundComponent} from './not-found/not-found.component';
 import {CreateProgramComponent} from './create-program/create-program.component';
 import {DashboardCoachComponent} from './dashboard-coach/dashboard-coach.component';
 import {CreateSessionComponent} from './create-session/create-session.component';
+import {CreateExerciceComponent} from './create-exercice/create-exercice.component';
 import {AppComponent} from './app.component';
 
 
@@ -46,7 +47,8 @@ const routes: Routes = [
   {path: 'sportUser/:id/level/:id/spec/:id', component: ListProgramUserComponent},
   {path: 'sportUser/:id/level/:id/spec/:id/program/:id', component: ProgramBoardViewComponent},
   {path: 'createProgram', component: CreateProgramComponent},
-  {path: 'createProgram/:id', component: CreateSessionComponent},
+  {path: 'createSession', component: CreateSessionComponent},
+  {path: 'createExo', component: CreateExerciceComponent},
   {path: '', component: HomeComponent},
   {path: '**', component: NotFoundComponent},
 ];

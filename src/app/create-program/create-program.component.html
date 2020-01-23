@@ -30,19 +30,19 @@
         <div class="form-group col-md-5">
           <label for="SportProg">Sport du programme</label>
           <select class="form-control" id="SportProg" [(ngModel)]="currentProgram.sport.id">
-            <option></option>
+            <option value="{{sport.id}}" *ngFor="let sport of listSport()">{{sport.sportName}}</option>
           </select>
         </div>
         <div class="form-group col-md-5">
           <label for="SpecProg">Scpécialisation</label>
-          <select class="form-control" id="SpecProg" [(ngModel)]="currentProgram.specialisation.id">
-            <option></option>
+          <select class="form-control" id="SpecProg" [(ngModel)]="currentProgram.specialisation.id" (click)="listSpe(currentProgram.sport.id)">
+            <option value="{{spe.id}}" *ngFor="let spe of SpecService.speWithSportId">{{spe.speName}}</option>
           </select>
         </div>
         <div class="form-group col-md-5">
           <label for="LevelProg">Niveau du programme</label>
-          <select class="form-control" id="LevelProg" [(ngModel)]="currentProgram.level.id">
-            <option></option>
+          <select class="form-control" id="LevelProg" [(ngModel)]="currentProgram.level.id" (click)="listLvl()">
+            <option value="{{lvl.id}}" *ngFor="let lvl of levelService.levelsWithSpecId">{{lvl.levelName}}</option>
           </select>
         </div>
         <div class="form-group">

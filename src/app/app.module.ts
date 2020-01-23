@@ -30,6 +30,7 @@ import { CreateProgramComponent } from './create-program/create-program.componen
 import {Router} from '@angular/router';
 import {UserHttpService} from './user/user-http.service';
 import { CreateSessionComponent } from './create-session/create-session.component';
+import {CreateExerciceComponent} from './create-exercice/create-exercice.component';
 
 
 
@@ -58,7 +59,8 @@ import { CreateSessionComponent } from './create-session/create-session.componen
     InfoUserComponent,
     ProgramBoardViewComponent,
     CreateProgramComponent,
-    CreateSessionComponent
+    CreateSessionComponent,
+    CreateExerciceComponent
   ],
   imports: [
     BrowserModule,

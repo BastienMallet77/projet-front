@@ -7,6 +7,8 @@ import {SpecialisationHttpService} from '../specialisation/specialisation-http.s
 import {LevelHttpService} from '../level/level-http.service';
 import {Sport} from '../model/sport';
 import {Level} from '../model/level';
+import {UserHttpService} from '../user/user-http.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-create-program',
@@ -18,7 +20,7 @@ export class CreateProgramComponent implements OnInit {
   currentProgram: Program = null;
 
 
-  constructor(private programService: ProgramHttpService, private sportService : SportHttpService, private SpecService : SpecialisationHttpService, private levelService : LevelHttpService) { }
+  constructor(private programService: ProgramHttpService, private sportService : SportHttpService, private SpecService : SpecialisationHttpService, private levelService : LevelHttpService, private router: Router) { }
 
   ngOnInit() {
 
@@ -42,16 +44,31 @@ export class CreateProgramComponent implements OnInit {
     });
   }
 
-  save()
+    save()
   {
-    console.log(this.currentProgram);
     this.programService.save(this.currentProgram);
-    console.log(this.currentProgram);
     this.currentProgram = null;
+    this.router.navigate(['createSession']);
   }
 
   cancel()
   {
     this.currentProgram = null;
   }
+
+  listSport()
+  {
+    return this.sportService.findAll();
+  }
+
+  listSpe(id: number)
+  {
+    return this.SpecService.findBySportId(id);
+  }
+
+  listLvl()
+  {
+    return this.levelService.findBySpecId(this.currentProgram.specialisation.id);
+  }
+
 }

@@ -1,18 +1,18 @@
 <div class="row justify-content-center mt-5">
   <div class="col-6">
-    <h3> Creation de session</h3>
+    <h3> Creation d'exercice</h3>
   </div>
 </div>
 <div class="row justify-content-center">
 
   <div class="col-6 justify-content-center">
     <div class="form-group">
-      <label for="nameSession">Nom de la session</label>
-      <input type="text" class="form-control" id="nameSession" [(ngModel)]="currentSession.name">
+      <label for="nameExo">Nom de l'exo</label>
+      <input type="text" class="form-control" id="nameExo" [(ngModel)]="currentExo.exerciceName" (click)="reset()">
     </div>
     <div class="form-group">
-      <label for="descrSess">Description de la session</label>
-      <textarea class="form-control" id="descrSess" [(ngModel)]="currentSession.text"></textarea>
+      <label for="descrExo">Description de la session</label>
+      <textarea class="form-control" id="descrExo" [(ngModel)]="currentExo.exerciceText"></textarea>
     </div>
     <div class="btn-group btn-group-lg">
       <button type="button" class="btn btn-primary" (click)="save()">
@@ -21,6 +21,7 @@
       <button type="button" class="btn btn-warning" (click)="cancel()">
         <fa name="undo" inverse="true"></fa>
       </button>
+      <span *ngIf="exoCree">Exo créé avec succés</span>
     </div>
   </div>
 

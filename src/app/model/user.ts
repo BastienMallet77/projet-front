@@ -20,9 +20,12 @@ export class User {
   degreesCoach: Degree;
   nbSessionFinished: number = 0;
   nbProgramFinished: number = 0;
-  img:string;
+  img: string;
+  sessionStop: number;
+  levelStop: number;
+  programStop: number;
 
-  constructor(id?: number, version?: number, firstName?: string, lastName?: string, userName?: string, email?: string, password?: string, birthDate?: Date, commercial?: boolean, isDesactivated?: boolean, programs?: Program, inProgresses?: Array<InProgress>, degreesCoach?: Degree, nbSessionFinished?: number, nbProgramFinished?: number, img?:string) {
+  constructor(img?: string, sessionStop?: number, levelStop?: number, programStop?: number, id?: number, version?: number, role?: string, firstName?: string, lastName?: string, userName?: string, email?: string, password?: string, birthDate?: Date, commercial?: boolean, isDesactivated?: boolean, programs?: Program, inProgresses?: Array<InProgress>, degreesCoach?: Degree, nbSessionFinished?: number, nbProgramFinished?: number) {
     this.id = id;
     this.version = version;
     this.firstName = firstName;
@@ -39,5 +42,8 @@ export class User {
     this.nbSessionFinished = nbSessionFinished;
     this.nbProgramFinished = nbProgramFinished;
     this.img = img;
+    this.levelStop = levelStop;
+    this.programStop = programStop;
+    this.sessionStop = sessionStop;
   }
 }

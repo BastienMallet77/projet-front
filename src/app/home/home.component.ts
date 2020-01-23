@@ -38,10 +38,9 @@ export class HomeComponent implements OnInit {
 
   add(): void {
     this.currentUser = new User();
-
   }
 
-  save() {
+  save(){
     this.userService.save(this.currentUser);
     this.cancel();
   }
