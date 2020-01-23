@@ -38,12 +38,13 @@ export class CreateSessionComponent implements OnInit {
     {
       this.currentUser = resp;
       this.idProgStopped = this.currentUser.programStop;
+      console.log(this.idProgStopped);
       this.programService.findById(this.idProgStopped).subscribe(resp =>
       {
         this.currentProg = resp;
         this.currentSession.program = this.currentProg;
         this.sessionService.save(this.currentSession);
-      }, error1 => console.log(error1));
+      }, error1 => console.log(error1+'daz'));
     }, error => console.log(error));
     this.router.navigate(['createExo']);
   }
