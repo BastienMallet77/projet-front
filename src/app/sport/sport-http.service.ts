@@ -9,9 +9,7 @@ import {Observable} from 'rxjs';
 })
 
 export class SportHttpService {
-
   sports: Array<Sport>;
-
 
   constructor(private appConfig: AppConfigService, private http: HttpClient) {
     this.load();
@@ -26,7 +24,6 @@ export class SportHttpService {
   }
 
   findAll(): Array<Sport> {
-
     return this.sports;
   }
 
