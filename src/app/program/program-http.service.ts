@@ -36,12 +36,8 @@ export class ProgramHttpService {
     return this.programs;
   }
 
-  findByCoachId(spId: number): Array<Program>{
-    let id = spId;
-    this.http.get<Array<Program>>(this.appConfig.backEnd + 'program/' + id + '/creator').subscribe(resp => {
-      this.progWithCoachId = resp;
-    });
-    return this.progWithCoachId;
+  findByCoachId(id: number): Observable <Array<Program>> {
+    return this.http.get<Array<Program>>(this.appConfig.backEnd + 'program/' + id + '/creator');
   }
 
   /* TODO Test coach-program findAllByUser(id: number): Observable<Program>
