@@ -3,12 +3,14 @@ import {Level} from "../model/level";
 import {HttpClient} from '@angular/common/http';
 import {AppConfigService} from '../app-config.service';
 import {Observable} from "rxjs";
+import {Specialisation} from '../model/specialisation';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LevelHttpService {
   levels: Array<Level>;
+  levelsWithSpecId: Array<Level>;
 
   constructor(private appConfig: AppConfigService, private http: HttpClient) {
     this.load();
@@ -59,6 +61,14 @@ export class LevelHttpService {
     this.http.delete<Level>(this.appConfig.backEnd + 'level/' + id).subscribe(resp => {
       this.load();
     }, err => console.log(err));
+  }
+
+  findBySpecId(lvlId: number): Array<Level>{
+    let id = lvlId;
+    this.http.get<Array<Level>>(this.appConfig.backEnd + 'level/' + id + '/levels').subscribe(resp => {
+      this.levelsWithSpecId = resp;
+    });
+    return this.levelsWithSpecId;
   }
 
 }

@@ -5,6 +5,8 @@ import {HttpClient} from '@angular/common/http';
 import {Session} from '../model/session';
 import {Observable} from 'rxjs';
 import {SessionHttpService} from '../session/session-http.service';
+import {User} from '../model/user';
+import {UserHttpService} from '../user/user-http.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,8 +15,11 @@ import {SessionHttpService} from '../session/session-http.service';
 export class ExerciceHttpService {
 
   exercices: Array<Exercice>;
+  userCo: User = JSON.parse(localStorage.getItem('userConnected'));
+  newUser: User;
+  exoSaved: Exercice;
 
-  constructor(private appConfig: AppConfigService, sessionService: SessionHttpService, private http: HttpClient) {
+  constructor(private userService: UserHttpService, private appConfig: AppConfigService, sessionService: SessionHttpService, private http: HttpClient) {
     this.load();
   }
 
@@ -40,7 +45,14 @@ export class ExerciceHttpService {
       }
       if (!exercice.id) {
         this.http.post<Exercice>(this.appConfig.backEnd + 'exercice', exercice).subscribe(resp => {
+          this.exoSaved = resp;
           this.load();
+          this.userService.findById(this.userCo.id).subscribe(resp =>
+          {
+            this.newUser = resp;
+            this.newUser.levelStop = this.exoSaved.id;
+            this.userService.save(this.newUser);
+          })
         }, err => console.log(err));
       } else {
         this.http.put<Exercice>(this.appConfig.backEnd + 'exercice/' + exercice.id, exercice).subscribe(resp => {

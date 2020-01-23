@@ -69,6 +69,4 @@ export class SpecialisationHttpService {
       this.load();
     }, err => console.log(err));
   }
-
-
 }

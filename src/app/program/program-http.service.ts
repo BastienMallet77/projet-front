@@ -9,6 +9,7 @@ import {LevelHttpService} from '../level/level-http.service';
 import {SportHttpService} from '../sport/sport-http.service';
 import {Session} from "../model/session";
 import {Router} from '@angular/router';
+import {User} from '../model/user';
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +18,9 @@ export class ProgramHttpService {
 
   programs: Array<Program>;
   progWithCoachId: Array<Program>;
+  programSaved: Program;
+  userCo: User = JSON.parse(localStorage.getItem('userConnected'));
+  newUser: User;
 
   constructor(private router: Router,private appConfig: AppConfigService, private userService: UserHttpService, private sportService: SportHttpService, private levelService: LevelHttpService, /* private inProgressService: InProgressHttpService, TODO*/ private http: HttpClient)
   {
@@ -81,8 +85,15 @@ export class ProgramHttpService {
         this.http.post<Program>(this.appConfig.backEnd + 'program',
           program).subscribe(resp =>
         {
-          this.router.navigate(['createProgram/',program.id])
+          this.programSaved = resp;
           this.load();
+          this.userService.findById(this.userCo.id).subscribe(resp=>
+            {
+              this.newUser=resp;
+              this.newUser.programStop = this.programSaved.id;
+              this.userService.save(this.newUser);
+            }
+          );
         }, err => console.log(err));
       }
       else
