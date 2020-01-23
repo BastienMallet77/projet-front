@@ -41,6 +41,9 @@ export class HomeHttpService {
     this.router.navigate(['']);
   }
 
+  user(){
+    return this.currentConnection
+  }
 }
 
 
