@@ -125,25 +125,28 @@ export class ProgramBoardViewComponent implements OnInit {
   }
 
 
-  programIsDone(prog: Program, monUser: User) {
+  programIsDone() {
     // INPROGRESS: AJOUT ENDDATE ET SAVE PROGRESSION 100%
-    for (let inpro of prog.inProgresses) {
-      if (inpro.program) {
-        if (inpro.program.id == inpro.id) {
-          inpro.progression = this.percentageOfDone;
+     for (let inpro of this.program.inProgresses) {
+       // if (inpro.program) {
+       //   if (inpro.program.id == inpro.id) {
+          inpro.progression = 100;
+          console.log(inpro);
+          console.log("Avant ajout de date");
           inpro.endDate = new Date();
+          console.log(inpro.endDate);
           this.programBoardViewHttpService.saveInProgress(inpro);
-        }
-      }
+       //   }
+       // }
     }
 
     //PASSER LE PROGRAMME EN DONE TRUE
-    prog.isDone = true;
+    this.program.isDone = true;
 
     //INCREMENTER NB PROG FINIS DE L'USER
-    monUser.nbProgramFinished++;
+    this.userCo.nbProgramFinished++;
 
-    this.programBoardViewHttpService.programIsDone(prog, monUser);
+    this.programBoardViewHttpService.programIsDone(this.program, this.userCo);
 
     // //PROG IS DONE
     // prog.isDone = true;

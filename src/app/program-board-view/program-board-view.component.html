@@ -95,13 +95,13 @@
   </tbody>
 </table>
 
-
-<footer *ngIf="this.percentageOfDone == 100" class="fini">
+<!--*ngIf="this.percentageOfDone == 100"-->
+<footer  class="fini">
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-12">
         <!--TODO lien vers le tableau de bord use-->
-        <button type="button" class="btn btn-info" (click)="programIsDone(this.program, this.userCo)"> J'ai terminé le programme !
+        <button type="button" class="btn btn-info" (click)="programIsDone()"> J'ai terminé le programme !
           <fa name="trophy"></fa>
         </button>
       </div>
