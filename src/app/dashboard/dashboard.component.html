@@ -10,12 +10,12 @@
       <button class="btn btn-info mt-2" [routerLink]="['/infoUser']" routerLinkActive="active">Mes informations</button>
     </div>
     <div class="row">
-      <p>
+      <p *ngIf="userCo.role=='COACH'">
       <button class="btn btn-success mt-3 justify-content-end" [routerLink]="'/createProgram'"><i
         class="fas fa-plus-circle"></i> Créer un programme
       </button>
       </p>
-      <p>
+      <p *ngIf="userCo.role=='COACH'">
         <button class="btn btn-success mt-3 justify-content-end" [routerLink]="'/coachBoard'"><i
           class="fas fa-plus-circle"></i> Espace Coach
         </button>

@@ -1,5 +1,5 @@
 <div style="text-align: center; margin-top: 15px">
-  <h1> Tableau de bord du programme: </h1>
+  <h1> Tableau de bord du programme : </h1>
   <h2>{{this.program?.name}} </h2>
   <div class="form-group">
     <ngb-rating [formControl]="ctrl" [rate]="currentRate" (rateChange)="toRate($event)" max="5"
@@ -35,15 +35,15 @@
 <div class="row" style="justify-content: center; align-items: center">
   <div class="progress"
        style="justify-content: center; align-items: center; background-color: whitesmoke;  height: 40px">
-    <div *ngFor="let session of this.sessions">
-      <div [ngClass]="{'done':session.isDone}" class="progress-bar monProgressBarElement" role="progressbar"
-           style="width: 150px">
-        <!--100/{{this.numberSession}} px -->
-        <a [routerLink]="['/session', session.id]" routerLinkActive="active">
-          <div class="progressBarText"> {{session.name}} </div>
-        </a>
-      </div>
-    </div>
+<!--    <div *ngFor="let session of this.sessions">-->
+<!--      <div [ngClass]="{'done':session.isDone}" class="progress-bar monProgressBarElement" role="progressbar"-->
+<!--           style="width: 150px">-->
+<!--        &lt;!&ndash;100/{{this.numberSession}} px &ndash;&gt;-->
+<!--        <a [routerLink]="['/session', session.id]" routerLinkActive="active">-->
+<!--          <div class="progressBarText"> {{session.name}} </div>-->
+<!--        </a>-->
+<!--      </div>-->
+<!--    </div>-->
   </div>
 </div>
 

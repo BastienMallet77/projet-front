@@ -59,6 +59,7 @@ export class ProgramBoardViewHttpService {
 
       //AUGMENTER LE NB SESSIONS FINIES DE L'USER   (SAVE LA MODIF USER)
       monUser.nbSessionFinished++;
+      monUser.nbSessionFinished++;
 
       //SAVE USER!
       this.http.put<User>(this.appConfig.backEnd + 'user/' + monUser.id, monUser).subscribe(resp => {
