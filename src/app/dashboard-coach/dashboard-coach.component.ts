@@ -18,7 +18,7 @@ export class DashboardCoachComponent implements OnInit {
   sumGradeCoach: number = 0;
   avgGradeCoach: number = 0;
 
-  @Output() /* TODO User connecté, pour récupérer l'ID du coach connecté */
+  @Output()
   userCo: User = JSON.parse(localStorage.getItem('userConnected'));
 
   constructor(private modalService: NgbModal, private programService: ProgramHttpService) {
