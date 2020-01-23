@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {UserHttpService} from '../user/user-http.service';
 import {User} from '../model/user';
@@ -6,6 +6,7 @@ import {Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import {AppConfigService} from '../app-config.service';
 import {HomeHttpService} from './home-http.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'home',
@@ -15,26 +16,32 @@ import {HomeHttpService} from './home-http.service';
 export class HomeComponent implements OnInit {
   currentUser: User;
   currentConnection: User = new User();
+  type: string;
 
   @Input()
   isConnected: boolean = false;
   @Input()
   info;
 
-  userCo: User = JSON.parse(localStorage.getItem('userConnected'));
+  userCo() {
+    return this.homeService.currentConnection;
+  }
 
+  // @Output() onLogin: EventEmitter<User> = new EventEmitter<User>();
 
-  constructor(private userService : UserHttpService, private homeService: HomeHttpService, private http: HttpClient) {
+  constructor(private userService: UserHttpService, private homeService: HomeHttpService, private router: Router) {
 
   }
 
   ngOnInit() {
   }
-  add() : void {
+
+  add(): void {
     this.currentUser = new User();
 
   }
-  save(){
+
+  save() {
     this.userService.save(this.currentUser);
     this.cancel();
   }
@@ -43,9 +50,9 @@ export class HomeComponent implements OnInit {
     this.currentUser = null;
   }
 
-  login(userName: string, password: string)
-  {
+  login(userName: string, password: string) {
     localStorage.clear();
+
     this.homeService.login(userName, password);
   }
 

@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {SportHttpService} from '../sport/sport-http.service';
 import {SpecialisationHttpService} from '../specialisation/specialisation-http.service';
 import {Specialisation} from '../model/specialisation';
@@ -48,5 +48,6 @@ export class ListSpecSportComponent implements OnInit {
 
   back() {
     window.history.back();
+
   }
 }

@@ -11,34 +11,34 @@ import {User} from '../model/user';
 })
 export class DashboardCoachComponent implements OnInit {
 
-  progWithCreatorId: Array<Program> = null;
-  proglistnb: number = null;
-  progListInit: boolean = false;
+  progWithCreatorId: Array<Program> = new Array<Program>();
+  progValidatedWithCreatorId: Array<Program> = new Array<Program>();
+  proglistnb: number = 0;
+  progValidatedlistnb: number = 0;
+  sumGradeCoach: number = 0;
+  avgGradeCoach: number = 0;
 
-  /*@Output() TODO User connecté, pour récupérer l'ID du coach connecté
+  @Output() /* TODO User connecté, pour récupérer l'ID du coach connecté */
   userCo: User = JSON.parse(localStorage.getItem('userConnected'));
-  */
-  constructor(private modalService: NgbModal, private programService: ProgramHttpService) { }
+
+  constructor(private modalService: NgbModal, private programService: ProgramHttpService) {
+    this.programService.findByCoachId(this.userCo.id).subscribe(resp => {
+      this.progWithCreatorId = resp;
+      this.proglistnb = this.progWithCreatorId.length;
+      for (let i = 0; i<this.proglistnb; i++) {
+        this.sumGradeCoach += this.progWithCreatorId[i].rate;
+      }
+      this.avgGradeCoach = this.sumGradeCoach/this.proglistnb;
+    });
+    this.programService.findValidatedByCoachId(this.userCo.id).subscribe(resp => {
+      this.progValidatedWithCreatorId = resp;
+      this.progValidatedlistnb = this.progValidatedWithCreatorId.length;
+    });
+  }
 
   ngOnInit() {
   }
 
-  getCoachPrograms(id){
-    this.progWithCreatorId = this.programService.findByCoachId(id);
-    this.proglistnb = this.progWithCreatorId.length;
-    this.progListInit=true;
-    console.log("Cherche");
-    //this.afficheProgList();
-    return this.proglistnb;
-  }
-
-  afficheProgList(){
-    // this.getCoachPrograms(id);
-    console.log("Affiche");
-    return this.proglistnb;
-  }
-
   validate(){
-
   }
 }
