@@ -9,6 +9,7 @@ import {Exercice} from "../model/exercice";
 import {ExerciceHttpService} from "../exercice/exercice-http.service";
 import {FormControl, Validators} from '@angular/forms';
 import {User} from "../model/user";
+import {HomeHttpService} from "../home/home-http.service";
 
 @Component({
   selector: 'program-board-view',
@@ -16,21 +17,14 @@ import {User} from "../model/user";
   styleUrls: ['./program-board-view.component.css']
 })
 export class ProgramBoardViewComponent implements OnInit {
-  @Input()
-  isConnected: boolean = false;
-  @Input()
-  info;
-
-  userCo: User = JSON.parse(localStorage.getItem('userConnected'));
-
+  userCo: User;
 
   program: Program;
   monId: number;
   sessions: Array<Session>;
-  numberSession: number = 0;
-  numberSessionDone: number = 0;
+  numberSession: number = 0; //nb total de sessions du programme
+  numberSessionDone: number = 0; //nb de sessions finies à l'interieur du programme
   percentageOfDone: number;
-  sectionsize: number;
   maSessionId: number;
   currentSession: Session;
   ctrl = new FormControl(null, Validators.required);
@@ -38,48 +32,47 @@ export class ProgramBoardViewComponent implements OnInit {
   meanRate: number;
   moyenne: number;
 
-
   exercices: Array<Exercice>;
 
-  selectedProgram: Program;
   selectedSession: Session;
   afficheExos: boolean;
   private read: boolean = true;
-  private count: number;
 
-  constructor(private route: ActivatedRoute, private programService: ProgramHttpService, private programBoardViewHttpService: ProgramBoardViewHttpService, private exerciceService: ExerciceHttpService, private sessionService: SessionHttpService) {
+  constructor(private route: ActivatedRoute, private programService: ProgramHttpService, private programBoardViewHttpService: ProgramBoardViewHttpService, private exerciceService: ExerciceHttpService, private sessionService: SessionHttpService, private homeService: HomeHttpService) {
+    //RECUP L'USER CO
+    this.programBoardViewHttpService.loadUser(this.homeService.currentConnection.id).subscribe(resp=> {
+      this.userCo = resp;
+    }, err=> console.log(err));
+
     this.route.params.subscribe(params => {
-      console.log(params);
+      console.log(params.id);
       this.monId = params.id;
+
       this.programBoardViewHttpService.findById(params.id).subscribe(resp => {
         this.program = resp;
         this.sessions = resp.sessions;
         for (let sess of this.sessions) {
-          this.numberSession++;
+          this.numberSession++; //nb total de sessions du programme
           if (sess.isDone) {
-            this.numberSessionDone++;
+            this.numberSessionDone++; //nb de sessions finies à l'interieur du programme
           }
-          this.maSessionId = sess.id;
+          this.maSessionId = sess.id; // Pourquoi on fait ça ??????????????????????
           // this.exercices = sess.exercices;
           // console.log("LES EXERCICES SONT:" +this.exercices);
         }
-        this.sectionsize = 100 / this.numberSession;
-      });
+      }, err => console.log(err));
 
       if (this.numberSessionDone > 0) {
         this.percentageOfDone = (this.numberSessionDone * 100) / this.numberSession;
       } else {
         this.percentageOfDone = 0;
       }
-
       console.log("pourcentage de fait:" + this.percentageOfDone)
     });
-
   }
 
   ngOnInit() {
   }
-
 
   findSessionsByProgramId(id: number): Array<Session> {
     this.programBoardViewHttpService.findById(this.monId).subscribe(resp => {
@@ -87,7 +80,6 @@ export class ProgramBoardViewComponent implements OnInit {
     });
     return this.sessions;
   }
-
 
   display(id: number) {
     this.afficheExos = true;
@@ -105,7 +97,7 @@ export class ProgramBoardViewComponent implements OnInit {
     this.read = false;
   }
 
-  sessionIsDone(sess: Session, prog: Program) {
+  sessionIsDone(sess: Session, prog: Program, monUser: User) {
     if (sess.isDone == false) {
       sess.isDone = true;
       this.numberSessionDone++;
@@ -116,23 +108,16 @@ export class ProgramBoardViewComponent implements OnInit {
 
       //SAVE PROGRESSION % DANS LE INPROGRESS CORRESPONDANT AU PROGRAMME
       for (let inpro of prog.inProgresses) {
-        if (inpro.program.id == inpro.id) {
-          inpro.progression = this.percentageOfDone;
+        if (inpro.program) {
+          if (inpro.program.id == inpro.id) {
+            inpro.progression = this.percentageOfDone;
+            this.programBoardViewHttpService.saveInProgress(inpro);
+          }
         }
       }
     }
 
-    //SAVE LA SESSION
-    for (let session of this.sessions) {
-      if (session.id == sess.id) {
-        session = sess;
-      }
-    }
-
-    //AUGMENTER LE NB SESSIONS FINIES DE L'USER   (SAVE LA MODIF USER)
-    this.userCo.nbSessionFinished++;
-
-    
+    this.programBoardViewHttpService.sessionIsDone(sess, prog, monUser);
 
     // if(this.percentageOfDone == 100){
     //TODO modal BRAVO !
@@ -140,62 +125,41 @@ export class ProgramBoardViewComponent implements OnInit {
   }
 
 
-  programIsDone(prog: Program) {
-    //PROG IS DONE
-    prog.isDone = true;
-
-    //CREER ENDDATE DANS LE INPROGRESS CORRESPONDANT AU PROGRAMME
+  programIsDone(prog: Program, monUser: User) {
+    // INPROGRESS: AJOUT ENDDATE ET SAVE PROGRESSION 100%
     for (let inpro of prog.inProgresses) {
-      if (inpro.program.id == inpro.id) {
-        inpro.endDate = new Date();
-        // SAVE PROGRESSION 100%
-        inpro.progression = this.percentageOfDone;
+      if (inpro.program) {
+        if (inpro.program.id == inpro.id) {
+          inpro.progression = this.percentageOfDone;
+          inpro.endDate = new Date();
+          this.programBoardViewHttpService.saveInProgress(inpro);
+        }
       }
     }
 
-    this.userCo.nbProgramFinished++;
-    console.log("OK THE PROGRAM IS DONE!");
+    //PASSER LE PROGRAMME EN DONE TRUE
+    prog.isDone = true;
+
+    //INCREMENTER NB PROG FINIS DE L'USER
+    monUser.nbProgramFinished++;
+
+    this.programBoardViewHttpService.programIsDone(prog, monUser);
+
+    // //PROG IS DONE
+    // prog.isDone = true;
+    //
+    // //CREER ENDDATE DANS LE INPROGRESS CORRESPONDANT AU PROGRAMME
+    // for (let inpro of prog.inProgresses) {
+    //   if (inpro.program.id == inpro.id) {
+    //     inpro.endDate = new Date();
+    //     // SAVE PROGRESSION 100%
+    //     inpro.progression = this.percentageOfDone;
+    //   }
+    // }
+    //
+    // this.userCo.nbProgramFinished++;
+    // console.log("OK THE PROGRAM IS DONE!");
   }
 
-
-  // findSessionsByProgramId2(id: number): Array<Session> {
-  //   this.sessions = this.programBoardViewHttpService.findSessionsByProgramId(this.monId);
-  //   return this.programBoardViewHttpService.findSessionsByProgramId(this.monId);
-  // }
-
-
-  // findSessionsByProgramId(): Array<Session> {
-  //   for(let sess of this.programBoardViewHttpService.findSessionsByProgramId()) {
-  //     numberSession: number = ++;
-  //
-  //   };
-  // }
-
-  // findSession(id: number): Array<Session> {
-  //   this.route.params.subscribe(params => {
-  //     console.log(params);
-  //
-  //     for(prog of this.programService.findAll()) {
-  //       if (prog.id == id) {
-  //         return prog.sessions;
-  //       }
-  //     }
-  //   });
-  // }
-
-  // list() {
-  //   return this.programService.findById().sessions;
-  // }
-
-  // findSessions(): Array<Session> {
-  //   return this.programBoardViewHttpService.findSessionsByProgramId();
-  // }
-
-
-//   for(let prog of this.programService.findAll()){
-//   if(prog.id == +params) {
-//   this.program = prog;
-// }
-// }
 
 }

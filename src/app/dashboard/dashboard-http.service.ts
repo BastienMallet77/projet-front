@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable, Input} from '@angular/core';
 import {AppConfigService} from "../app-config.service";
 import {HttpClient} from "@angular/common/http";
 import {Program} from "../model/program";
@@ -13,8 +13,13 @@ export class DashboardHttpService {
     this.load();
   }
 
-  load()
+  load() {
+
+  }
+
+  loadUser(userCoId: number)
   {
+    return this.http.get<User>(this.appConfig.backEnd + 'user/' +userCoId);
   }
 
 }

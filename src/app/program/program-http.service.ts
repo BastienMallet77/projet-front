@@ -14,7 +14,6 @@ import {Router} from '@angular/router';
   providedIn: 'root'
 })
 export class ProgramHttpService {
-
   programs: Array<Program>;
   progWithCoachId: Array<Program>;
 
