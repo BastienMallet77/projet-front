@@ -1,0 +1,150 @@
+<div class="row mb-2" style="margin-top: 30px; justify-content: center">
+
+  <div class="col-4 mt-2" style="left:30px">
+    <div class="row">
+
+      <div class="col-4">
+        <img style="border-radius: 50%" src="{{this.userCo.img}}" class="img-circle" alt="ma photo"
+             width="130" height="130">
+      </div>
+
+      <div class="col-8">
+        <div class="row mt-2">
+          <button class="btn btn-info mt-2" [routerLink]="['/infoUser']" routerLinkActive="active">Mes informations
+          </button>
+        </div>
+
+        <div class="row mt-2" *ngIf=" userCo && userCo.role === 'COACH'">
+          <button class="btn btn-success mt-3 justify-content-end" [routerLink]="'/coachBoard'"><i
+            class="fas fa-chevron-circle-right"></i> Aller sur l'espace Coaching
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row mt-5" style="align-items: center">
+      <div class="card" style="width: 500px">
+        <div class="row no-gutters" style="align-items: center">
+          <div class="col-md-3">
+            <i class="fas fa-medal fa-5x" style="color: silver"></i>
+          </div>
+          <div class="col-md-9">
+            <h5 class="card-title">Nombre de sessions effectuées: {{this.userCo?.nbSessionFinished}} </h5>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-3">
+      <div class="card" style="width: 500px">
+        <div class="row no-gutters" style="align-items: center">
+          <div class="col-md-3">
+            <i class="fas fa-trophy fa-5x" style="color: gold"></i>
+          </div>
+          <div class="col-md-9" style="align-items: center">
+            <h5 class="card-title"> Nombre de programmes terminés: {{this.userCo?.nbProgramFinished}} </h5>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+
+
+  <div class="col-7 mt-2 ml-5">
+
+    <div class="row">
+      <div class="card" style="width: 700px;">
+        <div class="card-body">
+          <div class="card-header" style="background-color: #ffe770; align-items: center">
+            <h5 class="card-title"> PROGRAMMES EN COURS:</h5>
+          </div>
+          <div class="card-text">
+            <table class="table table-hover">
+              <thead style="align-items: center">
+              <tr>
+                <th scope="col">Nom du programme</th>
+                <!--
+               <th scope="col">Sport</th>
+               <th scope="col">Niveau</th>
+               <th scope="col">Spécialisation</th>
+               -->
+                <th scope="col">Date de début</th>
+                <th scope="col"> Progression (%)</th>
+                <th scope="col"></th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let encours of this.mesEnCours">
+                <!--<div *ngIf="encours.program?.isDone == false">-->
+                <td *ngIf="encours.endDate == null"> {{encours.program?.name}} </td>
+                <!--
+                <td *ngIf="encours.endDate == null"> {{this.monSport?.sportName}}</td>
+                <td *ngIf="encours.endDate == null"> {{this.monLevel?.levelName}} </td>
+                <td *ngIf="encours.endDate == null"> {{this.maSpe?.speName}} </td>
+                -->
+                <td *ngIf="encours.endDate == null"> {{encours.beginingDate | date:'dd/MM/yyyy'}} </td>
+                <td *ngIf="encours.endDate == null"> {{encours.progression}}%</td>
+                <td *ngIf="encours.endDate == null">
+                  <button class="btn btn-info" [routerLink]="['/program', this.monProgEnCours?.id]"
+                          routerLinkActive="active">Reprendre
+                  </button>
+                </td>
+              </tr>
+              <!--
+              <div *ngFor="let prog of this.mesProgrammesEnCours">
+                <td >   {{prog.sport?.sportName}}</td>
+                <td > {{prog.level?.levelName}} </td>
+                <td > {{prog.specialisation?.speName}} </td>
+              </div>
+              -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="card mt-3 mb-5" style="width: 700px;">
+        <div class="card-body">
+          <div class="card-header" style="background-color: #4fc95d; align-items: center">
+            <h5 class="card-title"> PROGRAMMES TERMINES:</h5>
+          </div>
+          <div class="card-text">
+            <table class="table table-hover">
+              <thead>
+              <tr>
+                <th scope="col">Nom du programme</th>
+                <!--
+                <th scope="col">Sport</th>
+                <th scope="col">Niveau</th>
+                <th scope="col">Spécialisation</th>
+                -->
+                <th scope="col">Date de début</th>
+                <th scope="col">Date de fin</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let encours of this.mesEnCours">
+                <!--<div *ngIf="encours.program?.isDone == false">-->
+                <td *ngIf="encours.endDate != null"> {{encours.program?.name}} </td>
+                <!--
+               <td *ngIf="encours.endDate != null"> {{encours.program?.sport.sportName}}</td>
+               <td *ngIf="encours.endDate != null"> {{encours.program?.level.levelName}} </td>
+               <td *ngIf="encours.endDate != null"> {{encours.program?.specialisation.speName}} </td>
+               -->
+                <td *ngIf="encours.endDate != null">  {{encours.beginingDate | date:'dd/MM/yyyy'}} </td>
+                <td *ngIf="encours.endDate != null">  {{encours.endDate | date:'dd/MM/yyyy'}} </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
