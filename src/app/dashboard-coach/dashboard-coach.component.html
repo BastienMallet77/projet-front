@@ -8,12 +8,12 @@
   <div class="col-3">
     <div class="col-10" style="left:30px ;border: solid">
       <!-- TODO Ajouter l'ID de coach connecté au lieu de 294   *ngIf="!this.progListInit; this.getCoachPrograms(294)"-->
-      <p><i class="fas fa-medal" style="color: silver"></i> Nombre de programmes crées : {{afficheProgList()}}</p>
+      <p><i class="fas fa-medal" style="color: silver"></i> Nombre de programmes crées : {{proglistnb}}</p>
     </div>
   </div>
   <div class="col-4">
     <div class="col-8" style="left:30px ;border: solid">
-      <p><i class="fas fa-trophy" style="color: gold"></i> Nombre de programmes validés</p>
+      <p><i class="fas fa-trophy" style="color: gold"></i> Nombre de programmes validés : {{progValidatedlistnb}}</p>
     </div>
   </div>
   <div class="col-3">
@@ -46,7 +46,4 @@
     </div>
   </div>
 </div>
-<script>
-  document.getElementById("pDone").innerHTML = this.getCoachPrograms(294);
-</script>
 
