@@ -37,12 +37,12 @@ export class DashboardComponent implements OnInit {
     //RECUP L'USER CO
     this.dashboardService.loadUser(this.homeService.currentConnection.id).subscribe(resp => {
         this.userCo = resp;
-        if (this.userCo != null) {
+       //if (this.userCo != null) {
           // RECUP LES INPROGRESS DE L'USER
           this.LesEnCours = this.inProgressService.findAll();
           for (let enCours of this.LesEnCours) {
-            if (enCours.userProgressing) {
-              if (enCours.userProgressing.id != null) {
+            // if (enCours.userProgressing) {
+            //   if (enCours.userProgressing.id != null) {
                 if (enCours.userProgressing.id == this.userCo.id) {
                   this.mesEnCours.push(enCours);
                   this.monProgEnCours = enCours.program;
@@ -50,14 +50,14 @@ export class DashboardComponent implements OnInit {
                   this.monLevel = this.monProgEnCours.level;
                   this.maSpe = this.monProgEnCours.specialisation;
                 }
-              }
-            }
+            //   }
+            // }
           }
           // RECUP LES PROGRAMMES CORRESPONDANTS
           for (let encours of this.mesEnCours) {
             this.mesProgrammesEnCours.push(encours.program);
           }
-        }
+       // }
       }, err => console.log(err)
     );
   }

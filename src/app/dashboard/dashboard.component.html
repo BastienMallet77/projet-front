@@ -6,9 +6,9 @@
       <img style="border-radius: 50%" src="{{this.userCo.img}}" class="img-circle" alt="ma photo"
            width="130" height="130">
     </div>
-    <div class="row mt-2">
-      <button class="btn btn-info mt-2" [routerLink]="['/infoUser']" routerLinkActive="active">Mes informations</button>
-    </div>
+<!--    <div class="row mt-2">-->
+<!--      <button class="btn btn-info mt-2" [routerLink]="['/infoUser']" routerLinkActive="active">Mes informations</button>-->
+<!--    </div>-->
   </div>
 
       <div class="col-8 mt-3">
@@ -17,13 +17,17 @@
           </button>
         </div>
 
-        <div class="row mt-2">
-          <button class="btn btn-success mt-2 justify-content-end" [routerLink]="'/coachBoard'"><i
-            class="fas fa-chevron-circle-right"></i> Aller sur l'espace Coaching
+        <p *ngIf="userCo.role=='COACH'" class="row mt-2">
+          <button class="btn btn-success mt-3 justify-content-end" [routerLink]="'/createProgram'"><i
+            class="fas fa-plus-circle"></i> Créer un programme
           </button>
-        </div>
-      </div>
+        </p>
 
+        <p *ngIf="userCo.role=='COACH'" class="row mt-2">
+          <button class="btn btn-success mt-3 justify-content-end" [routerLink]="'/coachBoard'"><i
+            class="fas fa-plus-circle"></i> Espace Coach
+          </button>
+        </p>
     </div>
 
     <div class="row mt-5" style="align-items: center">
@@ -51,13 +55,6 @@
         </div>
       </div>
     </div>
-
-
-  <div class="col-3 mt-5" style="justify-content: center" *ngIf=" userCo && userCo.role === 'COACH'">
-    <button class="btn btn-success mt-3 justify-content-end" [routerLink]="'/coachBoard'"><i
-      class="fas fa-chevron-circle-right"></i> Aller sur l'espace Coaching
-    </button>
-  </div>
 
     <div class="card" style="width: 700px;">
       <div class="card-body">
@@ -130,15 +127,16 @@
             </thead>
             <tbody>
             <tr *ngFor="let encours of this.mesEnCours">
-              <!--<div *ngIf="encours.program?.isDone == false">-->
-              <td *ngIf="encours.endDate != null"> {{encours.program?.name}} </td>
+              <!--<div *ngIf="encours.program?.isDone == false">
+              *ngIf="encours.endDate != null"-->
+              <td>{{encours.program?.name}}</td>
               <!--
              <td *ngIf="encours.endDate != null">   {{encours.program?.sport.sportName}}</td>
              <td *ngIf="encours.endDate != null"> {{encours.program?.level.levelName}} </td>
              <td *ngIf="encours.endDate != null"> {{encours.program?.specialisation.speName}} </td>
              -->
-              <td *ngIf="encours.endDate != null">  {{encours.beginingDate | date:'dd/MM/yyyy'}} </td>
-              <td *ngIf="encours.endDate != null">  {{encours.endDate | date:'dd/MM/yyyy'}} </td>
+              <td>{{encours.beginingDate | date:'dd/MM/yyyy'}}</td>
+              <td>{{encours.endDate | date:'dd/MM/yyyy'}}</td>
             </tr>
             </tbody>
           </table>
