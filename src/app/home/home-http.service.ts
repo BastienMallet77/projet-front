@@ -25,7 +25,6 @@ export class HomeHttpService {
   {
     this.http.get<User>(this.appConfig.backEnd + 'user/' + userName + '/' + password).subscribe(resp => {
         this.currentConnection = resp;
-        console.log(this.currentConnection);
         if(this.currentConnection.id)
         {
           localStorage.setItem('userConnected', JSON.stringify(this.currentConnection));
@@ -33,6 +32,13 @@ export class HomeHttpService {
         }
       },
       error => console.log(error));
+  }
+
+  logout() {
+    localStorage.removeItem('userConnected');
+    localStorage.clear();
+    this.currentConnection = null;
+    this.router.navigate(['']);
   }
 
 }
